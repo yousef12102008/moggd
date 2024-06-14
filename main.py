@@ -8,8 +8,8 @@ from telebot import *
 from str1 import Tele
 from colorama import Fore
 sto = {"stop":False}
-token = "6469979477:AAHfbTJYGLWA8b1iYgrhSRpmovFaLa7qKbM" #توكنك
-id =5710814216  #ايديك
+token = "6848019028:AAGDVZ4MIlMKOL0pRjtjMOadz4qkf9cqarU" #توكنك
+id =6309252183  #ايديك
 bot=telebot.TeleBot(token,parse_mode="HTML")
 @bot.message_handler(commands=["start"])
 def start(message):
