@@ -124,4 +124,4 @@ def start_command(message):
     video_url = random.choice(video_urls)
     bot.send_video(message.chat.id, video_url, caption="𝐉𝐮𝐬𝐭 𝐬𝐞𝐧𝐝 𝐲𝐨𝐮𝐫 𝐜𝐨𝐦𝐛𝐨", parse_mode='Markdown', reply_to_message_id=message.message_id)
 
-bot.infinity_polling()'
+bot.infinity_polling()
