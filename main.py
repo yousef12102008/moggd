@@ -1,4 +1,4 @@
-'import telebot, time, threading, json, random, re, os
+import telebot, time, threading, json, random, re, os
 from telebot import types
 from chk import *
 from bin import *
