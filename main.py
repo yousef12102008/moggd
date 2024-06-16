@@ -3,7 +3,7 @@ from telebot import types
 from chk import *
 from bin import *
 
-admin_id = '6119391480'
+admin_id = '6382217270'
 token = "6487569861:AAGt9xCKSwN_bCuLXEDVtJhjr-bAEd89HVc"
 bot = telebot.TeleBot(token, parse_mode="HTML")
 
