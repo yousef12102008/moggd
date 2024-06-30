@@ -3,7 +3,7 @@ from telebot import types
 from chk import *
 
 admin_id = "1092890698"
-token = "7086228704:AAGmEUAmc7gWCU1JcmIF62TlFCE-i6xRfRk"
+token = "7424274344:AAF_xk_AsWbq5VM60dH5qcfH6y4Rckud0kU"
 bot = telebot.TeleBot(token, parse_mode="HTML")
 
 stop_processes = {}
@@ -77,7 +77,7 @@ def process(message):
             
             bot.edit_message_caption(chat_id=message.chat.id, message_id=send.message_id, caption='', reply_markup=buttons)
 
-            for _ in range(15):
+            for _ in range(20):
                 if stop_processes.get(process_id):
                     bot.edit_message_caption(chat_id=message.chat.id, message_id=send.message_id, caption="𝐒𝐭𝐨𝐩𝐩𝐞𝐝 𝐬𝐮𝐜𝐜𝐞𝐬𝐬𝐟𝐮𝐥𝐥𝐲")
                     riskbins.clear()
