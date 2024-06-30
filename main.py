@@ -2,8 +2,8 @@ import requests, telebot, time, threading, random
 from telebot import types
 from chk import *
 
-admin_id = "1092890698"
-token = "7424274344:AAF_xk_AsWbq5VM60dH5qcfH6y4Rckud0kU"
+admin_id = "5964228363"
+token = "6848019028:AAGDVZ4MIlMKOL0pRjtjMOadz4qkf9cqarU"
 bot = telebot.TeleBot(token, parse_mode="HTML")
 
 stop_processes = {}
