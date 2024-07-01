@@ -7,7 +7,7 @@ from chk4 import chk as chk4
 from bin import *
 
 # List of allowed user IDs
-admin_ids = ['5964228363', '6309252183', '2123721043']  # Add more user IDs here
+admin_ids = ['5964228363', '6309252183', '2123721043','6429416876']  # Add more user IDs here
 token = "6848019028:AAGDVZ4MIlMKOL0pRjtjMOadz4qkf9cqarU"
 bot = telebot.TeleBot(token, parse_mode="HTML")
 
