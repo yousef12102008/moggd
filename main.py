@@ -6,7 +6,7 @@ from chk3 import chk as chk3
 from chk4 import chk as chk4
 from bin import *
 
-admin_id = '5964228363'
+admin_id = '6309252183'
 token = "6848019028:AAGDVZ4MIlMKOL0pRjtjMOadz4qkf9cqarU"
 bot = telebot.TeleBot(token, parse_mode="HTML")
 
