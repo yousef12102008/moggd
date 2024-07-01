@@ -6,7 +6,8 @@ from chk3 import chk as chk3
 from chk4 import chk as chk4
 from bin import *
 
-admin_id = '6309252183'
+# List of allowed user IDs
+admin_ids = ['5964228363', '6309252183', '2123721043']  # Add more user IDs here
 token = "6848019028:AAGDVZ4MIlMKOL0pRjtjMOadz4qkf9cqarU"
 bot = telebot.TeleBot(token, parse_mode="HTML")
 
@@ -55,7 +56,7 @@ def process(document, message, chk_function):
         with open(file_name, 'wb') as new_file:
             new_file.write(downloaded_file)
     except Exception as o:
-        bot.send_message(admin_id, f"An error occurred: {o}")
+        bot.send_message(admin_ids[0], f"An error occurred: {o}")
         return
 
     with open(file_name, 'r') as file:
@@ -71,7 +72,7 @@ def process(document, message, chk_function):
                 try:
                     result = chk_function(card)
                 except Exception as e:
-                    bot.send_message(admin_id, f"An error occurred: {e}")
+                    bot.send_message(admin_ids[0], f"An error occurred: {e}")
                     result = "ERROR"
                 elapsed_time = round(time.time() - start_time, 2)
                 print(result)
@@ -123,7 +124,7 @@ def file_process_callback(call):
 
 @bot.message_handler(content_types=["document"])
 def main(message):
-    if str(message.chat.id) not in [admin_id]:
+    if str(message.chat.id) not in admin_ids:
         return
     
     if not message.document:
