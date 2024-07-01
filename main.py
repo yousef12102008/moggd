@@ -1,28 +1,53 @@
-import requests, telebot, time, threading, random
+import telebot, time, threading, random
 from telebot import types
-from chk import *
+from chk1 import chk as chk1
+from chk2 import chk as chk2
+from chk3 import chk as chk3
+from chk4 import chk as chk4
+from bin import *
 
-admin_id = "5964228363"
-token = "6848019028:AAGDVZ4MIlMKOL0pRjtjMOadz4qkf9cqarU"
+admin_id = '6309252183'
+token = "7433284450:AAG-FhR2ligFiofQQ2nvm8Trhx0pCWcEjNQ"
 bot = telebot.TeleBot(token, parse_mode="HTML")
 
 stop_processes = {}
-video_urls = [f"https://t.me/O_An6/{i}" for i in [106, 110, 111, 112, 113, 114, 118, 119, 120, 121, 123, 124, 126, 129, 131, 132, 133, 136, 137, 208, 717, 722]]
 
-blacklisted_bins = ['410039', '515462', '415464', '408264', '546775', '415464', '557692', '522274']
+video_urls = [
+    "https://t.me/O_An6/106",
+    "https://t.me/O_An6/110",
+    "https://t.me/O_An6/111",
+    "https://t.me/O_An6/112",
+    "https://t.me/O_An6/113",
+    "https://t.me/O_An6/114",
+    "https://t.me/O_An6/118",
+    "https://t.me/O_An6/119",
+    "https://t.me/O_An6/120",
+    "https://t.me/O_An6/121",
+    "https://t.me/O_An6/123",
+    "https://t.me/O_An6/124",
+    "https://t.me/O_An6/126",
+    "https://t.me/O_An6/129",
+    "https://t.me/O_An6/131",
+    "https://t.me/O_An6/132",
+    "https://t.me/O_An6/133",
+    "https://t.me/O_An6/136",
+    "https://t.me/O_An6/137",
+    "https://t.me/O_An6/208",
+    "https://t.me/O_An6/717",
+    "https://t.me/O_An6/722"
+]
+
 riskbins = []
 
-process_running = False
-
-def process(message):
-    global process_running
-    process_running = True
+def process(document, message, chk_function):
     video_url = random.choice(video_urls)
     process_id = hash(message)
     stop_processes[process_id] = False
-    dd = live = risko = 0
-    send = bot.send_video(message.chat.id, video_url, caption="𝐂𝐡𝐞𝐜𝐤𝐢𝐧𝐠 𝐘𝐨𝐮𝐫 𝐂𝐚𝐫𝐝𝐬...", parse_mode='Markdown', reply_to_message_id=message.message_id)
-    file_info = bot.get_file(message.document.file_id)
+    dd = 0
+    live = 0
+    risko = 0
+    send = bot.send_video(message.chat.id, video_url, caption="𝐂𝐡𝐞𝐜𝐤𝐢𝐧𝐠 𝐘𝐨𝐮𝐫 𝐂𝐚𝐫𝐝𝐬...⌛", parse_mode='Markdown', reply_to_message_id=message.message_id)
+    file_info = bot.get_file(document.file_id)
     downloaded_file = bot.download_file(file_info.file_path)
     file_name = f"combo_{message.chat.id}.txt"
     
@@ -31,7 +56,6 @@ def process(message):
             new_file.write(downloaded_file)
     except Exception as o:
         bot.send_message(admin_id, f"An error occurred: {o}")
-        process_running = False
         return
 
     with open(file_name, 'r') as file:
@@ -39,88 +63,84 @@ def process(message):
         total = len(lino)
 
         for card in lino:
-            if card[:6] in riskbins or card[:6] in blacklisted_bins:
+            if card[:6] in riskbins:
                 continue
-            
-            start_time = time.time()
-            
-            try:
-                result = chk(card)
-            except Exception as e:
-                bot.send_message(admin_id, f"An error occurred: {e}")
-                result = "ERROR"
-            
-            time_taken = round(time.time() - start_time, 2)
-            print(result)
-            card = card.strip()
-
-            if any(keyword in result for keyword in ['funds', 'OTP', 'Charged', 'Funds', 'avs', 'postal', 'approved', 'Nice!', 'Approved', 'cvv: Gateway Rejected: cvv', 'does not support this type of purchase.', 'Duplicate', 'Successful', 'Authentication Required', 'successful', 'Thank you', 'confirmed', 'successfully']):
-                brand, type, level, bank, country_name, country_flag = info(card)
-                live += 1
-                bot.reply_to(message, f'𝐀𝐩𝐩𝐫𝐨𝐯𝐞𝐝 ✅\n\n𝐂𝐚𝐫𝐝: <code>{card}</code>\n𝐆𝐚𝐭𝐞𝐰𝐚𝐲: Braintree Auth 🔥\n𝐑𝐞𝐬𝐩𝐨𝐧𝐬𝐞: {result}\n\n𝗜𝗻𝗳𝗼: {brand} - {type} - {level}\n𝐈𝐬𝐬𝐮𝐞𝐫: {bank}\n𝐂𝐨𝐮𝐧𝐭𝐫𝐲: {country_name} {country_flag}\n\n𝐓𝐢𝐦𝐞: {time_taken} 𝐬𝐞𝐜𝐨𝐧𝐝𝐬\n𝐁𝐲: <a href="tg://openmessage?user_id=1092890698">yaнya 🇯🇴</a>', parse_mode='HTML')
-            elif 'RISK' in result:
-                risko += 1
-                riskbins.append(card[:6])
             else:
-                dd += 1
+                start_time = time.time()
+                brand, type, level, bank, country_name, country_flag = info(card)
+                try:
+                    result = chk_function(card)
+                except Exception as e:
+                    bot.send_message(admin_id, f"An error occurred: {e}")
+                    result = "ERROR"
+                elapsed_time = round(time.time() - start_time, 2)
+                print(result)
+                card = card.replace('\n', '')
+                    
+                if any(keyword in result for keyword in ['funds', 'OTP', 'Charged', 'Funds', 'avs', 'postal', 'approved', 'Nice!', 'Approved', 'cvv: Gateway Rejected: cvv', 'does not support this type of purchase.', 'Duplicate', 'Successful', 'Authentication Required', 'successful', 'Thank you', 'confirmed', 'successfully']):
+                    live += 1
+                    bot.reply_to(message, f'𝐀𝐩𝐩𝐫𝐨𝐯𝐞𝐝 ✅\n\n𝐂𝐚𝐫𝐝: <code>{card}</code>\n𝐆𝐚𝐭𝐞𝐰𝐚𝐲: Braintree Auth 🔥\n𝐑𝐞𝐬𝐩𝐨𝐧𝐬𝐞: {result}\n\n𝗜𝗻𝗳𝗼: {brand} - {type} - {level}\n𝐈𝐬𝐬𝐮𝐞𝐫: {bank}\n𝐂𝐨𝐮𝐧𝐭𝐫𝐲: {country_name} {country_flag}\n\n𝐓𝐢𝐦𝐞: {elapsed_time} 𝐬𝐞𝐜𝐨𝐧𝐝𝐬\n𝐁𝐲: <a href="tg://openmessage?user_id=6309252183">YOUSSEF 🔥</a>', parse_mode='HTML')
+                elif 'RISK' in result:
+                    risko +=1
+                    riskbins.append(card[:6])
+                else:
+                    dd +=1
 
-            buttons = types.InlineKeyboardMarkup(row_width=1)
-            buttons.add(
-                types.InlineKeyboardButton(f"{card}", callback_data='1'),
-                types.InlineKeyboardButton(f"{result}", callback_data='2'),
-                types.InlineKeyboardButton(f"𝐀𝐩𝐩𝐫𝐨𝐯𝐞𝐝 ✅ : {live}", callback_data='3'),
-                types.InlineKeyboardButton(f"𝐑𝐢𝐬𝐤 ❌️ : {risko}", callback_data='4'),
-                types.InlineKeyboardButton(f"𝐃𝐞𝐜𝐥𝐢𝐧𝐞𝐝 ❌ : {dd}", callback_data='5'),
-                types.InlineKeyboardButton(f"𝐓𝐨𝐭𝐚𝐥 🍬 : {total}", callback_data='6'),
-                types.InlineKeyboardButton("𝐒𝐭𝐨𝐩", callback_data=f'stop_process_{process_id}')
-            )
-            
-            bot.edit_message_caption(chat_id=message.chat.id, message_id=send.message_id, caption='', reply_markup=buttons)
+                buttons = types.InlineKeyboardMarkup(row_width=2)
+                a1 = types.InlineKeyboardButton(f"{card}", callback_data='1', align_center=True)
+                a2 = types.InlineKeyboardButton(f"{result}", callback_data='2')
+                a3 = types.InlineKeyboardButton(f"𝐀𝐩𝐩𝐫𝐨𝐯𝐞𝐝 ✅ : {live}", callback_data='3')
+                a4 = types.InlineKeyboardButton(f"𝐑𝐢𝐬𝐤 ❌️ : {risko}", callback_data='4')
+                a5 = types.InlineKeyboardButton(f"𝐃𝐞𝐜𝐥𝐢𝐧𝐞𝐝 ❌ : {dd}", callback_data='5')
+                a6 = types.InlineKeyboardButton(f"𝐓𝐨𝐭𝐚𝐥 🍬 : {total}", callback_data='6')
+                stop_button = types.InlineKeyboardButton("𝐒𝐭𝐨𝐩", callback_data=f'stop_process_{process_id}')
+                buttons.add(a1, a2, a3, a4, a5, a6, stop_button)
+                
+                bot.edit_message_reply_markup(chat_id=message.chat.id, message_id=send.message_id, reply_markup=buttons)
 
-            for _ in range(20):
-                if stop_processes.get(process_id):
-                    bot.edit_message_caption(chat_id=message.chat.id, message_id=send.message_id, caption="𝐒𝐭𝐨𝐩𝐩𝐞𝐝 𝐬𝐮𝐜𝐜𝐞𝐬𝐬𝐟𝐮𝐥𝐥𝐲")
-                    riskbins.clear()
-                    process_running = False
-                    return
-                time.sleep(1)
+                for _ in range(15):
+                    if stop_processes.get(process_id):
+                        bot.edit_message_caption(chat_id=message.chat.id, message_id=send.message_id, caption="𝐒𝐭𝐨𝐩𝐩𝐞𝐝 𝐬𝐮𝐜𝐜𝐞𝐬𝐬𝐟𝐮𝐥𝐥𝐲")
+                        riskbins.clear()
+                        return
+                    time.sleep(1)
 
     bot.edit_message_caption(chat_id=message.chat.id, message_id=send.message_id, caption="𝐂𝐨𝐦𝐩𝐥𝐞𝐭𝐞𝐝 𝐒𝐮𝐜𝐜𝐞𝐬𝐬𝐟𝐮𝐥𝐥𝐲")
     riskbins.clear()
-    process_running = False
-
-
-def info(card):
-    url = f'https://bins.antipublic.cc/bins/{card[:6]}'
-    response = requests.get(url)
-
-    if any(substring in response.text for substring in ['Cloudflare', 'not found']) or response.status_code != 200:
-        return tuple("------" for _ in range(6))
-    
-    fields = ['brand', 'type', 'level', 'bank', 'country_name', 'country_flag']
-    result = [response.json().get(field, "------") for field in fields]
-    
-    return tuple(result)
 
 @bot.callback_query_handler(func=lambda call: call.data.startswith('stop_process'))
 def stop_process_callback(call):
-    process_id = int(call.data.split('_')[-1])
-    stop_processes[process_id] = True
-    
+    process_id = call.data.split('_')[-1]
+    stop_processes[int(process_id)] = True
+    bot.answer_callback_query(call.id, "Process will be stopped.")
+
+@bot.callback_query_handler(func=lambda call: call.data.startswith('braintree_auth🔥'))
+def file_process_callback(call):
+    message = call.message
+    document = call.message.reply_to_message.document
+    chk_function = chk1 if call.data == 'braintree_auth_1🔥' else chk2 if call.data == 'braintree_auth_2🔥' else chk3 if call.data == 'braintree_auth_3🔥' else chk4
+    threading.Thread(target=process, args=[document, message, chk_function]).start()
+
 @bot.message_handler(content_types=["document"])
 def main(message):
-    global process_running
-    video_url = random.choice(video_urls)
-    if str(message.chat.id) != admin_id:
+    if str(message.chat.id) not in [admin_id]:
         return
-    if process_running:
-        bot.send_video(message.chat.id, video_url, caption="𝐀 𝐩𝐫𝐨𝐜𝐞𝐬𝐬 𝐢𝐬 𝐚𝐥𝐫𝐞𝐚𝐝𝐲 𝐫𝐮𝐧𝐧𝐢𝐧𝐠. 𝐏𝐥𝐞𝐚𝐬𝐞 𝐰𝐚𝐢𝐭 𝐟𝐨𝐫 𝐢𝐭 𝐭𝐨 𝐜𝐨𝐦𝐩𝐥𝐞𝐭𝐞.", parse_mode='Markdown', reply_to_message_id=message.message_id)
-    else:
-        threading.Thread(target=process, args=[message]).start()
+    
+    if not message.document:
+        bot.reply_to(message, "لم يتم العثور على ملف. يرجى إرسال ملف.")
+        return
+
+    buttons = types.InlineKeyboardMarkup(row_width=2)
+    button1 = types.InlineKeyboardButton("braintree auth 1🔥", callback_data='braintree_auth_1🔥')
+    button2 = types.InlineKeyboardButton("braintree auth 2🔥", callback_data='braintree_auth_2🔥')
+    button3 = types.InlineKeyboardButton("braintree auth 3🔥", callback_data='braintree_auth_3🔥')
+    button4 = types.InlineKeyboardButton("braintree auth 4🔥", callback_data='braintree_auth_4🔥')
+    buttons.add(button1, button2, button3, button4)
+    bot.reply_to(message, "اختر طريقة الفحص", reply_markup=buttons)
 
 @bot.message_handler(commands=['start'])
 def start_command(message):
-    if str(message.chat.id) != admin_id:
+    if str(message.chat.id) not in [admin_id]:
         return   
     video_url = random.choice(video_urls)
     bot.send_video(message.chat.id, video_url, caption="𝐉𝐮𝐬𝐭 𝐬𝐞𝐧𝐝 𝐲𝐨𝐮𝐫 𝐜𝐨𝐦𝐛𝐨", parse_mode='Markdown', reply_to_message_id=message.message_id)
