@@ -6,8 +6,8 @@ from chk3 import chk as chk3
 from chk4 import chk as chk4
 from bin import *
 
-admin_id = '6309252183'
-token = "7433284450:AAG-FhR2ligFiofQQ2nvm8Trhx0pCWcEjNQ"
+admin_id = '5964228363'
+token = "6848019028:AAGDVZ4MIlMKOL0pRjtjMOadz4qkf9cqarU"
 bot = telebot.TeleBot(token, parse_mode="HTML")
 
 stop_processes = {}
@@ -114,11 +114,11 @@ def stop_process_callback(call):
     stop_processes[int(process_id)] = True
     bot.answer_callback_query(call.id, "Process will be stopped.")
 
-@bot.callback_query_handler(func=lambda call: call.data.startswith('braintree_auth🔥'))
+@bot.callback_query_handler(func=lambda call: call.data.startswith('braintree_auth'))
 def file_process_callback(call):
     message = call.message
     document = call.message.reply_to_message.document
-    chk_function = chk1 if call.data == 'braintree_auth_1🔥' else chk2 if call.data == 'braintree_auth_2🔥' else chk3 if call.data == 'braintree_auth_3🔥' else chk4
+    chk_function = chk1 if call.data == 'braintree_auth_1' else chk2 if call.data == 'braintree_auth_2' else chk3 if call.data == 'braintree_auth_3' else chk4
     threading.Thread(target=process, args=[document, message, chk_function]).start()
 
 @bot.message_handler(content_types=["document"])
@@ -131,10 +131,10 @@ def main(message):
         return
 
     buttons = types.InlineKeyboardMarkup(row_width=2)
-    button1 = types.InlineKeyboardButton("braintree auth 1🔥", callback_data='braintree_auth_1🔥')
-    button2 = types.InlineKeyboardButton("braintree auth 2🔥", callback_data='braintree_auth_2🔥')
-    button3 = types.InlineKeyboardButton("braintree auth 3🔥", callback_data='braintree_auth_3🔥')
-    button4 = types.InlineKeyboardButton("braintree auth 4🔥", callback_data='braintree_auth_4🔥')
+    button1 = types.InlineKeyboardButton("braintree auth 1🔥", callback_data='braintree_auth_1')
+    button2 = types.InlineKeyboardButton("braintree auth 2🔥", callback_data='braintree_auth_2')
+    button3 = types.InlineKeyboardButton("braintree auth 3🔥", callback_data='braintree_auth_3')
+    button4 = types.InlineKeyboardButton("braintree auth 4🔥", callback_data='braintree_auth_4')
     buttons.add(button1, button2, button3, button4)
     bot.reply_to(message, "اختر طريقة الفحص", reply_markup=buttons)
 
