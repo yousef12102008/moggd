@@ -11,7 +11,7 @@ from chk5 import chk as chk5  # Assuming chk5 is imported and defined similarly
 from bin import *
 
 # List of allowed user IDs
-admin_ids = ['6309252183', '2123721043', '6429416876', '5964228363', '1400900696','6522495478']  # Add more user IDs here
+admin_ids = ['6309252183', '2123721043', '6429416876', '5964228363', '1400900696','6522495478','1072224102']  # Add more user IDs here
 token = "6848019028:AAGDVZ4MIlMKOL0pRjtjMOadz4qkf9cqarU"
 bot = telebot.TeleBot(token, parse_mode="HTML")
 
