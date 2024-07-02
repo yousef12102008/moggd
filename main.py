@@ -1,18 +1,21 @@
-import telebot, time, threading, random
+import telebot
+import time
+import threading
+import random
 from telebot import types
 from chk1 import chk as chk1
 from chk2 import chk as chk2
 from chk3 import chk as chk3
 from chk4 import chk as chk4
+from chk5 import chk as chk5  # Assuming chk5 is imported and defined similarly
 from bin import *
 
 # List of allowed user IDs
-admin_ids = ['6309252183', '2123721043','6429416876','5964228363','1400900696']  # Add more user IDs here
+admin_ids = ['6309252183', '2123721043', '6429416876', '5964228363', '1400900696']  # Add more user IDs here
 token = "6848019028:AAGDVZ4MIlMKOL0pRjtjMOadz4qkf9cqarU"
 bot = telebot.TeleBot(token, parse_mode="HTML")
 
 stop_processes = {}
-
 video_urls = [
     "https://t.me/O_An6/106",
     "https://t.me/O_An6/110",
@@ -82,10 +85,10 @@ def process(document, message, chk_function):
                     live += 1
                     bot.reply_to(message, f'𝐀𝐩𝐩𝐫𝐨𝐯𝐞𝐝 ✅\n\n𝐂𝐚𝐫𝐝: <code>{card}</code>\n𝐆𝐚𝐭𝐞𝐰𝐚𝐲: Braintree Auth 🔥\n𝐑𝐞𝐬𝐩𝐨𝐧𝐬𝐞: {result}\n\n𝗜𝗻𝗳𝗼: {brand} - {type} - {level}\n𝐈𝐬𝐬𝐮𝐞𝐫: {bank}\n𝐂𝐨𝐮𝐧𝐭𝐫𝐲: {country_name} {country_flag}\n\n𝐓𝐢𝐦𝐞: {elapsed_time} 𝐬𝐞𝐜𝐨𝐧𝐝𝐬\n𝐁𝐲: <a href="tg://openmessage?user_id=6309252183">YOUSSEF 🔥</a>', parse_mode='HTML')
                 elif 'RISK' in result:
-                    risko +=1
+                    risko += 1
                     riskbins.append(card[:6])
                 else:
-                    dd +=1
+                    dd += 1
 
                 buttons = types.InlineKeyboardMarkup(row_width=2)
                 a1 = types.InlineKeyboardButton(f"{card}", callback_data='1', align_center=True)
@@ -119,7 +122,16 @@ def stop_process_callback(call):
 def file_process_callback(call):
     message = call.message
     document = call.message.reply_to_message.document
-    chk_function = chk1 if call.data == 'braintree_auth_1' else chk2 if call.data == 'braintree_auth_2' else chk3 if call.data == 'braintree_auth_3' else chk4
+    if call.data == 'braintree_auth_1':
+        chk_function = chk1
+    elif call.data == 'braintree_auth_2':
+        chk_function = chk2
+    elif call.data == 'braintree_auth_3':
+        chk_function = chk3
+    elif call.data == 'braintree_auth_4':
+        chk_function = chk4
+    elif call.data == 'braintree_auth_5':
+        chk_function = chk5
     threading.Thread(target=process, args=[document, message, chk_function]).start()
 
 @bot.message_handler(content_types=["document"])
@@ -136,12 +148,13 @@ def main(message):
     button2 = types.InlineKeyboardButton("braintree auth 2🔥", callback_data='braintree_auth_2')
     button3 = types.InlineKeyboardButton("braintree auth 3🔥", callback_data='braintree_auth_3')
     button4 = types.InlineKeyboardButton("braintree auth 4🔥", callback_data='braintree_auth_4')
-    buttons.add(button1, button2, button3, button4)
+    button5 = types.InlineKeyboardButton("braintree auth 5🔥", callback_data='braintree_auth_5')
+    buttons.add(button1, button2, button3, button4, button5)
     bot.reply_to(message, "اختر طريقة الفحص", reply_markup=buttons)
 
 @bot.message_handler(commands=['start'])
 def start_command(message):
-    if str(message.chat.id) not in [admin_id]:
+    if str(message.chat.id) not in admin_ids:
         return   
     video_url = random.choice(video_urls)
     bot.send_video(message.chat.id, video_url, caption="𝐉𝐮𝐬𝐭 𝐬𝐞𝐧𝐝 𝐲𝐨𝐮𝐫 𝐜𝐨𝐦𝐛𝐨", parse_mode='Markdown', reply_to_message_id=message.message_id)
