@@ -92,20 +92,22 @@ def chk(card):
 	
 
 
+
+
 	cookies = {
     '_ga': 'GA1.1.242160314.1719582147',
     'eucookielaw': '1735134150572',
     'wordpress_logged_in_8f9b66474434421691b2f5f503bb4c29': 'bbxbcbb.hhxbfbb%7C1720792129%7C8odriFhtxbPDoz2Iovc0jlupR28BkhASWdY4Q2m5bu2%7Cb58ffc1abe2e70bb1d440862e729e54d1db90a286eff64bc68a5e40a4b185f26',
     '_ga_EX1GV7CW1V': 'GS1.1.1719582147.1.1.1719582533.0.0.0',
-    'wfwaf-authcookie-a93ed5df29f1287f22c954ebbd632197': '196%7Cother%7Cread%7C17e68ee89292728566b1babfb481c435218f1da8fdab4cb8a1ae26bc16b0a5a7',
+    'wfwaf-authcookie-a93ed5df29f1287f22c954ebbd632197': '196%7Cother%7Cread%7C6fd4556405e84a784e36d2b686cc82043d623cfb8713d9d52b49f945e873d682',
     'sbjs_migrations': '1418474375998%3D1',
-    'sbjs_current_add': 'fd%3D2024-07-01%2021%3A34%3A26%7C%7C%7Cep%3Dhttps%3A%2F%2Fwww.carolyngibbsquilts.co.uk%2Fproduct%2Fa-step-forward-for-tilly%2F%7C%7C%7Crf%3D%28none%29',
-    'sbjs_first_add': 'fd%3D2024-07-01%2021%3A34%3A26%7C%7C%7Cep%3Dhttps%3A%2F%2Fwww.carolyngibbsquilts.co.uk%2Fproduct%2Fa-step-forward-for-tilly%2F%7C%7C%7Crf%3D%28none%29',
+    'sbjs_current_add': 'fd%3D2024-07-02%2013%3A05%3A10%7C%7C%7Cep%3Dhttps%3A%2F%2Fwww.carolyngibbsquilts.co.uk%2Fmy-account%2Fadd-payment-method%2F%7C%7C%7Crf%3Dhttps%3A%2F%2Fwww.carolyngibbsquilts.co.uk%2Fmy-account%2Fpayment-methods%2F',
+    'sbjs_first_add': 'fd%3D2024-07-02%2013%3A05%3A10%7C%7C%7Cep%3Dhttps%3A%2F%2Fwww.carolyngibbsquilts.co.uk%2Fmy-account%2Fadd-payment-method%2F%7C%7C%7Crf%3Dhttps%3A%2F%2Fwww.carolyngibbsquilts.co.uk%2Fmy-account%2Fpayment-methods%2F',
     'sbjs_current': 'typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29',
     'sbjs_first': 'typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29',
     'sbjs_udata': 'vst%3D1%7C%7C%7Cuip%3D%28none%29%7C%7C%7Cuag%3DMozilla%2F5.0%20%28Linux%3B%20Android%2010%3B%20K%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F124.0.0.0%20Mobile%20Safari%2F537.36',
-    'sbjs_session': 'pgs%3D6%7C%7C%7Ccpg%3Dhttps%3A%2F%2Fwww.carolyngibbsquilts.co.uk%2Fmy-account%2Fadd-payment-method%2F',
-    '_ga_347410393': 'GS1.1.1719869666.5.1.1719870161.0.0.0',
+    '_ga_347410393': 'GS1.1.1719925310.6.1.1719925637.0.0.0',
+    'sbjs_session': 'pgs%3D7%7C%7C%7Ccpg%3Dhttps%3A%2F%2Fwww.carolyngibbsquilts.co.uk%2Fmy-account%2Fadd-payment-method%2F',
 }
 
 	headers = {
@@ -113,7 +115,7 @@ def chk(card):
     'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
     'accept-language': 'ar-EG,ar;q=0.9,en-US;q=0.8,en;q=0.7',
     'cache-control': 'no-cache',
-    # 'cookie': '_ga=GA1.1.242160314.1719582147; eucookielaw=1735134150572; wordpress_logged_in_8f9b66474434421691b2f5f503bb4c29=bbxbcbb.hhxbfbb%7C1720792129%7C8odriFhtxbPDoz2Iovc0jlupR28BkhASWdY4Q2m5bu2%7Cb58ffc1abe2e70bb1d440862e729e54d1db90a286eff64bc68a5e40a4b185f26; _ga_EX1GV7CW1V=GS1.1.1719582147.1.1.1719582533.0.0.0; wfwaf-authcookie-a93ed5df29f1287f22c954ebbd632197=196%7Cother%7Cread%7C17e68ee89292728566b1babfb481c435218f1da8fdab4cb8a1ae26bc16b0a5a7; sbjs_migrations=1418474375998%3D1; sbjs_current_add=fd%3D2024-07-01%2021%3A34%3A26%7C%7C%7Cep%3Dhttps%3A%2F%2Fwww.carolyngibbsquilts.co.uk%2Fproduct%2Fa-step-forward-for-tilly%2F%7C%7C%7Crf%3D%28none%29; sbjs_first_add=fd%3D2024-07-01%2021%3A34%3A26%7C%7C%7Cep%3Dhttps%3A%2F%2Fwww.carolyngibbsquilts.co.uk%2Fproduct%2Fa-step-forward-for-tilly%2F%7C%7C%7Crf%3D%28none%29; sbjs_current=typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29; sbjs_first=typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29; sbjs_udata=vst%3D1%7C%7C%7Cuip%3D%28none%29%7C%7C%7Cuag%3DMozilla%2F5.0%20%28Linux%3B%20Android%2010%3B%20K%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F124.0.0.0%20Mobile%20Safari%2F537.36; sbjs_session=pgs%3D6%7C%7C%7Ccpg%3Dhttps%3A%2F%2Fwww.carolyngibbsquilts.co.uk%2Fmy-account%2Fadd-payment-method%2F; _ga_347410393=GS1.1.1719869666.5.1.1719870161.0.0.0',
+    # 'cookie': '_ga=GA1.1.242160314.1719582147; eucookielaw=1735134150572; wordpress_logged_in_8f9b66474434421691b2f5f503bb4c29=bbxbcbb.hhxbfbb%7C1720792129%7C8odriFhtxbPDoz2Iovc0jlupR28BkhASWdY4Q2m5bu2%7Cb58ffc1abe2e70bb1d440862e729e54d1db90a286eff64bc68a5e40a4b185f26; _ga_EX1GV7CW1V=GS1.1.1719582147.1.1.1719582533.0.0.0; wfwaf-authcookie-a93ed5df29f1287f22c954ebbd632197=196%7Cother%7Cread%7C6fd4556405e84a784e36d2b686cc82043d623cfb8713d9d52b49f945e873d682; sbjs_migrations=1418474375998%3D1; sbjs_current_add=fd%3D2024-07-02%2013%3A05%3A10%7C%7C%7Cep%3Dhttps%3A%2F%2Fwww.carolyngibbsquilts.co.uk%2Fmy-account%2Fadd-payment-method%2F%7C%7C%7Crf%3Dhttps%3A%2F%2Fwww.carolyngibbsquilts.co.uk%2Fmy-account%2Fpayment-methods%2F; sbjs_first_add=fd%3D2024-07-02%2013%3A05%3A10%7C%7C%7Cep%3Dhttps%3A%2F%2Fwww.carolyngibbsquilts.co.uk%2Fmy-account%2Fadd-payment-method%2F%7C%7C%7Crf%3Dhttps%3A%2F%2Fwww.carolyngibbsquilts.co.uk%2Fmy-account%2Fpayment-methods%2F; sbjs_current=typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29; sbjs_first=typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29; sbjs_udata=vst%3D1%7C%7C%7Cuip%3D%28none%29%7C%7C%7Cuag%3DMozilla%2F5.0%20%28Linux%3B%20Android%2010%3B%20K%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F124.0.0.0%20Mobile%20Safari%2F537.36; _ga_347410393=GS1.1.1719925310.6.1.1719925637.0.0.0; sbjs_session=pgs%3D7%7C%7C%7Ccpg%3Dhttps%3A%2F%2Fwww.carolyngibbsquilts.co.uk%2Fmy-account%2Fadd-payment-method%2F',
     'pragma': 'no-cache',
     'referer': 'https://www.carolyngibbsquilts.co.uk/my-account/payment-methods/',
     'sec-ch-ua': '"Not-A.Brand";v="99", "Chromium";v="124"',
