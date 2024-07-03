@@ -91,8 +91,8 @@ def process(document, message, chk_function):
                 else:
                     dd += 1
 
-                buttons = types.InlineKeyboardMarkup(row_width=2)
-                a1 = types.InlineKeyboardButton(f"{card}", callback_data='1', align_center=True)
+                buttons = types.InlineKeyboardMarkup(row_width=1)
+                a1 = types.InlineKeyboardButton(f"{card}", callback_data='1')
                 a2 = types.InlineKeyboardButton(f"{result}", callback_data='2')
                 a3 = types.InlineKeyboardButton(f"𝐀𝐩𝐩𝐫𝐨𝐯𝐞𝐝 ✅ : {live}", callback_data='3')
                 a4 = types.InlineKeyboardButton(f"𝐑𝐢𝐬𝐤 ❌️ : {risko}", callback_data='4')
@@ -146,13 +146,13 @@ def main(message):
         bot.reply_to(message, "لم يتم العثور على ملف. يرجى إرسال ملف.")
         return
 
-    buttons = types.InlineKeyboardMarkup(row_width=3)  # Adjusting row width to accommodate more buttons
-    button1 = types.InlineKeyboardButton("braintree auth 1🔥", callback_data='braintree_auth_1')
-    button2 = types.InlineKeyboardButton("braintree auth 2🔥", callback_data='braintree_auth_2')
-    button3 = types.InlineKeyboardButton("braintree auth 3🔥", callback_data='braintree_auth_3')
-    button4 = types.InlineKeyboardButton("braintree auth 4🔥", callback_data='braintree_auth_4')
-    button5 = types.InlineKeyboardButton("braintree auth 5🔥", callback_data='braintree_auth_5')
-    button6 = types.InlineKeyboardButton("braintree auth 6🔥", callback_data='braintree_auth_6')  # New button for chk6
+    buttons = types.InlineKeyboardMarkup(row_width=1)  # Adjusting row width to 1 for better readability
+    button1 = types.InlineKeyboardButton("Braintree Auth 1🔥", callback_data='braintree_auth_1')
+    button2 = types.InlineKeyboardButton("Braintree Auth 2🔥", callback_data='braintree_auth_2')
+    button3 = types.InlineKeyboardButton("Braintree Auth 3🔥", callback_data='braintree_auth_3')
+    button4 = types.InlineKeyboardButton("Braintree Auth 4🔥", callback_data='braintree_auth_4')
+    button5 = types.InlineKeyboardButton("Braintree Auth 5🔥", callback_data='braintree_auth_5')
+    button6 = types.InlineKeyboardButton("Braintree Auth 6🔥", callback_data='braintree_auth_6')  # New button for chk6
     buttons.add(button1, button2, button3, button4, button5, button6)
     bot.reply_to(message, "اختر طريقة الفحص", reply_markup=buttons)
 
