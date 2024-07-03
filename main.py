@@ -13,7 +13,7 @@ from bin import *
 
 # List of allowed user IDs
 admin_ids = ['6309252183']  # Add more user IDs here
-token = "YOUR_TELEGRAM_BOT_TOKEN"  # Replace with your bot token
+token = "6848019028:AAGDVZ4MIlMKOL0pRjtjMOadz4qkf9cqarU"  # Replace with your bot token
 bot = telebot.TeleBot(token, parse_mode="HTML")
 
 stop_processes = {}
