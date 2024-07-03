@@ -7,12 +7,13 @@ from chk1 import chk as chk1
 from chk2 import chk as chk2
 from chk3 import chk as chk3
 from chk4 import chk as chk4
-from chk5 import chk as chk5  # Assuming chk5 is imported and defined similarly
+from chk5 import chk as chk5
+from chk6 import chk as chk6  # New import for chk6
 from bin import *
 
 # List of allowed user IDs
-admin_ids = ['6309252183', '2123721043', '6429416876', '5964228363', '1400900696','6522495478','1072224102','5789150210']  # Add more user IDs here
-token = "6848019028:AAGDVZ4MIlMKOL0pRjtjMOadz4qkf9cqarU"
+admin_ids = ['6309252183']  # Add more user IDs here
+token = "YOUR_TELEGRAM_BOT_TOKEN"  # Replace with your bot token
 bot = telebot.TeleBot(token, parse_mode="HTML")
 
 stop_processes = {}
@@ -132,6 +133,8 @@ def file_process_callback(call):
         chk_function = chk4
     elif call.data == 'braintree_auth_5':
         chk_function = chk5
+    elif call.data == 'braintree_auth_6':  # Handling chk6
+        chk_function = chk6
     threading.Thread(target=process, args=[document, message, chk_function]).start()
 
 @bot.message_handler(content_types=["document"])
@@ -143,13 +146,14 @@ def main(message):
         bot.reply_to(message, "لم يتم العثور على ملف. يرجى إرسال ملف.")
         return
 
-    buttons = types.InlineKeyboardMarkup(row_width=2)
+    buttons = types.InlineKeyboardMarkup(row_width=3)  # Adjusting row width to accommodate more buttons
     button1 = types.InlineKeyboardButton("braintree auth 1🔥", callback_data='braintree_auth_1')
     button2 = types.InlineKeyboardButton("braintree auth 2🔥", callback_data='braintree_auth_2')
     button3 = types.InlineKeyboardButton("braintree auth 3🔥", callback_data='braintree_auth_3')
     button4 = types.InlineKeyboardButton("braintree auth 4🔥", callback_data='braintree_auth_4')
     button5 = types.InlineKeyboardButton("braintree auth 5🔥", callback_data='braintree_auth_5')
-    buttons.add(button1, button2, button3, button4, button5)
+    button6 = types.InlineKeyboardButton("braintree auth 6🔥", callback_data='braintree_auth_6')  # New button for chk6
+    buttons.add(button1, button2, button3, button4, button5, button6)
     bot.reply_to(message, "اختر طريقة الفحص", reply_markup=buttons)
 
 @bot.message_handler(commands=['start'])
