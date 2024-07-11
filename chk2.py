@@ -168,7 +168,7 @@ def chk(card):
     headers=headers,
     data=data,
 )
-	pattern = r'Status code (.*?)\s*</li>'
+	pattern = r'Reason: (.*?)\s*</li>'
     
 	text = response.text
 	
