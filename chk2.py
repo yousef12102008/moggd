@@ -157,10 +157,10 @@ def chk(card):
 
 
 
-	
+	pattern = r'Reason: (.*?)\s*</li>'
 	text = response.text
 	
-	pattern = r'Reason: (.*?)\s*</li>'
+	
 	
 	match = re.search(pattern, text)
 	if match:
