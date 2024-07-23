@@ -46,6 +46,8 @@ def chk(card):
 
 
 
+
+
 	headers = {
     'authority': 'payments.braintree-api.com',
     'accept': '*/*',
@@ -101,6 +103,7 @@ def chk(card):
 	
 	
 	
+
 
 
 
@@ -189,7 +192,7 @@ def chk(card):
 	response = requests.post('https://efxsports.com/my-account/add-payment-method/', cookies=cookies, headers=headers, data=data)
 	text = response.text
 	
-	pattern = r'Reason: (.*?)\s*</li>'
+	pattern = r'Status code (.*?)\s*</li>'
 	
 	match = re.search(pattern, text)
 	if match:
