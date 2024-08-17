@@ -90,6 +90,7 @@ def chk(card):
 # exactly as it was in the original request.
 #data = '{"clientSdkMetadata":{"source":"client","integration":"custom","sessionId":"400b3c24-6bc8-477d-9c8d-297ae1480658"},"query":"mutation TokenizeCreditCard($input: TokenizeCreditCardInput!) {   tokenizeCreditCard(input: $input) {     token     creditCard {       bin       brandCode       last4       cardholderName       expirationMonth      expirationYear      binData {         prepaid         healthcare         debit         durbinRegulated         commercial         payroll         issuingBank         countryOfIssuance         productId       }     }   } }","variables":{"input":{"creditCard":{"number":"5568628200701960","expirationMonth":"03","expirationYear":"2025","cvv":"959","billingAddress":{"postalCode":"10080","streetAddress":"hhfhfbfv"}},"options":{"validate":false}}},"operationName":"TokenizeCreditCard"}'
 #response = requests.post('https://payments.braintree-api.com/graphql', headers=headers, data=data)
+	tok = response.json()['data']['tokenizeCreditCard']['token']
 
 
 
