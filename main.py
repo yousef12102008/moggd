@@ -1,6 +1,6 @@
 import telebot, time, threading, json, random, re, os
 from telebot import types
-from chk2 import *
+from au import *
 from bin import *
 
 admin_id = '6309252183'
