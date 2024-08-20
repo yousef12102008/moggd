@@ -3,8 +3,8 @@ from telebot import types
 from chk2 import *
 from bin import *
 
-admin_id = '1072224102'
-token = "7035910083:AAGhFRpHF-37PH7RJ2kg-SZAFuc6CHYYCPQ"
+admin_id = '6309252183'
+token = "7012937478:AAFpwtgg05hJQc1ZStBBm80uVVSkHdV1XVg"
 bot = telebot.TeleBot(token, parse_mode="HTML")
 
 stop_processes = {}
@@ -105,14 +105,10 @@ def stop_process_callback(call):
     
 @bot.message_handler(content_types=["document"])
 def main(message):
-    if str(message.chat.id) not in [admin_id]:
-        return
     threading.Thread(target=process, args=[message]).start()
 
 @bot.message_handler(commands=['start'])
 def start_command(message):
-    if str(message.chat.id) not in [admin_id]:
-        return   
     video_url = random.choice(video_urls)
     bot.send_video(message.chat.id, video_url, caption="𝐉𝐮𝐬𝐭 𝐬𝐞𝐧𝐝 𝐲𝐨𝐮𝐫 𝐜𝐨𝐦𝐛𝐨", parse_mode='Markdown', reply_to_message_id=message.message_id)
 
