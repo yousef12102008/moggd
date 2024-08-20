@@ -1,10 +1,10 @@
 import telebot, time, threading, json, random, re, os
 from telebot import types
-from au import *
+from chk2 import *
 from bin import *
 
 admin_id = '6309252183'
-token = "7012937478:AAFpwtgg05hJQc1ZStBBm80uVVSkHdV1XVg"
+token = "7352780060:AAFhUVpNP-VowTHV2RgMZ0rfG2VsSUNWesI"
 bot = telebot.TeleBot(token, parse_mode="HTML")
 
 stop_processes = {}
