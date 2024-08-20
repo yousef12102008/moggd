@@ -1,3 +1,4 @@
+#2
 import telebot, time, threading, json, random, re, os
 from telebot import types
 from chk2 import *
