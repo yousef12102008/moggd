@@ -5,7 +5,7 @@ from chk2 import *
 from bin import *
 
 admin_id = '6309252183'
-token = "7352780060:AAFhUVpNP-VowTHV2RgMZ0rfG2VsSUNWesI"
+token = "7511845554:AAGa7IrfV0DQQQMM99NNcs7Z16SyzDSFxBM"
 bot = telebot.TeleBot(token, parse_mode="HTML")
 
 stop_processes = {}
