@@ -1,5 +1,6 @@
 import telebot, time, threading, random
 from telebot import types
+from chk2 import *  # تأكد من استيراد كل شيء من ملف chk2
 
 admin_id = '6309252183'
 token = "7511845554:AAGa7IrfV0DQQQMM99NNcs7Z16SyzDSFxBM"
@@ -22,29 +23,31 @@ def process(message):
     risko = 0
     send = bot.send_video(message.chat.id, video_url, caption="𝐂𝐡𝐞𝐜𝐤𝐢𝐧𝐠 𝐘𝐨𝐮𝐫 𝐂𝐚𝐫𝐝𝐬...⌛", parse_mode='Markdown', reply_to_message_id=message.message_id)
 
-    # You can replace this with the logic you want to process during the /yo command
-    lino = ["dummy_card_1", "dummy_card_2"]  # Placeholder for cards
+    # استخدام البيانات الثابتة بدلًا من قراءة الملف
+    lino = ["dummy_card_1", "dummy_card_2"]  # استخدم بطاقات اختبارية (يمكن تعديلها)
     total = len(lino)
 
     for card in lino:
         start_time = time.time()
-        # Replace info(card) and chk(card) with your own logic
-        brand, type, level, bank, country_name, country_flag = "Visa", "Credit", "Gold", "Dummy Bank", "Dummy Country", "🌍"
+        
+        # استخدم الدوال من ملف chk2
+        brand, type, level, bank, country_name, country_flag = info(card)
         try:
-            result = "Dummy result"  # Replace this with actual result
+            result = chk(card)  # استخدام وظيفة chk من ملف chk2
         except Exception as e:
             bot.send_message(admin_id, f"An error occurred: {e}")
             result = "ERROR"
+        
         elapsed_time = round(time.time() - start_time, 2)
         print(result)
                 
-        if 'success' in result.lower():
+        if any(keyword in result for keyword in ['funds', 'OTP', 'Charged', 'Funds', 'avs', 'postal', 'approved', 'Nice!', 'Approved', 'cvv: Gateway Rejected: cvv', 'does not support this type of purchase.', 'Duplicate', 'Successful', 'Authentication Required', 'successful', 'Thank you', 'confirmed', 'successfully']):
             live += 1
             bot.reply_to(message, f'𝐀𝐩𝐩𝐫𝐨𝐯𝐞𝐝 ✅\n\n𝐂𝐚𝐫𝐝: <code>{card}</code>\n𝐆𝐚𝐭𝐞𝐰𝐚𝐲: Braintree Auth 🔥\n𝐑𝐞𝐬𝐩𝐨𝐧𝐬𝐞: {result}\n\n𝗜𝗻𝗳𝗼: {brand} - {type} - {level}\n𝐈𝐬𝐬𝐮𝐞𝐫: {bank}\n𝐂𝐨𝐮𝐧𝐭𝐫𝐲: {country_name} {country_flag}\n\n𝐓𝐢𝐦𝐞: {elapsed_time} 𝐬𝐞𝐜𝐨𝐧𝐝𝐬\n𝐁𝐲: <a href="tg://openmessage?user_id=6309252183">JOO</a>', parse_mode='HTML')
-        elif 'risk' in result.lower():
-            risko += 1
+        elif 'RISK' in result:
+            risko +=1
         else:
-            dd += 1
+            dd +=1
 
         buttons = types.InlineKeyboardMarkup(row_width=1)
         buttons.add(
@@ -76,10 +79,5 @@ def stop_process_callback(call):
 @bot.message_handler(commands=['yo'])
 def yo_command(message):
     threading.Thread(target=process, args=[message]).start()
-
-@bot.message_handler(commands=['start'])
-def start_command(message):
-    video_url = random.choice(video_urls)
-    bot.send_video(message.chat.id, video_url, caption="𝐉𝐮𝐬𝐭 𝐬𝐞𝐧𝐝 𝐲𝐨𝐮𝐫 𝐜𝐨𝐦𝐛𝐨", parse_mode='Markdown', reply_to_message_id=message.message_id)
 
 bot.infinity_polling()
