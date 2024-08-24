@@ -37,6 +37,7 @@ video_urls = [
 stop_processes = {}
 
 def check_card(card, message):
+    bot.send_chat_action(message.chat.id, 'typing')  # إشعار الكتابة
     processing_message = bot.send_message(message.chat.id, "Processing your request...😅")  # إرسال رسالة المعالجة
     start_time = time.time()
     brand, type, level, bank, country_name, country_flag = info(card)
@@ -57,6 +58,7 @@ def check_card(card, message):
     return response
 
 def process(message):
+    bot.send_chat_action(message.chat.id, 'typing')  # إشعار الكتابة
     video_url = random.choice(video_urls)
     process_id = hash(message)
     stop_processes[process_id] = False
@@ -80,6 +82,7 @@ def process(message):
         total = len(lino)
 
         for card in lino:
+            bot.send_chat_action(message.chat.id, 'typing')  # إشعار الكتابة قبل كل عملية فحص
             start_time = time.time()
             brand, type, level, bank, country_name, country_flag = info(card)
             try:
@@ -149,6 +152,7 @@ def qw_command(message):
     card_data = message.text.replace('/qw ', '')  # الحصول على بيانات البطاقة من نص الرسالة بعد "/qw"
     
     if '|' in card_data:  # تحقق إذا كانت الرسالة تحتوي على تفاصيل البطاقة
+        bot.send_chat_action(message.chat.id, 'typing')  # إشعار الكتابة
         result_message = check_card(card_data, message)  # فحص البطاقة باستخدام الدالة check_card
         bot.reply_to(message, result_message, parse_mode='HTML')
     else:
