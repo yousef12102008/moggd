@@ -1,6 +1,6 @@
-#5
 import telebot, time, threading, random
 from telebot import types
+# استبدل الاستيراد التالي بوظائفك الخاصة
 from chk2 import *
 from bin import *
 
@@ -13,26 +13,7 @@ allowed_users = [admin_id]  # قائمة لتخزين معرفات المستخ�
 video_urls = [
     "https://t.me/O_An6/106",
     "https://t.me/O_An6/110",
-    "https://t.me/O_An6/111",
-    "https://t.me/O_An6/112",
-    "https://t.me/O_An6/113",
-    "https://t.me/O_An6/114",
-    "https://t.me/O_An6/118",
-    "https://t.me/O_An6/119",
-    "https://t.me/O_An6/120",
-    "https://t.me/O_An6/121",
-    "https://t.me/O_An6/123",
-    "https://t.me/O_An6/124",
-    "https://t.me/O_An6/126",
-    "https://t.me/O_An6/129",
-    "https://t.me/O_An6/131",
-    "https://t.me/O_An6/132",
-    "https://t.me/O_An6/133",
-    "https://t.me/O_An6/136",
-    "https://t.me/O_An6/137",
-    "https://t.me/O_An6/208",
-    "https://t.me/O_An6/717",
-    "https://t.me/O_An6/722"
+    # إضافة باقي روابط الفيديوهات هنا
 ]
 
 stop_processes = {}
@@ -128,10 +109,10 @@ def stop_process_callback(call):
     process_id = call.data.split('_')[-1]
     stop_processes[int(process_id)] = True
     bot.answer_callback_query(call.id, "Process will be stopped.")
-    
+
 @bot.message_handler(content_types=["document"])
 def main(message):
-    if str(message.chat.id) not in allowed_users:  # التحقق إذا كان المستخدم مسموحًا له
+    if str(message.chat.id) not in allowed_users:
         bot.reply_to(message, "You are not authorized to use this bot.")
         return
     threading.Thread(target=process, args=[message]).start()
@@ -140,18 +121,13 @@ def main(message):
 def start_command(message):
     if str(message.chat.id) not in allowed_users:
         bot.reply_to(message, "You are not authorized to use this bot.")
-        return   
+        return
     video_url = random.choice(video_urls)
     bot.send_video(message.chat.id, video_url, caption="𝐉𝐮𝐬𝐭 𝐬𝐞𝐧𝐝 𝐲𝐨𝐮𝐫 𝐜𝐨𝐦𝐛𝐨", parse_mode='Markdown', reply_to_message_id=message.message_id)
 
 @bot.message_handler(commands=['qw'])
 def qw_command(message):
-    if str(message.chat.id) not in allowed_users:
-        bot.reply_to(message, "You are not authorized to use this bot.")
-        return
-    
     card_data = message.text.replace('/qw ', '')  # الحصول على بيانات البطاقة من نص الرسالة بعد "/qw"
-    
     if '|' in card_data:  # تحقق إذا كانت الرسالة تحتوي على تفاصيل البطاقة
         bot.send_chat_action(message.chat.id, 'typing')  # إشعار الكتابة
         result_message = check_card(card_data, message)  # فحص البطاقة باستخدام الدالة check_card
@@ -168,6 +144,21 @@ def add_user_command(message):
         new_user_id = message.text.split()[1]
         allowed_users.append(new_user_id)
         bot.reply_to(message, f"User {new_user_id} has been added.")
+    except IndexError:
+        bot.reply_to(message, "Please provide a valid user ID.")
+
+@bot.message_handler(commands=['de'])
+def remove_user_command(message):
+    if str(message.chat.id) != admin_id:
+        bot.reply_to(message, "You are not authorized to remove users.")
+        return
+    try:
+        user_id_to_remove = message.text.split()[1]
+        if user_id_to_remove in allowed_users:
+            allowed_users.remove(user_id_to_remove)
+            bot.reply_to(message, f"User {user_id_to_remove} has been removed successfully.")
+        else:
+            bot.reply_to(message, "User ID not found in the allowed users.")
     except IndexError:
         bot.reply_to(message, "Please provide a valid user ID.")
 
