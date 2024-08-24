@@ -1,4 +1,4 @@
-import telebot, time, threading, json, random, re, os
+import telebot, time, threading, random
 from telebot import types
 from chk2 import *
 from bin import *
@@ -7,7 +7,6 @@ admin_id = '6309252183'
 token = "6950703392:AAG3eV0tY7if41BfIv3U4Kwode2tvOtCfn4"
 bot = telebot.TeleBot(token, parse_mode="HTML")
 
-stop_processes = {}
 allowed_users = [admin_id]  # قائمة لتخزين معرفات المستخدمين المسموح لهم
 
 video_urls = [
@@ -34,6 +33,25 @@ video_urls = [
     "https://t.me/O_An6/717",
     "https://t.me/O_An6/722"
 ]
+
+stop_processes = {}
+
+def check_card(card):
+    start_time = time.time()
+    brand, type, level, bank, country_name, country_flag = info(card)
+    try:
+        result = chk(card)
+    except Exception as e:
+        result = f"Error: {e}"
+    elapsed_time = round(time.time() - start_time, 2)
+    
+    response = ""
+    if any(keyword in result for keyword in ['funds', 'OTP', 'Charged', 'Funds', 'avs', 'postal', 'approved', 'Nice!', 'Approved', 'cvv: Gateway Rejected: cvv', 'does not support this type of purchase.', 'Duplicate', 'Successful', 'Authentication Required', 'successful', 'Thank you', 'confirmed', 'successfully']):
+        response = f"𝐀𝐩𝐩𝐫𝐨𝐯𝐞𝐝 ✅\n\n𝐂𝐚𝐫𝐝: <code>{card}</code>\n𝐆𝐚𝐭𝐞𝐰𝐚𝐲: Braintree Auth 🔥\n𝐑𝐞𝐬𝐩𝐨𝐧𝐬𝐞: {result}\n\n𝗜𝗻𝗳𝗼: {brand} - {type} - {level}\n𝐈𝐬𝐬𝐮𝐞𝐫: {bank}\n𝐂𝐨𝐮𝐧𝐭𝐫𝐲: {country_name} {country_flag}\n\n𝐓𝐢𝐦𝐞: {elapsed_time} 𝐬𝐞𝐜𝐨𝐧𝐝𝐬\n𝐁𝐲: <a href='tg://openmessage?user_id=6309252183'>JOO</a>"
+    else:
+        response = f"𝐃𝐞𝐜𝐥𝐢𝐧𝐞𝐝 ❌\n\n𝐂𝐚𝐫𝐝: <code>{card}</code>\n𝐑𝐞𝐬𝐩𝐨𝐧𝐬𝐞: {result}\n\n𝗜𝗻𝗳𝗼: {brand} - {type} - {level}\n𝐈𝐬𝐬𝐮𝐞𝐫: {bank}\n𝐂𝐨𝐮𝐧𝐭𝐫𝐲: {country_name} {country_flag}\n\n𝐓𝐢𝐦𝐞: {elapsed_time} 𝐬𝐞𝐜𝐨𝐧𝐝𝐬"
+    
+    return response
 
 def process(message):
     video_url = random.choice(video_urls)
@@ -124,7 +142,14 @@ def qw_command(message):
     if str(message.chat.id) not in allowed_users:
         bot.reply_to(message, "You are not authorized to use this bot.")
         return
-    bot.reply_to(message, "This is the response for the /qw command.")
+    
+    card_data = message.text.replace('/qw ', '')  # الحصول على بيانات البطاقة من نص الرسالة بعد "/qw"
+    
+    if '|' in card_data:  # تحقق إذا كانت الرسالة تحتوي على تفاصيل البطاقة
+        result_message = check_card(card_data)  # فحص البطاقة باستخدام الدالة check_card
+        bot.reply_to(message, result_message, parse_mode='HTML')
+    else:
+        bot.reply_to(message, "Please provide a valid card in the format: number|mm|yy|cvv", parse_mode='HTML')
 
 @bot.message_handler(commands=['add_user'])
 def add_user_command(message):
