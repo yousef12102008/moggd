@@ -36,7 +36,8 @@ video_urls = [
 
 stop_processes = {}
 
-def check_card(card):
+def check_card(card, message):
+    processing_message = bot.send_message(message.chat.id, "Processing your request...😅")  # إرسال رسالة المعالجة
     start_time = time.time()
     brand, type, level, bank, country_name, country_flag = info(card)
     try:
@@ -44,6 +45,8 @@ def check_card(card):
     except Exception as e:
         result = f"Error: {e}"
     elapsed_time = round(time.time() - start_time, 2)
+    
+    bot.delete_message(message.chat.id, processing_message.message_id)  # حذف رسالة المعالجة
     
     response = ""
     if any(keyword in result for keyword in ['funds', 'OTP', 'Charged', 'Funds', 'avs', 'postal', 'approved', 'Nice!', 'Approved', 'cvv: Gateway Rejected: cvv', 'does not support this type of purchase.', 'Duplicate', 'Successful', 'Authentication Required', 'successful', 'Thank you', 'confirmed', 'successfully']):
@@ -60,7 +63,6 @@ def process(message):
     dd = 0
     live = 0
     risko = 0
-    bot.send_chat_action(message.chat.id, 'typing')  # إشعار الكتابة
     send = bot.send_video(message.chat.id, video_url, caption="𝐂𝐡𝐞𝐜𝐤𝐢𝐧𝐠 𝐘𝐨𝐮𝐫 𝐂𝐚𝐫𝐝𝐬...⌛", parse_mode='Markdown', reply_to_message_id=message.message_id)
     file_info = bot.get_file(message.document.file_id)
     downloaded_file = bot.download_file(file_info.file_path)
@@ -91,7 +93,6 @@ def process(message):
                 
             if any(keyword in result for keyword in ['funds', 'OTP', 'Charged', 'Funds', 'avs', 'postal', 'approved', 'Nice!', 'Approved', 'cvv: Gateway Rejected: cvv', 'does not support this type of purchase.', 'Duplicate', 'Successful', 'Authentication Required', 'successful', 'Thank you', 'confirmed', 'successfully']):
                 live += 1
-                bot.send_chat_action(message.chat.id, 'typing')  # إشعار الكتابة
                 bot.reply_to(message, f'𝐀𝐩𝐩𝐫𝐨𝐯𝐞𝐝 ✅\n\n𝐂𝐚𝐫𝐝: <code>{card}</code>\n𝐆𝐚𝐭𝐞𝐰𝐚𝐲: Braintree Auth 🔥\n𝐑𝐞𝐬𝐩𝐨𝐧𝐬𝐞: {result}\n\n𝗜𝗻𝗳𝗼: {brand} - {type} - {level}\n𝐈𝐬𝐬𝐮𝐞𝐫: {bank}\n𝐂𝐨𝐮𝐧𝐭𝐫𝐲: {country_name} {country_flag}\n\n𝐓𝐢𝐦𝐞: {elapsed_time} 𝐬𝐞𝐜𝐨𝐧𝐝𝐬\n𝐁𝐲: <a href="tg://openmessage?user_id=6309252183">JOO</a>', parse_mode='HTML')
             elif 'RISK' in result:
                 risko +=1
@@ -148,8 +149,7 @@ def qw_command(message):
     card_data = message.text.replace('/qw ', '')  # الحصول على بيانات البطاقة من نص الرسالة بعد "/qw"
     
     if '|' in card_data:  # تحقق إذا كانت الرسالة تحتوي على تفاصيل البطاقة
-        bot.send_chat_action(message.chat.id, 'typing')  # إشعار الكتابة
-        result_message = check_card(card_data)  # فحص البطاقة باستخدام الدالة check_card
+        result_message = check_card(card_data, message)  # فحص البطاقة باستخدام الدالة check_card
         bot.reply_to(message, result_message, parse_mode='HTML')
     else:
         bot.reply_to(message, "Please provide a valid card in the format: number|mm|yy|cvv", parse_mode='HTML')
