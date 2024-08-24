@@ -1,6 +1,5 @@
 import telebot, time, threading, random
 from telebot import types
-# استبدل الاستيراد التالي بوظائفك الخاصة
 from chk2 import *
 from bin import *
 
@@ -13,7 +12,26 @@ allowed_users = [admin_id]  # قائمة لتخزين معرفات المستخ�
 video_urls = [
     "https://t.me/O_An6/106",
     "https://t.me/O_An6/110",
-    # إضافة باقي روابط الفيديوهات هنا
+    "https://t.me/O_An6/111",
+    "https://t.me/O_An6/112",
+    "https://t.me/O_An6/113",
+    "https://t.me/O_An6/114",
+    "https://t.me/O_An6/118",
+    "https://t.me/O_An6/119",
+    "https://t.me/O_An6/120",
+    "https://t.me/O_An6/121",
+    "https://t.me/O_An6/123",
+    "https://t.me/O_An6/124",
+    "https://t.me/O_An6/126",
+    "https://t.me/O_An6/129",
+    "https://t.me/O_An6/131",
+    "https://t.me/O_An6/132",
+    "https://t.me/O_An6/133",
+    "https://t.me/O_An6/136",
+    "https://t.me/O_An6/137",
+    "https://t.me/O_An6/208",
+    "https://t.me/O_An6/717",
+    "https://t.me/O_An6/722"
 ]
 
 stop_processes = {}
@@ -158,7 +176,7 @@ def remove_user_command(message):
             allowed_users.remove(user_id_to_remove)
             bot.reply_to(message, f"User {user_id_to_remove} has been removed successfully.")
         else:
-            bot.reply_to(message, "User ID not found in the allowed users.")
+            bot.reply to(message, "User ID not found in the allowed users.")
     except IndexError:
         bot.reply_to(message, "Please provide a valid user ID.")
 
