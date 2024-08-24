@@ -8,6 +8,7 @@ token = "6950703392:AAG3eV0tY7if41BfIv3U4Kwode2tvOtCfn4"
 bot = telebot.TeleBot(token, parse_mode="HTML")
 
 stop_processes = {}
+allowed_users = [admin_id]  # قائمة لتخزين معرفات المستخدمين المسموح لهم
 
 video_urls = [
     "https://t.me/O_An6/106",
@@ -105,15 +106,36 @@ def stop_process_callback(call):
     
 @bot.message_handler(content_types=["document"])
 def main(message):
-    if str(message.chat.id) not in [admin_id]:
+    if str(message.chat.id) not in allowed_users:  # التحقق إذا كان المستخدم مسموحًا له
+        bot.reply_to(message, "You are not authorized to use this bot.")
         return
     threading.Thread(target=process, args=[message]).start()
 
 @bot.message_handler(commands=['start'])
 def start_command(message):
-    if str(message.chat.id) not in [admin_id]:
+    if str(message.chat.id) not in allowed_users:
+        bot.reply_to(message, "You are not authorized to use this bot.")
         return   
     video_url = random.choice(video_urls)
     bot.send_video(message.chat.id, video_url, caption="𝐉𝐮𝐬𝐭 𝐬𝐞𝐧𝐝 𝐲𝐨𝐮𝐫 𝐜𝐨𝐦𝐛𝐨", parse_mode='Markdown', reply_to_message_id=message.message_id)
+
+@bot.message_handler(commands=['qw'])
+def qw_command(message):
+    if str(message.chat.id) not in allowed_users:
+        bot.reply_to(message, "You are not authorized to use this bot.")
+        return
+    bot.reply_to(message, "This is the response for the /qw command.")
+
+@bot.message_handler(commands=['add_user'])
+def add_user_command(message):
+    if str(message.chat.id) != admin_id:
+        bot.reply_to(message, "You are not authorized to add users.")
+        return
+    try:
+        new_user_id = message.text.split()[1]
+        allowed_users.append(new_user_id)
+        bot.reply_to(message, f"User {new_user_id} has been added.")
+    except IndexError:
+        bot.reply_to(message, "Please provide a valid user ID.")
 
 bot.infinity_polling()
