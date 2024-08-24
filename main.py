@@ -89,7 +89,7 @@ def process(message):
             
             bot.edit_message_reply_markup(chat_id=message.chat.id, message_id=send.message_id, reply_markup=buttons)
 
-            for _ in range(21):
+            for _ in range(13):
                 if stop_processes.get(process_id):
                     bot.edit_message_caption(chat_id=message.chat.id, message_id=send.message_id, caption="𝐒𝐭𝐨𝐩𝐩𝐞𝐝 𝐬𝐮𝐜𝐜𝐞𝐬𝐬𝐟𝐮𝐥𝐥𝐲")
                     return
@@ -105,14 +105,10 @@ def stop_process_callback(call):
     
 @bot.message_handler(content_types=["document"])
 def main(message):
-    if str(message.chat.id) not in [admin_id]:
-        return
     threading.Thread(target=process, args=[message]).start()
 
 @bot.message_handler(commands=['start'])
 def start_command(message):
-    if str(message.chat.id) not in [admin_id]:
-        return   
     video_url = random.choice(video_urls)
     bot.send_video(message.chat.id, video_url, caption="𝐉𝐮𝐬𝐭 𝐬𝐞𝐧𝐝 𝐲𝐨𝐮𝐫 𝐜𝐨𝐦𝐛𝐨", parse_mode='Markdown', reply_to_message_id=message.message_id)
 
