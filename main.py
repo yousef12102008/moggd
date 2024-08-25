@@ -7,7 +7,7 @@ admin_id = '6119778012'
 token = "6950703392:AAG3eV0tY7if41BfIv3U4Kwode2tvOtCfn4"
 bot = telebot.TeleBot(token, parse_mode="HTML")
 
-allowed_users = [admin_id]  # قائمة لتخزين معرفات المستخدمين المسموح لهم
+allowed_users = ['6119778012', '6309252183', 'USER_ID_3']  # إضافة معرفات الإدمن الجدد
 
 video_urls = [
     "https://t.me/O_An6/106",
@@ -160,7 +160,7 @@ def qw_command(message):
 
 @bot.message_handler(commands=['add_user'])
 def add_user_command(message):
-    if str(message.chat.id) != admin_id:
+    if str(message.chat.id) not in allowed_users:
         bot.reply_to(message, "You are not authorized to add users.")
         return
     try:
