@@ -3,11 +3,11 @@ from telebot import types
 from chk2 import *
 from bin import *
 
-admin_id = '6119778012'
-token = "6950703392:AAG3eV0tY7if41BfIv3U4Kwode2tvOtCfn4"
+admin_id = '5854930087'
+token = "6524351518:AAHODoQOAUS5_UBb-FFOLMhpFtRT82H1kQ0"
 bot = telebot.TeleBot(token, parse_mode="HTML")
 
-allowed_users = ['6119778012', '6309252183', 'USER_ID_3']  # إضافة معرفات الإدمن الجدد
+allowed_users = [admin_id]  # قائمة لتخزين معرفات المستخدمين المسموح لهم
 
 video_urls = [
     "https://t.me/O_An6/106",
@@ -96,7 +96,7 @@ def process(message):
                 
             if any(keyword in result for keyword in ['funds', 'OTP', 'Charged', 'Funds', 'avs', 'postal', 'approved', 'Nice!', 'Approved', 'cvv: Gateway Rejected: cvv', 'does not support this type of purchase.', 'Duplicate', 'Successful', 'Authentication Required', 'successful', 'Thank you', 'confirmed', 'successfully']):
                 live += 1
-                bot.reply_to(message, f'𝐀𝐩𝐩𝐫𝐨𝐯𝐞𝐝 ✅\n\n𝐂𝐚𝐫𝐝: <code>{card}</code>\n𝐆𝐚𝐭𝐞𝐰𝐚𝐲: Braintree Auth 🔥\n𝐑𝐞𝐬𝐩𝐨𝐧𝐬𝐞: {result}\n\n𝗜𝗻𝗳𝗼: {brand} - {type} - {level}\n𝐈𝐬𝐬𝐮𝐞𝐫: {bank}\n𝐂𝐨𝐮𝐧𝐭𝐫𝐲: {country_name} {country_flag}\n\n𝐓𝐢𝐦𝐞: {elapsed_time} 𝐬𝐞𝐜𝐨𝐧𝐝𝐬\n𝐁𝐲: <a href="tg://openmessage?user_id=6309252183">JOO</a>', parse_mode='HTML')
+                bot.reply_to(message, f'𝐀𝐩𝐩𝐫𝐨𝐯𝐞𝐝 ✅\n\n𝐂𝐚𝐫𝐝: <code>{card}</code>\n𝐆𝐚𝐭𝐞𝐰𝐚𝐲: Braintree Auth \n𝐑𝐞𝐬𝐩𝐨𝐧𝐬𝐞: {result}\n\n𝗜𝗻𝗳𝗼: {brand} - {type} - {level}\n𝐈𝐬𝐬𝐮𝐞𝐫: {bank}\n𝐂𝐨𝐮𝐧𝐭𝐫𝐲: {country_name}  {country_flag}\n\n𝐓𝐢𝐦𝐞: {elapsed_time} 𝐬𝐞𝐜𝐨𝐧𝐝𝐬\n𝐁𝐲: <a href="https://t.me/X_EG_VIP_X">𝐹͜͡4メ𝒕𝒆𝒂𝒎‏</a>', parse_mode='HTML')
             elif 'RISK' in result:
                 risko +=1
             else:
@@ -160,7 +160,7 @@ def qw_command(message):
 
 @bot.message_handler(commands=['add_user'])
 def add_user_command(message):
-    if str(message.chat.id) not in allowed_users:
+    if str(message.chat.id) != admin_id:
         bot.reply_to(message, "You are not authorized to add users.")
         return
     try:
