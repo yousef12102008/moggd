@@ -1,4 +1,3 @@
-#1
 def chk(card):
 	
 	import requests, re, base64, random, string, user_agent, time
