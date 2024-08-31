@@ -133,7 +133,7 @@ def chk(card):
     '_ga_VCS9LN7CYC': 'GS1.1.1725063640.6.1.1725063700.0.0.0',
 }
 
-headers = {
+	headers = {
     'authority': 'californiabalsamic.com',
     'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
     'accept-language': 'ar-EG,ar;q=0.9,en-US;q=0.8,en;q=0.7',
@@ -154,7 +154,7 @@ headers = {
     'user-agent': 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36',
 }
 
-data = {
+	data = {
     'payment_method': 'braintree_cc',
     'braintree_cc_nonce_key': tok,
     'braintree_cc_device_data': '{"device_session_id":"92568c34cd7ea0a4b51f8bf0be41fe21","fraud_merchant_id":null,"correlation_id":"09bb1613-9cea-48f5-88a3-b4359184"}',
