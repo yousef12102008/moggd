@@ -5,7 +5,7 @@ from chk2 import *
 from bin import *
 
 admin_id = '6309252183'
-token = "7239290093:AAHjVmAH6M1Rb_glOwbnezAGeb6VkQELwXo"
+token = "7511845554:AAGa7IrfV0DQQQMM99NNcs7Z16SyzDSFxBM"
 bot = telebot.TeleBot(token, parse_mode="HTML")
 
 allowed_users = [admin_id]  # قائمة لتخزين معرفات المستخدمين المسموح لهم
