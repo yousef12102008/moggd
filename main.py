@@ -1,11 +1,10 @@
-#59
 import telebot, time, threading, random
 from telebot import types
 from chk2 import *
 from bin import *
 
 admin_id = '6309252183'
-token = "7511845554:AAGa7IrfV0DQQQMM99NNcs7Z16SyzDSFxBM"
+token = "7303620071:AAFI15Tkv-1pWRkPSLo1K_d7BXK2rMXSPwo"
 bot = telebot.TeleBot(token, parse_mode="HTML")
 
 allowed_users = [admin_id]  # قائمة لتخزين معرفات المستخدمين المسموح لهم
@@ -115,7 +114,7 @@ def process(message):
             
             bot.edit_message_reply_markup(chat_id=message.chat.id, message_id=send.message_id, reply_markup=buttons)
 
-            for _ in range(20):
+            for _ in range(21):
                 if stop_processes.get(process_id):
                     bot.edit_message_caption(chat_id=message.chat.id, message_id=send.message_id, caption="𝐒𝐭𝐨𝐩𝐩𝐞𝐝 𝐬𝐮𝐜𝐜𝐞𝐬𝐬𝐟𝐮𝐥𝐥𝐲")
                     return
